@@ -1,0 +1,13 @@
+{
+  env: {
+    test: {
+      presets: ["env", "stage-0", "react"],
+    },
+    development: {
+      presets: [["env", { modules: false }], "stage-0", "react"],
+    },
+    production: {
+      presets: [["env", { modules: false }], "stage-0", "react"],
+    },
+  },
+}
