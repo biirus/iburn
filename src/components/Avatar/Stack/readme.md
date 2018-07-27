@@ -1,9 +1,9 @@
 ### Three avatars in stack
 
 ```js
-<AvatarsStack>
+<AvatarStack>
   <Avatar>IB</Avatar>
   <Avatar>AB</Avatar>
   <Avatar>PB</Avatar>
-</AvatarsStack>
+</AvatarStack>
 ```

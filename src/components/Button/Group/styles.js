@@ -4,6 +4,8 @@ export default ({ borderRadius, }) => ({
   },
 
   justified: {
+    width: "100%",
+
     "& $item": {
       flex: "1 0 auto",
       width: 0,

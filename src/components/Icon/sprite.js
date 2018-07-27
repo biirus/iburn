@@ -147,7 +147,6 @@ export default {
   ),
   atlassian: (
     <React.Fragment>
-      "aoa": () =>{" "}
       <defs>
         <linearGradient
           x1="99.688%"
@@ -248,7 +247,6 @@ export default {
   ),
   bitbucket: (
     <React.Fragment>
-      "ava": () =>{" "}
       <defs>
         <linearGradient
           x1="97.526%"
@@ -654,7 +652,6 @@ export default {
   ),
   confluence: (
     <React.Fragment>
-      "cga": () =>{" "}
       <defs>
         <linearGradient
           x1="87.389%"
@@ -665,7 +662,6 @@ export default {
         >
           <stop stopColor="#172B4D" offset="0%" stopOpacity="0.4" />
           <stop stopColor="currentColor" offset="100%" stopOpacity="0" />
-          "cgb": () =>{" "}
         </linearGradient>
         <linearGradient
           x1="14.184%"
@@ -1209,6 +1205,15 @@ export default {
       <path
         d="M14.823 15.883a5.5 5.5 0 1 1 1.06-1.06l2.647 2.647c.293.293.53.59 0 1.06-.53.47-.767.293-1.06 0l-2.647-2.647zM11.5 15.5a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
         fill="currentColor"
+      />
+    </React.Fragment>
+  ),
+  "editor/success": (
+    <React.Fragment>
+      <path
+        d="M12 20a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm1.364-10.964l-2.152 4.11-1.543-1.39a1 1 0 1 0-1.338 1.487l2.5 2.25a1 1 0 0 0 1.555-.279l2.75-5.25a1 1 0 0 0-1.772-.928z"
+        fill="currentColor"
+        fillRule="evenodd"
       />
     </React.Fragment>
   ),
@@ -1787,7 +1792,6 @@ export default {
   ),
   jira: (
     <React.Fragment>
-      "gsa": () =>{" "}
       <defs>
         <linearGradient
           x1="98.031%"
@@ -1826,7 +1830,6 @@ export default {
   ),
   "jira-core": (
     <React.Fragment>
-      "gta": () =>{" "}
       <defs>
         <linearGradient
           x1="17.193%"
@@ -1856,7 +1859,6 @@ export default {
   ),
   "jira-service-desk": (
     <React.Fragment>
-      "gua": () =>{" "}
       <defs>
         <linearGradient
           x1="38.041%"
@@ -1886,7 +1888,6 @@ export default {
   ),
   "jira-software": (
     <React.Fragment>
-      "gva": () =>{" "}
       <defs>
         <linearGradient
           x1="80.418%"
@@ -1897,7 +1898,6 @@ export default {
         >
           <stop stopColor="#172B4D" offset="0%" stopOpacity="0.4" />
           <stop stopColor="currentColor" offset="100%" stopOpacity="0" />
-          "gvb": () =>{" "}
         </linearGradient>
         <linearGradient
           x1="19.808%"

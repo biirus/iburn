@@ -1,5 +1,5 @@
 export default theme => {
-  const tabTitleXPadding = theme.spacing.small;
+  const tabLabelXPadding = theme.spacing.medium;
   const borderWidth = 2;
 
   return {
@@ -10,7 +10,7 @@ export default theme => {
     tabsHeader: {
       position: "relative",
       display: "flex",
-      margin: [[0, -tabTitleXPadding, theme.spacing.medium]],
+      margin: [[0, -tabLabelXPadding, theme.spacing.medium,],],
       borderBottom: `${borderWidth}px solid transparent`,
 
       "&::after": {
@@ -18,24 +18,24 @@ export default theme => {
         position: "absolute",
         zIndex: 1,
         bottom: -borderWidth,
-        left: tabTitleXPadding,
+        left: tabLabelXPadding,
         height: borderWidth,
-        width: `calc(100% - ${tabTitleXPadding * 2}px)`,
+        width: `calc(100% - ${tabLabelXPadding * 2}px)`,
         backgroundColor: theme.colors.n30,
-        borderRadius: 2
-      }
+        borderRadius: 2,
+      },
     },
 
-    tabTitle: {
+    tabLabel: {
       position: "relative",
-      padding: [[tabTitleXPadding / 2, tabTitleXPadding]],
+      padding: [[tabLabelXPadding / 4, tabLabelXPadding,],],
       cursor: "pointer",
-      fontWeight: 500
+      fontWeight: 500,
     },
 
     disabled: {
       opacity: 0.6,
-      pointerEvents: "none"
+      pointerEvents: "none",
     },
 
     selected: {
@@ -46,20 +46,20 @@ export default theme => {
         position: "absolute",
         zIndex: 2,
         bottom: -borderWidth,
-        left: tabTitleXPadding,
+        left: tabLabelXPadding,
         height: borderWidth,
-        width: `calc(100% - ${tabTitleXPadding * 2}px)`,
+        width: `calc(100% - ${tabLabelXPadding * 2}px)`,
         backgroundColor: theme.palette.primary,
-        borderRadius: 2
-      }
+        borderRadius: 2,
+      },
     },
 
     tabsContent: {
-      display: "none"
+      display: "none",
     },
 
     visible: {
-      display: "block"
-    }
+      display: "block",
+    },
   };
 };

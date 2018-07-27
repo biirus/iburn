@@ -1,15 +1,15 @@
 export default (palette, colors) => ({
-  help: {
-    backgroundColor: palette.actions.help,
+  success: {
+    backgroundColor: palette.messages.success,
     color: palette.text.invert,
 
     "&:hover": {
-      backgroundColor: colors.p300,
+      backgroundColor: colors.g300,
       color: palette.text.invert,
     },
 
     "&:active": {
-      backgroundColor: colors.p500,
+      backgroundColor: colors.g500,
       color: palette.text.invert,
     },
 

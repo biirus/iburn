@@ -14,15 +14,16 @@ class TextField extends React.Component {
   static defaultProps = {
     block: false,
     size: null,
+    onClick: f => f,
     onFocus: f => f,
-    onBlur: f => f
+    onBlur: f => f,
   };
 
   state = {
-    isFocused: false
+    isFocused: false,
   };
 
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.input = React.createRef();
@@ -32,18 +33,23 @@ class TextField extends React.Component {
     this.input.current.focus();
   };
 
+  onClick = e => {
+    this.focus();
+    this.props.onClick(e);
+  };
+
   onFocus = e => {
-    this.setState({ isFocused: true });
+    this.setState({ isFocused: true, });
     this.props.onFocus(e);
   };
 
   onBlur = e => {
-    this.setState({ isFocused: false });
+    this.setState({ isFocused: false, });
     this.props.onBlur(e);
   };
 
   checkView = () => {
-    return ["warning", "danger", "success", "info"].includes(this.props.view);
+    return ["warning", "danger", "success", "info",].includes(this.props.view);
   };
 
   getViewIcon = () => {
@@ -51,14 +57,14 @@ class TextField extends React.Component {
       danger: "error",
       warning: "warning",
       success: "check-circle",
-      info: "editor/info"
+      info: "editor/info",
     };
 
     return icons[this.props.view];
   };
 
-  render() {
-    const { isFocused } = this.state;
+  render () {
+    const { isFocused, } = this.state;
     const {
       className,
       classes,
@@ -77,11 +83,11 @@ class TextField extends React.Component {
       [classes.focus]: isFocused,
       [classes.disabled]: disabled,
       [classes.block]: block,
-      [classes.compact]: size === "compact"
+      [classes.compact]: size === "compact",
     });
 
     return (
-      <div className={classNames}>
+      <div className={classNames} onClick={this.onClick}>
         {leftIcon && (
           <span className={cn(classes.icon, classes.leftIcon)}>{leftIcon}</span>
         )}

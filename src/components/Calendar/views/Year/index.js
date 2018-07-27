@@ -1,7 +1,6 @@
 import React from "react";
 
 // lib
-import * as locales from "date-fns/esm/locale";
 import cn from "classnames";
 import { capitalize } from "../../lib";
 
@@ -29,9 +28,7 @@ const yearArray = monthes.reduce(
 
 class MonthView extends React.PureComponent {
   render () {
-    const { className, classes, locale: localeString, onSelect, } = this.props;
-
-    const locale = locales[localeString];
+    const { className, classes, locale, onSelect, } = this.props;
     const { localize, } = locale;
 
     const classNames = cn(classes.root, className);

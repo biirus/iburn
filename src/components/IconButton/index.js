@@ -9,8 +9,16 @@ import Icon from "components/Icon";
 import { enhance } from "./enhance";
 
 class IconButton extends React.Component {
-  render() {
-    const { className, classes, icon, theme, sheet, ...rest } = this.props;
+  render () {
+    const {
+      className,
+      classes,
+      icon,
+      children,
+      theme,
+      sheet,
+      ...rest
+    } = this.props;
     const classNames = cn(classes.root, className);
 
     return (
@@ -18,7 +26,7 @@ class IconButton extends React.Component {
         {...rest}
         view="thin"
         className={classNames}
-        icon={<Icon label={icon} className={classes.icon} />}
+        icon={icon ? <Icon label={icon} className={classes.icon} /> : children}
       />
     );
   }

@@ -2,7 +2,7 @@ export default palette => {
   const fontFamily = `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif`;
 
   const common = {
-    fontFamily
+    fontFamily,
     // textRendering: "optimizeLegibility",
     // "-webkit-font-smoothing": "antialiased",
     // "-moz-osx-font-smoothing": "grayscale"
@@ -15,7 +15,7 @@ export default palette => {
     fontWeight: 500,
     lineHeight: "32px",
     letterSpacing: "-0.01em",
-    color: palette.text.heading
+    color: palette.text.heading,
   };
 
   // Main titles, use only once per page
@@ -25,7 +25,7 @@ export default palette => {
     fontWeight: 500,
     lineHeight: "28px",
     letterSpacing: "-0.01em",
-    color: palette.text.heading
+    color: palette.text.heading,
   };
 
   // Headings that identify key functionality
@@ -35,7 +35,7 @@ export default palette => {
     fontWeight: 500,
     lineHeight: "24px",
     letterSpacing: "-0.008em",
-    color: palette.text.heading
+    color: palette.text.heading,
   };
 
   // Sub-section and field group headings
@@ -45,7 +45,7 @@ export default palette => {
     fontWeight: 500,
     lineHeight: "20px",
     letterSpacing: "-0.006em",
-    color: palette.text.heading
+    color: palette.text.heading,
   };
 
   // Deep headings and for highlighting important pieces of information
@@ -55,27 +55,27 @@ export default palette => {
     fontWeight: 600,
     lineHeight: "20px",
     letterSpacing: "-0.003em",
-    color: palette.text.heading
+    color: palette.text.heading,
   };
 
   // Heading up a group of list items
   const h300 = {
     ...common,
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: 600,
     lineHeight: "16px",
     letterSpacing: 0,
-    color: palette.text.heading
+    color: palette.text.heading,
   };
 
   // Low level headings
   const h200 = {
     ...common,
     fontSize: 12,
-    fontWeight: 600,
+    fontWeight: 500,
     lineHeight: "16px",
     letterSpacing: 0,
-    color: palette.text.secondary
+    color: palette.text.secondary,
   };
 
   // Lowest level headings
@@ -84,9 +84,9 @@ export default palette => {
     fontSize: 10,
     fontWeight: 500,
     lineHeight: "16px",
-    letterSpacing: 0,
+    letterSpacing: "0.06em",
     color: palette.text.secondary,
-    textTransform: "uppercase"
+    textTransform: "uppercase",
   };
 
   // Slogans, starting text
@@ -95,7 +95,7 @@ export default palette => {
     fontSize: 16,
     fontWeight: 400,
     lineHeight: "24px",
-    color: palette.text.secondary
+    color: palette.text.secondary,
   };
 
   // Input labels
@@ -108,12 +108,12 @@ export default palette => {
     fontWeight: 400,
     lineHeight: "20px",
     letterSpacing: "-0.006em",
-    color: palette.text.primary
+    color: palette.text.primary,
   };
 
   const paragraph = {
     ...body,
-    margin: [12, 0]
+    margin: [12, 0,],
   };
 
   return {
@@ -128,6 +128,6 @@ export default palette => {
     lead,
     body,
     label,
-    paragraph
+    paragraph,
   };
 };

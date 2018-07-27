@@ -1,7 +1,7 @@
 import React from "react";
 import icons from "./sprite";
 
-export default ({ label, size = 24, ...rest }) => {
+const Icon = ({ label, size = 24, ...rest }) => {
   return (
     <svg
       width={size}
@@ -15,3 +15,5 @@ export default ({ label, size = 24, ...rest }) => {
     </svg>
   );
 };
+
+export default Icon;

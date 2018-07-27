@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 
 // enhancers
 import withStyles from "react-jss";
@@ -14,44 +15,82 @@ class ButtonGroup extends React.Component {
     onChange: f => f,
   };
 
+  static propTypes = {
+    /**
+     * Class name string to be merged to root node
+     */
+    className: PropTypes.string,
+    /**
+     * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * If it is set to `true`, you will be able to select one of the button.
+     * If selected button is changed then `onChange` callback will be called.
+     * To define preselected button, you can use the `value` component prop.
+     */
+    selectable: PropTypes.bool,
+    /**
+     * It stretches the component to the full width, and all children will be a same size.
+     */
+    justified: PropTypes.bool,
+    /**
+     * The color of child `Button` component. It supports the theme meaningfull values
+     */
+    color: PropTypes.oneOf([
+      "default",
+      "primary",
+      "warning",
+      "error",
+      "success",
+      "info",
+    ]),
+    /**
+     * Array of `<Button />` components
+     */
+    children: PropTypes.arrayOf(PropTypes.element).isRequired,
+    /**
+     * The callback which will be called when `selected` prop is passed.
+     */
+    onChange: PropTypes.func,
+  };
+
   constructor (props) {
     super(props);
 
-    const { selectable, selected, } = props;
-    const selectedIndex = selectable
-      ? selected !== undefined ? selected : null
-      : null;
-
     this.state = {
-      selectedIndex,
+      value: props.value,
     };
   }
 
-  onClick = index => () => {
-    if (this.props.selectable) {
-      const { selectedIndex, } = this.state;
+  handleClick = value => e => {
+    const { value: currentValue, } = this.state;
 
-      if (selectedIndex !== index) {
-        this.setState({ selectedIndex: index, });
-        this.props.onChange(index);
-      }
+    if (value !== currentValue) {
+      this.setState({ value, });
+
+      e.persist();
+      e.target.name = this.props.name;
+      e.target.value = value;
+      this.props.onChange(e);
     }
   };
 
-  getInnerProps = index => {
-    const { view, classes, selectable, } = this.props;
-    const { selectedIndex, } = this.state;
+  getInnerProps = child => {
+    const { color, classes, selectable, } = this.props;
+    const { value: currentValue, } = this.state;
+    const { value, } = child.props;
 
     let props = {
       className: classes.inner,
     };
 
-    if (view) {
-      props.view = view;
+    if (color) {
+      props.color = color;
     }
 
-    if (selectable) {
-      props.selected = selectedIndex === index ? "true" : "";
+    if (selectable && currentValue !== undefined) {
+      props.selected = value === currentValue;
     }
 
     return props;
@@ -82,9 +121,9 @@ class ButtonGroup extends React.Component {
             <span
               key={index}
               className={classes.item}
-              onClick={this.onClick(index)}
+              onClick={this.handleClick(child.props.value)}
             >
-              {React.cloneElement(child, this.getInnerProps(index))}
+              {React.cloneElement(child, this.getInnerProps(child))}
             </span>
           );
         })}

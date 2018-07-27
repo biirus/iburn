@@ -9,35 +9,37 @@ import { enhance } from "./enhance";
 
 class NavItem extends React.Component {
   static defaultProps = {
-    component: "a"
+    component: "a",
   };
 
-  render() {
+  render () {
     const {
       className,
       classes,
       children,
       icon,
       secondary,
-      isActive,
+      active,
+      disabled,
       component: Component,
       theme,
       sheet,
       ...rest
-    } = this.props;    
+    } = this.props;
 
     if (Component.name && Component.name === "NavLink") {
       rest.activeClassName = classes.active;
     }
 
     const classNames = cn(classes.root, className, {
-      [classes.active]: isActive
+      [classes.active]: active,
+      [classes.disabled]: disabled,
     });
 
     return (
       <Component {...rest} className={classNames}>
         {icon && <span className={classes.icon}>{icon}</span>}
-        <div className={classes.title}>
+        <div className={classes.label}>
           <div>{children}</div>
           {secondary && <Typography type="h200">{secondary}</Typography>}
         </div>

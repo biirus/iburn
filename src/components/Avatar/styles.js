@@ -18,22 +18,10 @@ export default ({ colors, typography, spacing, }) => {
       borderRadius: "50%",
     },
 
-    wrapper: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      alignSelf: "baseline",
-      overflow: "hidden",
-      width: "100%",
-      height: "100%",
-    },
-
     img: {
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
       width: "100%",
       height: "100%",
+      objectFit: "cover",
     },
   };
 };

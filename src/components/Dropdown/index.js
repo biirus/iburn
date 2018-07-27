@@ -58,9 +58,10 @@ class Dropdown extends React.Component {
     const classNames = cn(classes.root, className);
 
     return (
-      <span className={classNames}>
+      <React.Fragment>
         <Button
           iconAfter={<Icon label="chevron-down" />}
+          className={classNames}
           {...rest}
           selected={isOpen}
           onClick={this.handleClick}
@@ -76,7 +77,7 @@ class Dropdown extends React.Component {
         >
           <div className={classes.popoverContent}>{children}</div>
         </Popover>
-      </span>
+      </React.Fragment>
     );
   }
 }

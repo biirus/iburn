@@ -1,7 +1,7 @@
 ```jsx
 <Nav>
   <NavItem href="/">Home</NavItem>
-  <NavItem href="/" isActive>
+  <NavItem href="/" active>
     Active
   </NavItem>
 </Nav>

@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Breadcrumbs /> should render Breadcrumbs correctly 1`] = `
+<Jss(Typography)
+  className="root"
+  component="div"
+  componentsMap={
+    Object {
+      "body": "div",
+      "h100": "div",
+      "h200": "div",
+      "h300": "h5",
+      "h400": "h4",
+      "h500": "h3",
+      "h600": "h2",
+      "h700": "h1",
+      "h800": "h1",
+      "label": "div",
+      "lead": "div",
+      "paragraph": "p",
+    }
+  }
+  type="h200"
+>
+  <span
+    className="item"
+    key="0"
+  >
+    <a
+      className="link"
+      href="/"
+    >
+      root
+    </a>
+  </span>
+  <span
+    className="item"
+    key="1"
+  >
+    <a
+      className="link"
+      href="/child"
+    >
+      child
+    </a>
+  </span>
+</Jss(Typography)>
+`;

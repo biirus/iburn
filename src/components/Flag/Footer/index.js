@@ -14,7 +14,7 @@ class FlagFooter extends React.Component {
     this.context.handleClose();
   };
 
-  render() {
+  render () {
     const {
       className,
       classes,
@@ -36,7 +36,7 @@ class FlagFooter extends React.Component {
             className={classes.action}
             onClick={this.handleClick(action)}
           >
-            {action.title}
+            {action.label}
           </Button>
         ))}
       </div>
@@ -45,7 +45,7 @@ class FlagFooter extends React.Component {
 }
 
 FlagFooter.contextTypes = {
-  handleClose: PropTypes.func
+  handleClose: PropTypes.func,
 };
 
 export default enhance(FlagFooter);

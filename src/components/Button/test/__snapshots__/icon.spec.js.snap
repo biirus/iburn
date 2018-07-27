@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> should render only <Icon /> 1`] = `
+<StyledButton
+  className="root default"
+>
+  <Icon
+    label="lock"
+  />
+</StyledButton>
+`;
+
+exports[`<Button /> should render the <Icon /> after label 1`] = `
+<StyledButton
+  className="root default"
+>
+  <span
+    className="content"
+  >
+    Button content
+  </span>
+  <Icon
+    label="lock"
+  />
+</StyledButton>
+`;
+
+exports[`<Button /> should render the <Icon /> before label 1`] = `
+<StyledButton
+  className="root default"
+>
+  <Icon
+    label="lock"
+  />
+  <span
+    className="content"
+  >
+    Button content
+  </span>
+</StyledButton>
+`;

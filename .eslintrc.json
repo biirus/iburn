@@ -3,7 +3,7 @@
   "globals": {
     "shallow": true,
     "render": true,
-    "classes": true,
+    "getClasses": true,
     "mount": true
   },
   "env": {

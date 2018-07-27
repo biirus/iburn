@@ -2,6 +2,10 @@ const path = require("path");
 
 module.exports = {
   components: "src/components/**/**/index.js",
+  ignore: [
+    "**/components/Calendar/*/**/index.js",
+    "**/components/Reset/index.js",
+  ],
 
   styleguideComponents: {
     Wrapper: path.join(__dirname, "./styleguide/Wrapper"),

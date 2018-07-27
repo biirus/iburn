@@ -6,45 +6,50 @@ export default theme => {
       display: "flex",
       alignItems: "center",
       height: theme.spacing.unit * 5,
-      padding: [[theme.spacing.small / 2, theme.spacing.small]],
+      padding: [[theme.spacing.small / 2, theme.spacing.small,],],
 
       cursor: "pointer",
       color: "inherit",
       textDecoration: "none",
       backgroundColor: "transparent",
       borderRadius: theme.borderRadius,
-      transition: theme.transitions.create(["background-color"], "shortest"),
+      transition: theme.transitions.create(["background-color",], "shortest"),
 
       "&:hover": {
-        backgroundColor: theme.colors.n20a
+        backgroundColor: theme.colors.n20a,
       },
 
       "&:active": {
-        backgroundColor: theme.colors.b50a
+        backgroundColor: theme.colors.b50a,
       },
 
       "&:disabled": {
         backgroundColor: "transparent",
-        color: theme.colors.n70
-      }
+        color: theme.colors.n70,
+      },
     },
 
     active: {
       backgroundColor: theme.colors.n20a,
-      color: theme.colors.b400
+      color: theme.colors.b400,
     },
 
-    title: {
+    disabled: {
+      color: theme.colors.n70,
+      pointerEvents: "none",
+    },
+
+    label: {
       whiteSpace: "nowrap",
       overflow: "hidden",
-      textOverflow: "ellipsis"
+      textOverflow: "ellipsis",
     },
 
     icon: {
       width: iconSize,
       height: iconSize,
       marginRight: theme.spacing.small,
-      lineHeight: 1
-    }
+      lineHeight: 1,
+    },
   };
 };

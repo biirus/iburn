@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Banner /> should render a Banner with \`color\` prop correctly 1`] = `
+<div
+  className="root warning"
+>
+  <span
+    className="icon"
+  >
+    <Icon
+      label="editor/warning"
+    />
+  </span>
+  <span
+    className="label"
+  >
+    Banner content
+  </span>
+</div>
+`;
+
+exports[`<Banner /> should render a Banner with custom icon correctly 1`] = `
+<div
+  className="root"
+>
+  <span
+    className="icon"
+  >
+    <Icon
+      label="lock"
+    />
+  </span>
+  <span
+    className="label"
+  >
+    Banner content
+  </span>
+</div>
+`;
+
+exports[`<Banner /> should render a Banner with only label correctly 1`] = `
+<div
+  className="root"
+>
+  <span
+    className="label"
+  >
+    Banner content
+  </span>
+</div>
+`;

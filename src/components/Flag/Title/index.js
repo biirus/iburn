@@ -11,7 +11,7 @@ import { enhance } from "./enhance";
 
 class FlagTitle extends React.Component {
   checkView = () => {
-    return ["warning", "danger", "success", "help"].includes(this.props.view);
+    return ["warning", "danger", "success", "help",].includes(this.props.view);
   };
 
   getViewIcon = () => {
@@ -19,13 +19,13 @@ class FlagTitle extends React.Component {
       danger: "error",
       warning: "warning",
       success: "check-circle",
-      help: "question-circle"
+      help: "question-circle",
     };
 
     return icons[this.props.view];
   };
 
-  render() {
+  render () {
     const {
       className,
       classes,
@@ -46,7 +46,7 @@ class FlagTitle extends React.Component {
             : icon}
         </span>
 
-        <span className={classes.title}>{children}</span>
+        <span className={classes.label}>{children}</span>
 
         <Icon
           label="cross"
@@ -59,7 +59,7 @@ class FlagTitle extends React.Component {
 }
 
 FlagTitle.contextTypes = {
-  handleClose: PropTypes.func
+  handleClose: PropTypes.func,
 };
 
 export default enhance(FlagTitle);

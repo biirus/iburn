@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonGroup /> should render a <ButtonGroup /> element 1`] = `
+<span
+  className="root"
+  onChange={[Function]}
+>
+  <span
+    className="item"
+    key="0/.0"
+    onClick={[Function]}
+  >
+    <Jss(Button)
+      className="inner"
+      color="default"
+      selected={false}
+    >
+      First
+    </Jss(Button)>
+  </span>
+  <span
+    className="item"
+    key="1/.1"
+    onClick={[Function]}
+  >
+    <Jss(Button)
+      className="inner"
+      color="default"
+      selected={false}
+    >
+      Second
+    </Jss(Button)>
+  </span>
+</span>
+`;

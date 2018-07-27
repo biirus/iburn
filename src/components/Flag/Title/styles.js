@@ -46,7 +46,7 @@ export default ({ spacing, palette, }) => {
       lineHeight: 1,
     },
 
-    title: {
+    label: {
       flex: "1 1 0%",
       textOverflow: "ellipsis",
       whiteSpace: "nowrap",

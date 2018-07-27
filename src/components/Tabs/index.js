@@ -6,18 +6,18 @@ import { enhance } from "./enhance";
 
 class Tabs extends React.Component {
   static defaultProps = {
-    onChange: f => f
+    onChange: f => f,
   };
 
   state = {
-    selected: 0
+    selected: 0,
   };
 
-  componentDidMount() {
+  componentDidMount () {
     const tabs = this.getTabs(this.props.children);
     const initiallySelected = tabs.findIndex(tab => !!tab.selected);
 
-    initiallySelected >= 0 && this.setState({ selected: initiallySelected });
+    initiallySelected >= 0 && this.setState({ selected: initiallySelected, });
   }
 
   getTabs = children => {
@@ -25,10 +25,10 @@ class Tabs extends React.Component {
     return childrenArray.map(child => child.props);
   };
 
-  handleTabTitleClick = (index, onClick = f => f) => e => {
+  handleTabLabelClick = (index, onClick = f => f) => e => {
     const oldIndex = this.state.selected;
 
-    this.setState({ selected: index }, () => {
+    this.setState({ selected: index, }, () => {
       onClick(index);
 
       if (index !== oldIndex) {
@@ -38,22 +38,22 @@ class Tabs extends React.Component {
   };
 
   renderTabsHeader = tabs => {
-    const { classes } = this.props;
-    const { selected } = this.state;
+    const { classes, } = this.props;
+    const { selected, } = this.state;
 
     return (
       <div className={classes.tabsHeader}>
-        {tabs.map(({ title, disabled, children, onClick, ...rest }, index) => (
+        {tabs.map(({ label, disabled, children, onClick, ...rest }, index) => (
           <div
             {...rest}
             key={index}
-            className={cn(classes.tabTitle, {
+            className={cn(classes.tabLabel, {
               [classes.disabled]: !!disabled,
-              [classes.selected]: index === selected
+              [classes.selected]: index === selected,
             })}
-            onClick={this.handleTabTitleClick(index, onClick)}
+            onClick={this.handleTabLabelClick(index, onClick)}
           >
-            {title}
+            {label}
           </div>
         ))}
       </div>
@@ -61,15 +61,15 @@ class Tabs extends React.Component {
   };
 
   renderTabsContent = tabs => {
-    const { classes } = this.props;
-    const { selected } = this.state;
+    const { classes, } = this.props;
+    const { selected, } = this.state;
 
-    return tabs.map(({ title, children, ...rest }, index) => (
+    return tabs.map(({ label, className, children, ...rest }, index) => (
       <div
         {...rest}
         key={index}
-        className={cn(classes.tabsContent, {
-          [classes.visible]: index === selected
+        className={cn(classes.tabsContent, className, {
+          [classes.visible]: index === selected,
         })}
       >
         {children}
@@ -77,7 +77,7 @@ class Tabs extends React.Component {
     ));
   };
 
-  render() {
+  render () {
     const {
       className,
       classes,

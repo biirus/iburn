@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> should render a link button 1`] = `
+<StyledButton
+  className="root link"
+>
+  <span
+    className="content"
+  >
+    Button content
+  </span>
+</StyledButton>
+`;
+
+exports[`<Button /> should render a thin button 1`] = `
+<StyledButton
+  className="root thin"
+>
+  <span
+    className="content"
+  >
+    Button content
+  </span>
+</StyledButton>
+`;

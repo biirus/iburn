@@ -8,7 +8,7 @@ export default ({ spacing, }) => {
       overflow: "hidden",
     },
 
-    title: {
+    label: {
       marginRight: spacing.large,
       whiteSpace: "nowrap",
       overflow: "hidden",

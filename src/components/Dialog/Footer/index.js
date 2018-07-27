@@ -10,7 +10,7 @@ import { enhance } from "./enhance";
 
 class DialogFooter extends React.Component {
   static defaultProps = {
-    actions: []
+    actions: [],
   };
 
   handleClick = action => () => {
@@ -18,7 +18,7 @@ class DialogFooter extends React.Component {
     this.context.handleClose();
   };
 
-  render() {
+  render () {
     const {
       className,
       classes,
@@ -41,7 +41,7 @@ class DialogFooter extends React.Component {
               className={classes.action}
               onClick={this.handleClick(action)}
             >
-              {action.title}
+              {action.label}
             </Button>
           ))}
         </div>
@@ -51,7 +51,7 @@ class DialogFooter extends React.Component {
 }
 
 DialogFooter.contextTypes = {
-  handleClose: PropTypes.func
+  handleClose: PropTypes.func,
 };
 
 export default enhance(DialogFooter);

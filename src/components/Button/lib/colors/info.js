@@ -1,15 +1,15 @@
 export default (palette, colors) => ({
-  danger: {
-    backgroundColor: palette.actions.remove,
+  info: {
+    backgroundColor: palette.messages.info,
     color: palette.text.invert,
 
     "&:hover": {
-      backgroundColor: colors.r300,
+      backgroundColor: colors.p300,
       color: palette.text.invert,
     },
 
     "&:active": {
-      backgroundColor: colors.r500,
+      backgroundColor: colors.p500,
       color: palette.text.invert,
     },
 

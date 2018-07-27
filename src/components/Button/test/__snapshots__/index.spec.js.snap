@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> should render a button element 1`] = `
+<StyledButton
+  className="root default"
+>
+  <span
+    className="content"
+  >
+    Button content
+  </span>
+</StyledButton>
+`;

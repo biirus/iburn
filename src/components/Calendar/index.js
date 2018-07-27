@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // lib
 import cn from "classnames";
@@ -14,13 +15,50 @@ import YearView from "./views/Year";
 // enhancers
 import { enhance } from "./enhance";
 
+/**
+ * Clean and simple to use Calendar Component
+ */
 class Calendar extends React.Component {
   static defaultProps = {
     locale: "enUS",
-    maxDate: null,
-    minDate: null,
     onChange: f => f,
     onDayClick: f => f,
+  };
+
+  static propTypes = {
+    locale: PropTypes.oneOfType([
+      PropTypes.string,
+
+      PropTypes.shape({
+        formatDistance: PropTypes.func.isRequired,
+        formatLong: PropTypes.shape({
+          date: PropTypes.func.isRequired,
+          dateTime: PropTypes.func.isRequired,
+          time: PropTypes.func.isRequired,
+        }),
+        formatRelative: PropTypes.func.isRequired,
+        localize: PropTypes.shape({
+          day: PropTypes.func.isRequired,
+          dayPeriod: PropTypes.func.isRequired,
+          era: PropTypes.func.isRequired,
+          month: PropTypes.func.isRequired,
+          ordinalNumber: PropTypes.func.isRequired,
+          quarter: PropTypes.func.isRequired,
+        }),
+        match: PropTypes.shape({
+          day: PropTypes.func.isRequired,
+          dayPeriod: PropTypes.func.isRequired,
+          era: PropTypes.func.isRequired,
+          month: PropTypes.func.isRequired,
+          ordinalNumber: PropTypes.func.isRequired,
+          quarter: PropTypes.func.isRequired,
+        }),
+        options: PropTypes.shape({
+          weekStartsOn: PropTypes.number.isRequired,
+          firstWeekContainsDate: PropTypes.number.isRequired,
+        }),
+      }),
+    ]),
   };
 
   constructor (props) {
@@ -127,7 +165,9 @@ class Calendar extends React.Component {
     } = this.props;
     const { month, year, view, } = this.state;
 
-    const locale = locales[localeString];
+    const locale =
+      typeof localeString === "string" ? locales[localeString] : localeString;
+
     const { localize, } = locale;
     const classNames = cn(classes.root, className);
 
@@ -148,7 +188,7 @@ class Calendar extends React.Component {
           {...this.state}
           className={view !== "month" && classes.hidden}
           range={range}
-          locale={localeString}
+          locale={locale}
           maxDate={maxDate}
           minDate={minDate}
           onClick={this.handleDayClick}
@@ -157,7 +197,7 @@ class Calendar extends React.Component {
 
         <YearView
           className={view !== "year" && classes.hidden}
-          locale={localeString}
+          locale={locale}
           onSelect={this.handleMonthSelect}
         />
       </div>

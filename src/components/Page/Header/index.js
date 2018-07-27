@@ -32,7 +32,7 @@ class PageHeader extends React.Component {
       >
         {breadcrumbs}
         <div className={classes.wrapper}>
-          <Typography type="h700" className={classes.title}>
+          <Typography type="h700" className={classes.label}>
             {children}
           </Typography>
           <div className={classes.actions}>{actions}</div>

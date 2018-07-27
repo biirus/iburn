@@ -12,15 +12,15 @@ import styles from "./styles";
 
 class DropdownGroup extends React.Component {
   static defaultProps = {
-    title: ""
+    label: "",
   };
 
-  render() {
+  render () {
     const {
       className,
       classes,
       children,
-      title,
+      label,
       theme,
       sheet,
       ...rest
@@ -29,9 +29,12 @@ class DropdownGroup extends React.Component {
 
     return (
       <div {...rest} className={classNames}>
-        <Typography type="h100" className={classes.title}>
-          {title}
-        </Typography>
+        {label && (
+          <Typography type="h100" className={classes.label}>
+            {label}
+          </Typography>
+        )}
+
         {children}
       </div>
     );

@@ -3,45 +3,27 @@ import React from "react";
 import Avatar from "../index";
 import styles from "../styles";
 
-const componentClasses = classes(styles);
+const classes = getClasses(styles);
 const Component = Avatar.InnerComponent;
 
 describe("<Avatar />", () => {
-  it("should render Avatar", () => {
+  it("should merge user classes", () => {
     const wrapper = shallow(
-      <Component classes={componentClasses}>IB</Component>
-    );
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it("should compose passed class names", () => {
-    const actual = shallow(
-      <Component classes={componentClasses} className="customClass">
+      <Component className="customClass" classes={classes}>
         IB
       </Component>
     );
 
-    expect(actual.prop("className")).toBe("root customClass");
+    expect(wrapper.prop("className")).toEqual("root customClass");
   });
 
-  it("should render image instead of children if `src` prop is passed", () => {
+  it("should pass the rest props to the root element", () => {
     const wrapper = shallow(
-      <Component classes={componentClasses} src="https://google.com">
+      <Component classes={classes} dataTest="rest prop">
         IB
       </Component>
     );
 
-    expect(wrapper.find(".img").exists()).toBeTruthy();
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it("should render image instead children if `src` prop is not passed", () => {
-    const wrapper = shallow(
-      <Component classes={componentClasses}>IB</Component>
-    );
-
-    expect(wrapper.find(".img").exists()).toBeFalsy();
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.prop("dataTest")).toEqual("rest prop");
   });
 });

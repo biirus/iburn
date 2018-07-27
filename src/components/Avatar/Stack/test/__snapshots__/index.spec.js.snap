@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AvatarStack /> should render the <AvatarStack /> correctly 1`] = `
+<div
+  className="root customClass"
+  dataRest="data rest"
+>
+  <div
+    className="item"
+    key="0/.0"
+    style={
+      Object {
+        "zIndex": 2,
+      }
+    }
+  >
+    <Jss(Avatar)
+      className="inner"
+    >
+      IB
+    </Jss(Avatar)>
+  </div>
+  <div
+    className="item"
+    key="1/.1"
+    style={
+      Object {
+        "zIndex": 1,
+      }
+    }
+  >
+    <Jss(Avatar)
+      className="inner"
+    >
+      AB
+    </Jss(Avatar)>
+  </div>
+</div>
+`;

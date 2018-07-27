@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Avatar /> Image avatar should render img avatar correctly 1`] = `
+<div
+  className="root"
+>
+  <img
+    className="img"
+    src="img.jpg"
+  />
+</div>
+`;

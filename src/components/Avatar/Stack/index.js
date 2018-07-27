@@ -8,9 +8,23 @@ import withStyles from "react-jss";
 // styles
 import styles from "./styles";
 
-class AvatarsStack extends React.Component {
+/**
+ * The component to render an array of `<Avatar />` in a row
+ */
+class AvatarStack extends React.Component {
   static propTypes = {
-    children: PropTypes.arrayOf(PropTypes.element),
+    /**
+     * Class name string to be merged to root node
+     */
+    className: PropTypes.string,
+    /**
+     * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
+     */
+    classes: PropTypes.object.isRequired,
+    /**
+     * Array of `<Avatar />` components to be shown as stack
+     */
+    children: PropTypes.arrayOf(PropTypes.element).isRequired,
   };
 
   render () {
@@ -37,4 +51,4 @@ class AvatarsStack extends React.Component {
 
 const enhance = withStyles(styles);
 
-export default enhance(AvatarsStack);
+export default enhance(AvatarStack);

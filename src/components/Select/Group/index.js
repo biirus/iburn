@@ -10,22 +10,22 @@ import { enhance } from "./enhance";
 
 class SelectGroup extends React.Component {
   static defaultProps = {
-    title: ""
+    label: "",
   };
 
-  render() {
+  render () {
     const {
       className,
       classes,
       children,
-      title,
+      label,
       onSearch,
       theme,
       sheet,
       ...rest
     } = this.props;
 
-    const { search } = this.context;
+    const { search, } = this.context;
 
     const visibleChildren = onSearch
       ? React.Children.toArray(children).filter(child =>
@@ -34,13 +34,13 @@ class SelectGroup extends React.Component {
       : children;
 
     const classNames = cn(classes.root, className, {
-      [classes.hidden]: visibleChildren.length === 0
+      [classes.hidden]: visibleChildren.length === 0,
     });
 
     return (
       <div {...rest} className={classNames}>
-        <Typography type="h100" className={classes.title}>
-          {title}
+        <Typography type="h100" className={classes.label}>
+          {label}
         </Typography>
 
         {visibleChildren}
@@ -50,7 +50,7 @@ class SelectGroup extends React.Component {
 }
 
 SelectGroup.contextTypes = {
-  search: PropTypes.string
+  search: PropTypes.string,
 };
 
 export default enhance(SelectGroup);

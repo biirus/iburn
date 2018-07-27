@@ -1,32 +1,32 @@
-export default ({ typography, spacing }) => {
+export default ({ typography, spacing, }) => {
   return {
     root: {
       display: "flex",
       flexDirection: "column",
       minHeight: spacing.unit * 8,
-      marginBottom: spacing.medium
+      marginBottom: spacing.medium,
     },
 
     justified: {
-      justifyContent: "center"
+      justifyContent: "center",
     },
 
     wrapper: {
       display: "flex",
       alignItems: "center",
-      justifyContent: "space-between"
+      justifyContent: "space-between",
     },
 
-    title: {
+    label: {
       ...typography.h700,
-      margin: [0, spacing.large, 0, 0],
+      margin: [0, spacing.large, 0, 0,],
       whiteSpace: "nowrap",
       overflow: "hidden",
-      textOverflow: "ellipsis"
+      textOverflow: "ellipsis",
     },
 
     actions: {
-      whiteSpace: "nowrap"
-    }
+      whiteSpace: "nowrap",
+    },
   };
 };

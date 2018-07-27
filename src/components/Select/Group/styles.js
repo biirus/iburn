@@ -12,7 +12,7 @@ export default ({ spacing, }) => {
       display: "none",
     },
 
-    title: {
+    label: {
       width: "100%",
       padding: [0, spacing.medium,],
       whiteSpace: "nowrap",

@@ -1,4 +1,13 @@
-export default ({ spacing, palette, typography, zIndex, transitions }) => {
+export default ({
+  spacing,
+  palette,
+  shadows,
+  typography,
+  zIndex,
+  transitions,
+}) => {
+  const iconSize = spacing.unit * 3;
+
   return {
     root: {
       ...typography.h100,
@@ -14,17 +23,24 @@ export default ({ spacing, palette, typography, zIndex, transitions }) => {
       justifyContent: "center",
       padding: spacing.medium,
 
+      boxShadow: shadows.small,
+      backgroundColor: palette.backgrounds.default,
+      color: palette.text.primary,
+
       opacity: 0,
       transform: `translateY(-100%)`,
 
-      transition: transitions.create(["opacity", "transform"], "leavingScreen")
+      transition: transitions.create(["opacity", "transform",], "leavingScreen"),
     },
 
     open: {
       opacity: 1,
       transform: `translateY(0)`,
 
-      transition: transitions.create(["opacity", "transform"], "enteringScreen")
+      transition: transitions.create(
+        ["opacity", "transform",],
+        "enteringScreen"
+      ),
     },
 
     warning: {
@@ -32,8 +48,8 @@ export default ({ spacing, palette, typography, zIndex, transitions }) => {
       color: palette.text.invert,
 
       "& $icon": {
-        fill: palette.messages.warning
-      }
+        fill: palette.messages.warning,
+      },
     },
 
     error: {
@@ -41,8 +57,8 @@ export default ({ spacing, palette, typography, zIndex, transitions }) => {
       color: palette.text.invert,
 
       "& $icon": {
-        fill: palette.messages.error
-      }
+        fill: palette.messages.error,
+      },
     },
 
     info: {
@@ -50,8 +66,8 @@ export default ({ spacing, palette, typography, zIndex, transitions }) => {
       color: palette.text.invert,
 
       "& $icon": {
-        fill: palette.messages.info
-      }
+        fill: palette.messages.info,
+      },
     },
 
     success: {
@@ -59,12 +75,13 @@ export default ({ spacing, palette, typography, zIndex, transitions }) => {
       color: palette.text.invert,
 
       "& $icon": {
-        fill: palette.messages.success
-      }
+        fill: palette.messages.success,
+      },
     },
 
     icon: {
-      flex: `0 0 ${spacing.unit * 3}px`
+      flex: `0 0 ${iconSize}px`,
+      lineHeight: 0,
     },
 
     label: {
@@ -72,7 +89,8 @@ export default ({ spacing, palette, typography, zIndex, transitions }) => {
       marginLeft: spacing.small / 2,
       overflow: "hidden",
       textOverflow: "ellipsis",
-      whiteSpace: "nowrap"
-    }
+      whiteSpace: "nowrap",
+      lineHeight: `${iconSize}px`,
+    },
   };
 };

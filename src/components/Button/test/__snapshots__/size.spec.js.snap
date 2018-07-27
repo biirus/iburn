@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> should render a block button 1`] = `
+<StyledButton
+  className="root block default"
+>
+  <span
+    className="content"
+  >
+    Button content
+  </span>
+</StyledButton>
+`;
+
+exports[`<Button /> should render a compact button 1`] = `
+<StyledButton
+  className="root compact default"
+>
+  <span
+    className="content"
+  >
+    Button content
+  </span>
+</StyledButton>
+`;
+
+exports[`<Button /> should render a inline button 1`] = `
+<StyledButton
+  className="root inline default"
+>
+  <span
+    className="content"
+  >
+    Button content
+  </span>
+</StyledButton>
+`;

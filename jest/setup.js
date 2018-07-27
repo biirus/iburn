@@ -12,4 +12,4 @@ Enzyme.configure({ adapter: new Adapter(), });
 global.shallow = shallow;
 global.render = render;
 global.mount = mount;
-global.classes = styles => keymirror(styles(theme));
+global.getClasses = styles => keymirror(styles(theme));

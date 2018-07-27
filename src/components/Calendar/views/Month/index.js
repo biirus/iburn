@@ -1,6 +1,5 @@
 import React from "react";
 import cn from "classnames";
-import * as locales from "date-fns/esm/locale";
 import {
   isSameDay,
   min,
@@ -121,15 +120,8 @@ class MonthView extends React.Component {
   };
 
   render () {
-    const {
-      className,
-      classes,
-      year,
-      month,
-      locale: localeString,
-    } = this.props;
+    const { className, classes, year, month, locale, } = this.props;
 
-    const locale = locales[localeString];
     const { options, } = locale;
 
     const firstDayOfWeek = options.weekStartsOn;
@@ -140,7 +132,7 @@ class MonthView extends React.Component {
 
     return (
       <Table className={classNames}>
-        <WeekDays locale={localeString} />
+        <WeekDays locale={locale} />
 
         <TableBody>
           {monthArray.map((week, index) => (

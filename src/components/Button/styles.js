@@ -1,30 +1,26 @@
 import createDefaultStyle from "./lib/colors/default";
 import createPrimaryStyle from "./lib/colors/primary";
 import createWarningStyle from "./lib/colors/warning";
-import createDangerStyle from "./lib/colors/danger";
-import createHelpStyle from "./lib/colors/help";
+import createSuccessStyle from "./lib/colors/success";
+import createErrorStyle from "./lib/colors/error";
+import createInfoStyle from "./lib/colors/info";
 
 import createThinStyle from "./lib/views/thin";
 import createLinkStyle from "./lib/views/link";
 
-export default ({
-  borderRadius,
-  spacing,
-  colors,
-  palette,
-  transitions,
-  typography,
-}) => {
+export default ({ borderRadius, spacing, colors, palette, transitions, }) => {
   const getHeight = (compact = false) => {
     const multiplier = compact ? 3 : 4;
-    return `${(spacing.unit * multiplier) / typography.body.fontSize}em`;
+    return `${spacing.unit * multiplier}px`;
   };
 
   return {
     root: {
       display: "inline-flex",
       flexWrap: "nowrap",
-      alignItems: "baseline",
+      alignItems: "center",
+      justifyContent: "center",
+      verticalAlign: "middle",
 
       maxWidth: "100%",
       height: getHeight(),
@@ -39,6 +35,7 @@ export default ({
       lineHeight: getHeight(),
       textDecoration: "none",
       whiteSpace: "nowrap",
+      color: colors.n400,
 
       transition: transitions.create(["all",], "shortest"),
 
@@ -53,7 +50,7 @@ export default ({
 
       "&:disabled": {
         pointerEvents: "none",
-        cursor: "not-allowed",
+        opacity: 0.4,
       },
     },
 
@@ -65,12 +62,9 @@ export default ({
     inline: {
       lineHeight: "inherit",
       padding: 0,
+      height: "auto",
 
       "& $content": {
-        margin: 0,
-      },
-
-      "& $icon": {
         margin: 0,
       },
     },
@@ -83,59 +77,16 @@ export default ({
       transition: "none",
     },
 
-    wrapper: {
-      alignSelf: "center",
-      display: "inline-flex",
-      flexWrap: "nowrap",
-      width: "100%",
-      height: "100%",
-      pointerEvents: "none",
-      justifyContent: "center",
-    },
-
     content: {
-      alignItems: "center",
-      alignSelf: "center",
-      flex: "1 1 auto",
       margin: [0, spacing.unit / 2,],
-      maxWidth: "100%",
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      whiteSpace: "nowrap",
-    },
-
-    icon: {
-      alignSelf: "center",
-      display: "flex",
-      flexShrink: 0,
-      lineHeight: 0,
-      fontSize: 0,
-      userSelect: "none",
-
-      "&+$content": {
-        alignItems: "baseline",
-        alignSelf: "baseline",
-        textAlign: "left",
-      },
-    },
-
-    leftIcon: {
-      marginLeft: -spacing.unit / 2,
-    },
-
-    rightIcon: {
-      marginRight: -spacing.unit / 2,
-    },
-
-    isOnlyIcon: {
-      margin: [0, -spacing.unit / 4,],
     },
 
     ...createDefaultStyle(palette, colors),
     ...createPrimaryStyle(palette, colors),
     ...createWarningStyle(palette, colors),
-    ...createDangerStyle(palette, colors),
-    ...createHelpStyle(palette, colors),
+    ...createSuccessStyle(palette, colors),
+    ...createErrorStyle(palette, colors),
+    ...createInfoStyle(palette, colors),
 
     ...createThinStyle(palette, colors),
     ...createLinkStyle(palette, colors),

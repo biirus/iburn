@@ -8,7 +8,7 @@ import Typography from "components/Typography";
 import { enhance } from "./enhance";
 
 class DialogTitle extends React.Component {
-  render() {
+  render () {
     const {
       className,
       classes,
@@ -22,7 +22,7 @@ class DialogTitle extends React.Component {
 
     return (
       <div {...rest} className={classNames}>
-        <Typography className={classes.title} type="h600">
+        <Typography className={classes.label} type="h600">
           {children}
         </Typography>
         <div className={classes.actions}>{actions}</div>

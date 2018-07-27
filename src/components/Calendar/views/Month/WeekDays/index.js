@@ -1,5 +1,4 @@
 import React from "react";
-import * as locales from "date-fns/esm/locale";
 
 // components
 import TableCell from "components/Table/Cell";
@@ -14,9 +13,8 @@ const week = Array.from({ length: daysPerWeek, }, (_, i) => i);
 
 class WeekDays extends React.PureComponent {
   render () {
-    const { classes, locale: localeString, } = this.props;
+    const { classes, locale, } = this.props;
 
-    const locale = locales[localeString];
     const { options, localize, } = locale;
 
     const firstDayOfWeek = options.weekStartsOn;
