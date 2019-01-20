@@ -23,14 +23,8 @@ class TextField extends React.Component {
     isFocused: false,
   };
 
-  constructor (props) {
-    super(props);
-
-    this.input = React.createRef();
-  }
-
   focus = () => {
-    this.input.current.focus();
+    this.input.focus();
   };
 
   onClick = e => {
@@ -94,7 +88,7 @@ class TextField extends React.Component {
 
         <input
           {...rest}
-          ref={this.input}
+          ref={el => (this.input = el)}
           disabled={disabled}
           className={classes.input}
           onFocus={this.onFocus}

@@ -7,10 +7,10 @@ import { enhance } from "./enhance";
 
 class SelectItem extends React.Component {
   static defaultProps = {
-    onClick: f => f
+    onClick: f => f,
   };
 
-  render() {
+  render () {
     const {
       className,
       classes,
@@ -41,7 +41,7 @@ class SelectItem extends React.Component {
 }
 
 SelectItem.contextTypes = {
-  selectItem: PropTypes.func
+  selectItem: PropTypes.func,
 };
 
 export default enhance(SelectItem);

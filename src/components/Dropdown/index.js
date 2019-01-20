@@ -33,13 +33,17 @@ class Dropdown extends React.Component {
   handleClick = e => {
     e.preventDefault();
 
-    this.setState({ isOpen: !this.state.isOpen, trigger: e.target, });
+    this.setState({ isOpen: !this.state.isOpen, trigger: e.currentTarget, });
     this.props.onClick(e);
   };
 
   handleClose = () => {
     this.setState({ isOpen: false, });
   };
+
+  close = () => {
+    this.handleClose();
+  }
 
   render () {
     const {

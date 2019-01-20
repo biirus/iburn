@@ -12,7 +12,6 @@ const plugins = [
   resolve(),
   babel({
     exclude: "node_modules/**",
-    plugins: ["external-helpers",],
   }),
   alias({
     components: path.join(__dirname, "src/components"),

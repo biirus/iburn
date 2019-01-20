@@ -1,13 +1,32 @@
 {
   env: {
     test: {
-      presets: ["env", "stage-0", "react"],
+      presets: ["@babel/preset-env", "@babel/preset-react"],
+      plugins: ["@babel/plugin-proposal-class-properties"]
     },
     development: {
-      presets: [["env", { modules: false }], "stage-0", "react"],
+      presets: [
+        [
+          "@babel/preset-env",
+          {
+            modules: false
+          }
+        ],
+        "@babel/preset-react"
+      ],
+      plugins: ["@babel/plugin-proposal-class-properties"]
     },
     production: {
-      presets: [["env", { modules: false }], "stage-0", "react"],
-    },
-  },
+      presets: [
+        [
+          "@babel/preset-env",
+          {
+            modules: false
+          }
+        ],
+        "@babel/preset-react"
+      ],
+      plugins: ["@babel/plugin-proposal-class-properties"]
+    }
+  }
 }

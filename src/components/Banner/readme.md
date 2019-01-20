@@ -15,7 +15,7 @@ class Example extends React.Component {
   }
 
   toggle(e) {
-    const name = e.target.name;
+    const { name } = e.currentTarget;
     this.setState(state => ({ [name]: !state[name] }));
   }
 
