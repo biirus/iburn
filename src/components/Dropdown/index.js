@@ -43,7 +43,7 @@ class Dropdown extends React.Component {
 
   close = () => {
     this.handleClose();
-  }
+  };
 
   render () {
     const {
