@@ -1,11 +1,5 @@
 {
   "extends": "react-app",
-  "globals": {
-    "shallow": true,
-    "render": true,
-    "getClasses": true,
-    "mount": true
-  },
   "env": {
     "browser": true,
     "commonjs": true,
@@ -21,6 +15,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "import/no-webpack-loader-syntax": 0,
     "jsx-a11y/href-no-hash": 0,
     "no-script-url": 0,
     "no-const-assign": "warn",
@@ -34,8 +29,8 @@
     "comma-dangle": [
       "error",
       {
-        "arrays": "always",
-        "objects": "always",
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
         "imports": "never",
         "exports": "never",
         "functions": "ignore"

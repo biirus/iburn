@@ -3,7 +3,7 @@ import cn from "classnames";
 import PropTypes from "prop-types";
 
 // enhancers
-import { enhance } from "./enhnace";
+import { enhance } from "./enhance";
 
 /**
  * The basic Avatar component that renders it's content or image
