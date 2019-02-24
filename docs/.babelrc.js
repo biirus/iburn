@@ -8,7 +8,7 @@ const plugins = [
   "@babel/plugin-proposal-class-properties",
   [
     "babel-plugin-module-resolver",
-    { alias: { components: "./src/components" } },
+    { alias: { components: "../src/components" } },
   ],
 ];
 

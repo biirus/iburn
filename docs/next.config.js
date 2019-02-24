@@ -3,7 +3,6 @@ const path = require("path");
 module.exports = {
   webpack: config => {
     config.module.rules = config.module.rules.map(rule => {
-      console.log(rule);
       if (!rule.test.test(".js")) {
         return rule;
       }

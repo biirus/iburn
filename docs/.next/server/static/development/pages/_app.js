@@ -93,6 +93,77 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "../src/components/Reset/index.js":
+/*!****************************************!*\
+  !*** ../src/components/Reset/index.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-jss */ "react-jss");
+/* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles */ "../src/components/Reset/styles.js");
+// enhancers
+ // styles
+
+
+/* harmony default export */ __webpack_exports__["default"] = (react_jss__WEBPACK_IMPORTED_MODULE_0___default()(_styles__WEBPACK_IMPORTED_MODULE_1__["default"])(function () {
+  return null;
+}));
+
+/***/ }),
+
+/***/ "../src/components/Reset/styles.js":
+/*!*****************************************!*\
+  !*** ../src/components/Reset/styles.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/* harmony default export */ __webpack_exports__["default"] = (function (theme) {
+  var typography = theme.typography;
+  var headers = ["h1", "h2", "h3", "h4", "h5", "h6"].reduce(function (acc, header) {
+    return _objectSpread({}, acc, _defineProperty({}, header, {
+      margin: 0
+    }));
+  }, {});
+  return {
+    "@global": _objectSpread({
+      "*": {
+        boxSizing: "border-box"
+      },
+      html: {
+        height: "100vh"
+      },
+      body: _objectSpread({
+        margin: 0,
+        padding: 0,
+        height: "100vh",
+        textDecorationSkip: "ink"
+      }, typography.body),
+      root: {
+        height: "100vh"
+      },
+      ".fixed": {
+        maxHeight: "100vh",
+        overflow: "hidden"
+      }
+    }, headers, {
+      p: _objectSpread({}, typography.paragraph)
+    })
+  };
+});
+
+/***/ }),
+
 /***/ "../src/theme/colors/alpha.js":
 /*!************************************!*\
   !*** ../src/theme/colors/alpha.js ***!
@@ -554,11 +625,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /* harmony default export */ __webpack_exports__["default"] = (function (palette) {
-  var fontFamily = "-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Noto Sans\", \"Ubuntu\", \"Droid Sans\", \"Helvetica Neue\", sans-serif";
+  var fontFamily = "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif";
   var common = {
-    fontFamily: fontFamily // textRendering: "optimizeLegibility",
-    // "-webkit-font-smoothing": "antialiased",
-    // "-moz-osx-font-smoothing": "grayscale"
+    fontFamily: fontFamily,
+    textRendering: "optimizeLegibility" // "-webkit-font-smoothing": "antialiased",
+    // "-moz-osx-font-smoothing": "grayscale",
 
   }; // Empty states and feature introductions
 
@@ -713,12 +784,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-jss */ "react-jss");
 /* harmony import */ var react_jss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_jss__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _src_theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../src/theme */ "../src/theme/index.js");
+/* harmony import */ var _src_components_Reset__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../src/components/Reset */ "../src/components/Reset/index.js");
+/* harmony import */ var _src_theme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../src/theme */ "../src/theme/index.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -726,19 +796,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -750,15 +821,31 @@ var MyApp =
 function (_App) {
   _inherits(MyApp, _App);
 
+  function MyApp() {
+    _classCallCheck(this, MyApp);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MyApp).apply(this, arguments));
+  }
+
   _createClass(MyApp, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       // Remove the server-side injected CSS.
-      var jssStyles = document.querySelector("#jss-server-side");
+      var jssStyles = document.querySelector("#server-side-styles");
 
       if (jssStyles && jssStyles.parentNode) {
         jssStyles.parentNode.removeChild(jssStyles);
       }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          Component = _this$props.Component,
+          pageProps = _this$props.pageProps;
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_jss__WEBPACK_IMPORTED_MODULE_3__["ThemeProvider"], {
+        theme: _src_theme__WEBPACK_IMPORTED_MODULE_5__["default"]
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_2__["Container"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_src_components_Reset__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Component, pageProps)));
     }
   }], [{
     key: "getInitialProps",
@@ -775,26 +862,22 @@ function (_App) {
                 pageProps = {};
 
                 if (!Component.getInitialProps) {
-                  _context.next = 9;
+                  _context.next = 6;
                   break;
                 }
 
-                _context.t0 = Object;
-                _context.t1 = pageProps;
-                _context.next = 7;
+                _context.next = 5;
                 return Component.getInitialProps(ctx);
 
-              case 7:
-                _context.t2 = _context.sent;
+              case 5:
+                pageProps = _context.sent;
 
-                _context.t0.assign.call(_context.t0, _context.t1, _context.t2);
-
-              case 9:
+              case 6:
                 return _context.abrupt("return", {
                   pageProps: pageProps
                 });
 
-              case 10:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -808,39 +891,6 @@ function (_App) {
 
       return getInitialProps;
     }()
-  }]);
-
-  function MyApp(props) {
-    var _this;
-
-    _classCallCheck(this, MyApp);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MyApp).call(this, props));
-    _this.pageContext = {
-      theme: _src_theme__WEBPACK_IMPORTED_MODULE_4__["default"],
-      sheetsManager: new Map(),
-      sheetsRegistry: new react_jss__WEBPACK_IMPORTED_MODULE_3__["SheetsRegistry"](),
-      generateClassName: Object(react_jss__WEBPACK_IMPORTED_MODULE_3__["createGenerateClassName"])()
-    };
-    return _this;
-  }
-
-  _createClass(MyApp, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          Component = _this$props.Component,
-          pageProps = _this$props.pageProps;
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_2__["Container"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_jss__WEBPACK_IMPORTED_MODULE_3__["JssProvider"], {
-        registry: this.pageContext.sheetsRegistry,
-        generateClassName: this.pageContext.generateClassName
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_jss__WEBPACK_IMPORTED_MODULE_3__["ThemeProvider"], {
-        theme: this.pageContext.theme,
-        sheetsManager: this.pageContext.sheetsManager
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Component, _extends({
-        pageContext: this.pageContext
-      }, pageProps)))));
-    }
   }]);
 
   return MyApp;
