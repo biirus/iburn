@@ -1,7 +1,7 @@
-export default ({ spacing, colors, typography, }) => {
+export default ({ spacing, colors, typography }) => {
   return {
     root: {
-      padding: [[spacing.small, spacing.large, spacing.small, spacing.small,],],
+      padding: [[spacing.small, spacing.large, spacing.small, spacing.small]],
       textAlign: "left",
 
       "&:last-child": {

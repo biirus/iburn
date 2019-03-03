@@ -1,15 +1,15 @@
 const presets = [
   "babel-preset-next",
-  ["@babel/preset-env", { modules: false }],
-  "@babel/preset-react",
+  // ["@babel/preset-env", { modules: false }],
+  // "@babel/preset-react",
 ];
 
 const plugins = [
-  "@babel/plugin-proposal-class-properties",
-  [
-    "babel-plugin-module-resolver",
-    { alias: { components: "../src/components" } },
-  ],
+  // "@babel/plugin-proposal-class-properties",
+  // [
+  // "babel-plugin-module-resolver",
+  // { alias: { components: "../src/components" } },
+  // ],
 ];
 
 module.exports = {

@@ -14,7 +14,7 @@ class TableCell extends React.Component {
   };
 
   getIcon = visible => {
-    const { sortDirection, classes, } = this.props;
+    const { sortDirection, classes } = this.props;
 
     return (
       <Icon
@@ -25,7 +25,7 @@ class TableCell extends React.Component {
   };
 
   render () {
-    const { table, } = this.context;
+    const { table } = this.context;
     const {
       className,
       classes,

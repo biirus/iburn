@@ -13,6 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "babel-preset-next": "^1.2.0",
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.11",
     "next": "^7.0.3",
     "raw-loader": "^1.0.0",
     "react-docgen": "^3.0.0",

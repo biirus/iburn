@@ -6,8 +6,7 @@ import PropTypes from "prop-types";
 import { enhance } from "./enhance";
 
 /**
- * The basic Avatar component that renders it's content or image
- * by passing `src` or `srcSet` prop
+ * The basic Avatar component that renders it's content or image by passing `src` or `srcSet` prop
  */
 class Avatar extends React.Component {
   static defaultProps = {};
@@ -20,7 +19,7 @@ class Avatar extends React.Component {
     /**
      * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
      */
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     /**
      * The `srcSet` attribute for the `img` element.
      */
@@ -34,35 +33,13 @@ class Avatar extends React.Component {
      */
     src: PropTypes.string,
     /**
-     * Used in combination with `src` or `srcSet` to
-     * provide an alt attribute for the rendered `img` element.
+     * Used in combination with `src` or `srcSet` to provide an alt attribute for the rendered `img` element.
      */
     alt: PropTypes.string,
     /**
-     * Used to render icon or text elements inside the Avatar.
-     * `src` and `alt` props will not be used and no `img` will
-     * be rendered by default.
-     *
-     * This can be an element, or just a string.
+     * Used to render icon or text elements inside the Avatar. `src` and `alt` props will not be used and no `img` will be rendered by default.
      */
     children: PropTypes.node,
-  };
-
-  clearProps = () => {
-    const {
-      classes,
-      className,
-      children,
-      src,
-      srcSet,
-      sizes,
-      alt,
-      sheet,
-      theme,
-      ...rest
-    } = this.props;
-
-    return rest;
   };
 
   render () {
@@ -74,11 +51,14 @@ class Avatar extends React.Component {
       srcSet,
       sizes,
       alt,
+      theme,
+      ...rest
     } = this.props;
+
     const classNames = cn(classes.root, className);
 
     return (
-      <div {...this.clearProps()} className={classNames}>
+      <div {...rest} className={classNames}>
         {src || srcSet ? (
           <img
             className={classes.img}

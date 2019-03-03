@@ -30,7 +30,7 @@ class Button extends React.Component {
     /**
      * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
      */
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     /**
      * If `true` button will have a `selected` styles.
      * This prop is helpfull to deal with Dropdowns or ButtonGroups
@@ -40,7 +40,7 @@ class Button extends React.Component {
      * The size of button.
      * It can be full width of it's parent, inlined with text and have a dense paddings.
      */
-    size: PropTypes.oneOf(["block", "inline", "compact",]),
+    size: PropTypes.oneOf(["block", "inline", "compact"]),
     /**
      * The color of component. It supports the theme meaningfull values
      */
@@ -55,7 +55,7 @@ class Button extends React.Component {
     /**
      * The button appearance
      */
-    view: PropTypes.oneOf(["link", "thin",]),
+    view: PropTypes.oneOf(["link", "thin"]),
     /**
      * The custom component to render the root node
      */
@@ -97,8 +97,8 @@ class Button extends React.Component {
       [classes.compact]: size === "compact",
       [classes.inline]: size === "inline",
       [classes.block]: size === "block",
-      [classes[view]]: ["link", "thin",].includes(view),
-      [classes[color]]: color && !["link", "thin",].includes(view),
+      [classes[view]]: ["link", "thin"].includes(view),
+      [classes[color]]: color && !["link", "thin"].includes(view),
     });
 
     const Component = component || getComponent(this.props);

@@ -15,7 +15,6 @@ import { enhance } from "./enhance";
  */
 class Banner extends React.Component {
   static defaultProps = {
-    autoCloseTimeout: null,
     onClose: f => f,
   };
 
@@ -27,7 +26,7 @@ class Banner extends React.Component {
     /**
      * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
      */
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     /**
      * A custom icon element to be shown left of the main content
      */
@@ -35,7 +34,7 @@ class Banner extends React.Component {
     /**
      * The Banner background color with default icon
      */
-    color: PropTypes.oneOf(["warning", "success", "error", "info", "default",]),
+    color: PropTypes.oneOf(["warning", "success", "error", "info", "default"]),
     /**
      * Delay before calling `onClose` prop
      */
@@ -51,7 +50,7 @@ class Banner extends React.Component {
   };
 
   componentDidUpdate (oldProps) {
-    const { isOpen, autoCloseTimeout, onClose, } = this.props;
+    const { isOpen, autoCloseTimeout, onClose } = this.props;
 
     if (!oldProps.isOpen && isOpen && autoCloseTimeout) {
       if (this.timeout) {
@@ -79,7 +78,6 @@ class Banner extends React.Component {
       autoCloseTimeout,
       onClose,
       theme,
-      sheet,
       ...rest
     } = this.props;
 

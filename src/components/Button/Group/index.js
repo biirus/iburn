@@ -23,7 +23,7 @@ class ButtonGroup extends React.Component {
     /**
      * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
      */
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     /**
      * If it is set to `true`, you will be able to select one of the button.
      * If selected button is changed then `onChange` callback will be called.
@@ -64,10 +64,10 @@ class ButtonGroup extends React.Component {
   }
 
   handleClick = value => e => {
-    const { value: currentValue, } = this.state;
+    const { value: currentValue } = this.state;
 
     if (value !== currentValue) {
-      this.setState({ value, });
+      this.setState({ value });
 
       e.persist();
       e.target.name = this.props.name;
@@ -77,9 +77,9 @@ class ButtonGroup extends React.Component {
   };
 
   getInnerProps = child => {
-    const { color, classes, selectable, } = this.props;
-    const { value: currentValue, } = this.state;
-    const { value, } = child.props;
+    const { color, classes, selectable } = this.props;
+    const { value: currentValue } = this.state;
+    const { value } = child.props;
 
     let props = {
       className: classes.inner,

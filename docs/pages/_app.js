@@ -1,12 +1,17 @@
 import React from "react";
 import App, { Container } from "next/app";
 import { ThemeProvider } from "react-jss";
+// components
+import DefaultLayout from "../layout/Default";
 
-import CssReset from "../../src/components/Reset";
-import theme from "../../src/theme";
+// iburn
+import CssReset from "iburn/components/Reset";
+import theme from "iburn/theme";
 
 export default class MyApp extends App {
-  static async getInitialProps ({ Component, ctx }) {
+  static async getInitialProps (props) {
+    const { Component, ctx } = props;
+
     let pageProps = {};
 
     if (Component.getInitialProps) {
@@ -29,10 +34,12 @@ export default class MyApp extends App {
 
     return (
       <ThemeProvider theme={theme}>
-        <Container>
-          <CssReset />
-          <Component {...pageProps} />
-        </Container>
+        <DefaultLayout>
+          <Container>
+            <CssReset />
+            <Component {...pageProps} />
+          </Container>
+        </DefaultLayout>
       </ThemeProvider>
     );
   }

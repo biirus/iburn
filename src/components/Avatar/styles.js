@@ -1,7 +1,8 @@
-export default ({ colors, typography, spacing, }) => {
+export default ({ colors, typography, spacing }) => {
   const size = spacing.unit * 6;
 
   return {
+    /* Styles applied to the root element. */
     root: {
       ...typography.h600,
       color: colors.w700a,
@@ -18,6 +19,7 @@ export default ({ colors, typography, spacing, }) => {
       borderRadius: "50%",
     },
 
+    /* Styles applied to the img element if either `src` or `srcSet` is defined. */
     img: {
       width: "100%",
       height: "100%",

@@ -17,7 +17,7 @@ class Breadcrumbs extends React.Component {
     /**
      * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
      */
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     /**
      * Array of visited pages
      */
