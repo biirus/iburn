@@ -5,10 +5,6 @@ import cn from "classnames";
 import { enhance } from "./enhance";
 
 class Tabs extends React.Component {
-  static defaultProps = {
-    onChange: f => f,
-  };
-
   state = {
     selected: 0,
   };
@@ -17,7 +13,7 @@ class Tabs extends React.Component {
     const tabs = this.getTabs(this.props.children);
     const initiallySelected = tabs.findIndex(tab => !!tab.selected);
 
-    initiallySelected >= 0 && this.setState({ selected: initiallySelected, });
+    initiallySelected >= 0 && this.setState({ selected: initiallySelected });
   }
 
   getTabs = children => {
@@ -25,21 +21,22 @@ class Tabs extends React.Component {
     return childrenArray.map(child => child.props);
   };
 
-  handleTabLabelClick = (index, onClick = f => f) => e => {
+  handleTabLabelClick = (index, onClick) => e => {
+    const { onChange } = this.props;
     const oldIndex = this.state.selected;
 
-    this.setState({ selected: index, }, () => {
-      onClick(index);
+    this.setState({ selected: index }, () => {
+      onClick && onClick(index);
 
       if (index !== oldIndex) {
-        this.props.onChange(index);
+        onChange && onChange(index);
       }
     });
   };
 
   renderTabsHeader = tabs => {
-    const { classes, } = this.props;
-    const { selected, } = this.state;
+    const { classes } = this.props;
+    const { selected } = this.state;
 
     return (
       <div className={classes.tabsHeader}>
@@ -61,8 +58,8 @@ class Tabs extends React.Component {
   };
 
   renderTabsContent = tabs => {
-    const { classes, } = this.props;
-    const { selected, } = this.state;
+    const { classes } = this.props;
+    const { selected } = this.state;
 
     return tabs.map(({ label, className, children, ...rest }, index) => (
       <div

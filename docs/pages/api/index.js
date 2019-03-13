@@ -1,19 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
 
 import withStyles from "react-jss";
 import styles from "./styles";
 
-import ReactMarkdown from "react-markdown";
 import { parse } from "react-docgen";
 
 import Typography from "iburn/components/Typography";
 import PageHeader from "iburn/components/Page/Header";
 import PropsTable from "docs/components/PropsTable";
+import Markdown from "docs/components/Markdown";
 import StylesTable from "docs/components/StylesTable";
 
 import getStylesDocs from "docs/lib/get-styles-docs";
 
-class API extends React.Component {
+class API extends Component {
   static async getInitialProps (props) {
     const { component } = props.query;
 
@@ -29,13 +29,11 @@ class API extends React.Component {
   render () {
     const { classes, docs, stylesDocs } = this.props;
 
-    console.log(docs);
-
     return (
       <div>
         <PageHeader>{docs.displayName} API</PageHeader>
 
-        <ReactMarkdown
+        <Markdown
           className={classes.description}
           source={docs.description}
           renderers={{

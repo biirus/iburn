@@ -9,25 +9,27 @@ import { enhance } from "./enhance";
  * The basic Avatar component that renders it's content or image by passing `src` or `srcSet` prop
  */
 class Avatar extends React.Component {
-  static defaultProps = {};
+  static defaultProps = {
+    size: "medium",
+  };
 
   static propTypes = {
     /**
-     * Class name string to be merged to root node
+     * Used to render icon or text elements inside the Avatar. `src` and `alt` props will not be used and no `img` will be rendered by default.
+     */
+    children: PropTypes.node,
+    /**
+     * Class name string to be merged to root node.
      */
     className: PropTypes.string,
     /**
-     * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
+     * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation.
      */
     classes: PropTypes.object,
     /**
-     * The `srcSet` attribute for the `img` element.
+     * The [`srcSet`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-srcset) attribute for the `img` element.
      */
     srcSet: PropTypes.string,
-    /**
-     * The `sizes` attribute for the `img` element.
-     */
-    sizes: PropTypes.string,
     /**
      * The `src` attribute for the `img` element.
      */
@@ -37,9 +39,20 @@ class Avatar extends React.Component {
      */
     alt: PropTypes.string,
     /**
-     * Used to render icon or text elements inside the Avatar. `src` and `alt` props will not be used and no `img` will be rendered by default.
+     * Defines the size of the avatar.
      */
-    children: PropTypes.node,
+    size: PropTypes.oneOf([
+      "xSmall",
+      "small",
+      "medium",
+      "large",
+      "xLarge",
+      "xxLarge",
+    ]),
+    /**
+     * Props object wich will be passed to the `img` element.
+     */
+    imgProps: PropTypes.object,
   };
 
   render () {
@@ -49,9 +62,9 @@ class Avatar extends React.Component {
       children,
       src,
       srcSet,
-      sizes,
       alt,
       theme,
+      imgProps,
       ...rest
     } = this.props;
 
@@ -65,7 +78,7 @@ class Avatar extends React.Component {
             alt={alt}
             src={src}
             srcSet={srcSet}
-            sizes={sizes}
+            {...imgProps}
           />
         ) : (
           children

@@ -6,10 +6,14 @@ import PropTypes from "prop-types";
 import { enhance } from "./enhance";
 
 /**
- * The component to render an array of `<Avatar />` in a row
+ * The component to render an array of `Avatar` in a row
  */
 class AvatarStack extends React.Component {
   static propTypes = {
+    /**
+     * Array of `Avatar` components to be shown as stack
+     */
+    children: PropTypes.arrayOf(PropTypes.element).isRequired,
     /**
      * Class name string to be merged to root node
      */
@@ -17,11 +21,7 @@ class AvatarStack extends React.Component {
     /**
      * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
      */
-    classes: PropTypes.object,
-    /**
-     * Array of `<Avatar />` components to be shown as stack
-     */
-    children: PropTypes.arrayOf(PropTypes.element).isRequired,
+    classes: PropTypes.object,    
   };
 
   render () {

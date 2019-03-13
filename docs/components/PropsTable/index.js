@@ -11,12 +11,12 @@ import TableHead from "iburn/components/Table/Head";
 import Row from "iburn/components/Table/Row";
 import Cell from "iburn/components/Table/Cell";
 
-import ReactMarkdown from "react-markdown";
+import Markdown from "docs/components/Markdown";
 
 const getTypeValue = type => {
   const values = {
     arrayOf: type => type.value.name,
-    enum: type => type.value.map(v => v.value.replace(/"/g, "")).join(" | "),
+    enum: type => type.value.map(v => v.value.replace(/"/g, "")).join(", "),
   };
 
   return values[type.name] ? values[type.name](type) : null;
@@ -30,30 +30,23 @@ const PropRow = ({
   type,
   defaultValue,
   shouldRenderDefaultCell,
-  shouldRenderRequiredCell,
 }) => {
   const typeValue = getTypeValue(type);
 
   return (
     <Row className={classes.root}>
       <Cell className={classes.cell}>
-        <Typography type="h300">{name}</Typography>
+        <Typography type="h300" color={required ? "primary" : "default"}>
+          {name}
+          {required && " *"}
+        </Typography>
       </Cell>
 
-      {shouldRenderRequiredCell && (
-        <Cell className={classes.cell}>
-          {required && <Typography type="h300">required</Typography>}
-        </Cell>
-      )}
-
       <Cell className={classes.cell} classes={{ inner: classes.cellInner }}>
-        <Badge>{type.name}</Badge>
-        {typeValue && (
-          <Badge
-            color="primary"
-            dangerouslySetInnerHTML={{ __html: typeValue }}
-          />
-        )}
+        <Badge>
+          {type.name}
+          {typeValue && ": " + typeValue}
+        </Badge>
       </Cell>
 
       {shouldRenderDefaultCell && (
@@ -63,12 +56,7 @@ const PropRow = ({
       )}
 
       <Cell className={classes.cell}>
-        <ReactMarkdown
-          source={description}
-          renderers={{
-            paragraph: Typography,
-          }}
-        />
+        <Markdown source={description} />
       </Cell>
     </Row>
   );
@@ -79,16 +67,11 @@ const PropsTable = ({ classes, propsList }) => {
     prop => !!prop.defaultValue
   );
 
-  const hasAtLeastOneRequired = !!Object.values(propsList).find(
-    prop => !!prop.required
-  );
-
   return (
     <Table>
       <TableHead className={classes.header}>
         <Row>
           <Cell>Name</Cell>
-          {hasAtLeastOneRequired && <Cell>Required</Cell>}
           <Cell>Type</Cell>
           {hasAtLeastOneDefaultValue && <Cell>Default value</Cell>}
           <Cell>Description</Cell>
@@ -100,7 +83,6 @@ const PropsTable = ({ classes, propsList }) => {
             key={key}
             name={key}
             classes={classes}
-            shouldRenderRequiredCell={hasAtLeastOneRequired}
             shouldRenderDefaultCell={hasAtLeastOneDefaultValue}
             {...propsList[key]}
           />

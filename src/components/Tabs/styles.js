@@ -10,7 +10,7 @@ export default theme => {
     tabsHeader: {
       position: "relative",
       display: "flex",
-      margin: [[0, -tabLabelXPadding, theme.spacing.medium,],],
+      margin: [[0, -tabLabelXPadding, theme.spacing.medium]],
       borderBottom: `${borderWidth}px solid transparent`,
 
       "&::after": {
@@ -28,7 +28,7 @@ export default theme => {
 
     tabLabel: {
       position: "relative",
-      padding: [[tabLabelXPadding / 4, tabLabelXPadding,],],
+      padding: [[tabLabelXPadding / 4, tabLabelXPadding]],
       cursor: "pointer",
       fontWeight: 500,
     },

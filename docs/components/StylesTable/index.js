@@ -3,7 +3,6 @@ import React from "react";
 import withStyles from "react-jss";
 import styles from "./styles";
 
-import Badge from "iburn/components/Badge";
 import Typography from "iburn/components/Typography";
 import Table from "iburn/components/Table";
 import TableBody from "iburn/components/Table/Body";
@@ -11,7 +10,7 @@ import TableHead from "iburn/components/Table/Head";
 import Row from "iburn/components/Table/Row";
 import Cell from "iburn/components/Table/Cell";
 
-import ReactMarkdown from "react-markdown";
+import Markdown from "docs/components/Markdown";
 
 const StyleRow = ({
   classes,
@@ -28,12 +27,7 @@ const StyleRow = ({
       </Cell>
 
       <Cell className={classes.cell}>
-        <ReactMarkdown
-          source={description}
-          renderers={{
-            paragraph: Typography,
-          }}
-        />
+        <Markdown source={description} />
       </Cell>
     </Row>
   );

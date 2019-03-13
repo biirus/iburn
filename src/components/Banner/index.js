@@ -9,16 +9,16 @@ import Icon from "components/Icon";
 import { enhance } from "./enhance";
 
 /**
- * Component that displays a prominent banner message and icon.
+ * Component displays a prominent banner message and icon.
  * It is designed to display a message at the top of the page.
  * Banner animates its opening and closing.
  */
 class Banner extends React.Component {
-  static defaultProps = {
-    onClose: f => f,
-  };
-
   static propTypes = {
+    /**
+     * Content to be shown next to the icon
+     */
+    children: PropTypes.node,
     /**
      * Class name string to be merged to root node
      */
@@ -40,24 +40,28 @@ class Banner extends React.Component {
      */
     autoCloseTimeout: PropTypes.number,
     /**
-     * The callback that fires when `autoCloseTimeout` expires
+     * The callback that fires when `Banner` is opening
+     */
+    onOpen: PropTypes.func,
+    /**
+     * The callback that fires when `Banner` is closing
      */
     onClose: PropTypes.func,
-    /**
-     * Content to be shown next to the icon
-     */
-    children: PropTypes.node,
   };
 
   componentDidUpdate (oldProps) {
-    const { isOpen, autoCloseTimeout, onClose } = this.props;
+    const { isOpen, autoCloseTimeout, onOpen, onClose } = this.props;
 
-    if (!oldProps.isOpen && isOpen && autoCloseTimeout) {
-      if (this.timeout) {
-        clearTimeout(this.timeout);
-      }
+    const isOpening = !oldProps.isOpen && isOpen;
+    const isClosing = oldProps.isOpen && !isOpen;
 
-      this.timeout = setTimeout(onClose, autoCloseTimeout);
+    if (isOpening) {
+      onOpen && onOpen();
+      autoCloseTimeout && this.startTimeout();
+    }
+
+    if (isClosing) {
+      onClose && onClose();
     }
   }
 
@@ -65,6 +69,17 @@ class Banner extends React.Component {
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
+  }
+
+  startTimeout () {
+    const { autoCloseTimeout, onClose } = this.props;
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
+
+    this.timeout = setTimeout(() => {
+      onClose && onClose("timeout");
+    }, autoCloseTimeout);
   }
 
   render () {
@@ -76,6 +91,7 @@ class Banner extends React.Component {
       children,
       className,
       autoCloseTimeout,
+      onOpen,
       onClose,
       theme,
       ...rest
