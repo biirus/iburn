@@ -24,12 +24,12 @@ class Dialog extends React.Component {
   }
 
   getChildContext () {
-    return { handleClose: this.handleClose, };
+    return { handleClose: this.handleClose };
   }
 
   componentDidMount () {
     document.body.appendChild(this.el);
-    const { isOpen, } = this.props;
+    const { isOpen } = this.props;
 
     if (isOpen) {
       this.handleOpen();
@@ -41,7 +41,7 @@ class Dialog extends React.Component {
   }
 
   componentDidUpdate (oldProps) {
-    const { isOpen, } = this.props;
+    const { isOpen } = this.props;
 
     if (!oldProps.isOpen && isOpen) {
       this.handleOpen();
@@ -49,7 +49,7 @@ class Dialog extends React.Component {
   }
 
   handleKeyDown = e => {
-    const { isModal, isOpen, } = this.props;
+    const { isModal, isOpen } = this.props;
 
     if (!isModal && isOpen && e.code === "Escape") {
       this.handleClose(e);
@@ -57,7 +57,7 @@ class Dialog extends React.Component {
   };
 
   handleOverlayClick = e => {
-    const { isModal, isOpen, } = this.props;
+    const { isModal, isOpen } = this.props;
 
     if (!isModal && isOpen) {
       this.handleClose(e);
@@ -97,7 +97,7 @@ class Dialog extends React.Component {
       <div {...rest} className={classNames}>
         <EventListener target="window" onKeyDown={this.handleKeyDown} />
         <div
-          className={cn(classes.overlay, { [classes.open]: isOpen, })}
+          className={cn(classes.overlay, { [classes.open]: isOpen })}
           onClick={this.handleOverlayClick}
         />
         <div

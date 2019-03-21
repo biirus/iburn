@@ -20,7 +20,7 @@ class Banner extends React.Component {
      */
     children: PropTypes.node,
     /**
-     * Class name string to be merged to root node
+     * Class name string to be merged to the root node
      */
     className: PropTypes.string,
     /**
@@ -40,46 +40,58 @@ class Banner extends React.Component {
      */
     autoCloseTimeout: PropTypes.number,
     /**
+     * Callback fired when the component requests to be closed. Typically onClose is used to set state in the parent component, which is used to control the Banner's `isOpen` prop.
+     */
+    onClose: PropTypes.func,
+    /**
      * The callback that fires when `Banner` is opening
      */
-    onOpen: PropTypes.func,
+    onEnter: PropTypes.func,
     /**
      * The callback that fires when `Banner` is closing
      */
-    onClose: PropTypes.func,
+    onExit: PropTypes.func,
   };
 
   componentDidUpdate (oldProps) {
-    const { isOpen, autoCloseTimeout, onOpen, onClose } = this.props;
+    const { isOpen, onEnter, onExit } = this.props;
 
     const isOpening = !oldProps.isOpen && isOpen;
     const isClosing = oldProps.isOpen && !isOpen;
 
     if (isOpening) {
-      onOpen && onOpen();
-      autoCloseTimeout && this.startTimeout();
+      onEnter && onEnter();
+      this.startTimeout();
     }
 
     if (isClosing) {
-      onClose && onClose();
+      this.endTimeout();
+      onExit && onExit();
     }
   }
 
   componentWillUnmount () {
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
+    this.endTimeout();
   }
 
   startTimeout () {
     const { autoCloseTimeout, onClose } = this.props;
+
+    if (autoCloseTimeout) {
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+      }
+
+      this.timeout = setTimeout(() => {
+        onClose && onClose("timeout");
+      }, autoCloseTimeout);
+    }
+  }
+
+  endTimeout () {
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
-
-    this.timeout = setTimeout(() => {
-      onClose && onClose("timeout");
-    }, autoCloseTimeout);
   }
 
   render () {
@@ -91,8 +103,9 @@ class Banner extends React.Component {
       children,
       className,
       autoCloseTimeout,
-      onOpen,
       onClose,
+      onEnter,
+      onExit,
       theme,
       ...rest
     } = this.props;

@@ -24,7 +24,7 @@ class Button extends React.Component {
 
   static propTypes = {
     /**
-     * Class name string to be merged to root node
+     * Class name string to be merged to the root node
      */
     className: PropTypes.string,
     /**
@@ -32,15 +32,19 @@ class Button extends React.Component {
      */
     classes: PropTypes.object,
     /**
+     * Link `href` attribute. If is set `Button` will be redered as `a` element.
+     */
+    href: PropTypes.string,
+    /**
      * If `true` button will have a `selected` styles.
      * This prop is helpfull to deal with Dropdowns or ButtonGroups
      */
     selected: PropTypes.bool,
     /**
-     * The size of button.
-     * It can be full width of it's parent, inlined with text and have a dense paddings.
+     * The padding of a button.
+     * It can be a full width of it's parent, inlined with text and have a dense paddings.
      */
-    size: PropTypes.oneOf(["block", "inline", "compact"]),
+    padding: PropTypes.oneOf(["block", "inline", "compact"]),
     /**
      * The color of component. It supports the theme meaningfull values
      */
@@ -65,13 +69,13 @@ class Button extends React.Component {
       PropTypes.object,
     ]),
     /**
-     * Icon element that is placed before label
+     * Icon that is placed before label
      */
-    icon: PropTypes.element,
+    icon: PropTypes.node,
     /**
-     * Icon element that is placed after label
+     * Icon that is placed after label
      */
-    iconAfter: PropTypes.element,
+    iconAfter: PropTypes.node,
   };
 
   render () {
@@ -79,10 +83,9 @@ class Button extends React.Component {
       className,
       classes,
       selected,
-      size,
+      padding,
       view,
       color,
-      sheet,
       theme,
 
       children,
@@ -94,9 +97,9 @@ class Button extends React.Component {
 
     const classNames = cn(classes.root, className, {
       [classes.selected]: selected,
-      [classes.compact]: size === "compact",
-      [classes.inline]: size === "inline",
-      [classes.block]: size === "block",
+      [classes.compact]: padding === "compact",
+      [classes.inline]: padding === "inline",
+      [classes.block]: padding === "block",
       [classes[view]]: ["link", "thin"].includes(view),
       [classes[color]]: color && !["link", "thin"].includes(view),
     });
@@ -105,9 +108,9 @@ class Button extends React.Component {
 
     return (
       <Component {...rest} className={classNames}>
-        {icon}
+        <span className={classes.icon}>{icon}</span>
         {children && <span className={classes.content}>{children}</span>}
-        {iconAfter}
+        <span className={classes.iconAfter}>{iconAfter}</span>
       </Component>
     );
   }

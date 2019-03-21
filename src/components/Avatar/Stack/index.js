@@ -15,13 +15,13 @@ class AvatarStack extends React.Component {
      */
     children: PropTypes.arrayOf(PropTypes.element).isRequired,
     /**
-     * Class name string to be merged to root node
+     * Class name string to be merged to the root node
      */
     className: PropTypes.string,
     /**
      * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
      */
-    classes: PropTypes.object,    
+    classes: PropTypes.object,
   };
 
   render () {

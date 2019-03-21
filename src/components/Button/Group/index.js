@@ -17,7 +17,7 @@ class ButtonGroup extends React.Component {
 
   static propTypes = {
     /**
-     * Class name string to be merged to root node
+     * Class name string to be merged to the root node
      */
     className: PropTypes.string,
     /**

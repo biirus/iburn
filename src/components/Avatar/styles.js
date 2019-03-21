@@ -9,10 +9,10 @@ export default ({ colors, typography, spacing }) => {
   };
 
   const fontSizes = {
-    xSmall: 8,
+    xSmall: 6,
     small: 10,
     medium: 14,
-    large: 20,
+    large: 18,
     xLarge: 40,
     xxLarge: 56,
   };
@@ -33,7 +33,7 @@ export default ({ colors, typography, spacing }) => {
       lineHeight: 1,
       fontSize: ({ size }) => fontSizes[size],
 
-      backgroundColor: colors.n100,
+      backgroundColor: ({ color }) => color || colors.n100,
       borderRadius: "50%",
     },
 

@@ -2,7 +2,12 @@
   "compilerOptions": {
     "lib": ["dom", "esnext"],
     "jsx": "react",
-    "baseUrl": "./src"
+    "target": "es2018",
+    "baseUrl": ".",
+    "paths": {
+      "iburn/*": ["./src/*"],
+      "docs/*": ["./docs/*"]
+    }
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist", ".next"]
 }

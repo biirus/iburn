@@ -1,7 +1,7 @@
 export default ({ spacing, palette }) => {
   const navigationWidth = spacing.unit * 30;
   const navigationHeaderHeight = spacing.unit * 8;
-  const contentPadding = spacing.large;
+  const contentPadding = spacing.large * 1.5;
 
   return {
     root: {

@@ -6,10 +6,9 @@ import withStyles from "react-jss";
 
 const styles = ({ spacing }) => {
   return {
-    root: {
+    row: {
       display: "flex",
       alignItems: "center",
-      justifyContent: "center",
     },
 
     item: {
@@ -31,15 +30,27 @@ const enhance = withStyles(styles);
 export default enhance(function Demo (props) {
   const { images, classes } = props;
   const sizes = ["xxLarge", "xLarge", "large", "medium", "small", "xSmall"];
+  const initials = ["AS", "SL", "IN", "DM", "TF", "PG"];
 
   return (
     <div className={classes.root}>
-      {sizes.map((size, index) => (
-        <div key={size} className={classes.item}>
-          <Avatar size={size} src={images[index]} />
-          <Badge className={classes.title}>{size}</Badge>
-        </div>
-      ))}
+      <div className={classes.row}>
+        {sizes.map((size, index) => (
+          <div key={size} className={classes.item}>
+            <Avatar size={size} src={images[index]} />
+            <Badge className={classes.title}>{size}</Badge>
+          </div>
+        ))}
+      </div>
+
+      <div className={classes.row}>
+        {sizes.reverse().map((size, index) => (
+          <div key={size} className={classes.item}>
+            <Avatar size={size}>{initials[index]}</Avatar>
+            <Badge className={classes.title}>{size}</Badge>
+          </div>
+        ))}
+      </div>
     </div>
   );
 });

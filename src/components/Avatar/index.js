@@ -19,7 +19,7 @@ class Avatar extends React.Component {
      */
     children: PropTypes.node,
     /**
-     * Class name string to be merged to root node.
+     * Class name string to be merged to the root node.
      */
     className: PropTypes.string,
     /**
@@ -49,6 +49,10 @@ class Avatar extends React.Component {
       "xLarge",
       "xxLarge",
     ]),
+    /**
+     * Background color
+     */
+    color: PropTypes.string,
     /**
      * Props object wich will be passed to the `img` element.
      */

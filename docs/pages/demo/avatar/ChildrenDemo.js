@@ -10,7 +10,6 @@ const styles = ({ spacing }) => {
     root: {
       display: "flex",
       alignItems: "center",
-      justifyContent: "center",
     },
 
     item: {

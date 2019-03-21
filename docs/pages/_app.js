@@ -1,6 +1,7 @@
 import React from "react";
 import App, { Container } from "next/app";
 import { ThemeProvider } from "react-jss";
+
 // components
 import DefaultLayout from "../layout/Default";
 

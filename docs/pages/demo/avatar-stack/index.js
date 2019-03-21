@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import Link from "next/link";
 
 import f from "faker";
@@ -12,14 +13,14 @@ import Typography from "iburn/components/Typography";
 import PageHeader from "iburn/components/Page/Header";
 
 import Code from "docs/components/Code";
-import sizesDemoCode from "!!raw-loader!./SizesDemo";
-import SizesDemo from "./SizesDemo";
-import childrenDemoCode from "!!raw-loader!./ChildrenDemo";
-import ChildrenDemo from "./ChildrenDemo";
-import colorDemoCode from "!!raw-loader!./ColorDemo";
-import ColorDemo from "./ColorDemo";
+import imagesDemoCode from "!!raw-loader!./ImagesDemo";
+import ImagesDemo from "./ImagesDemo";
+import lettersDemoCode from "!!raw-loader!./LettersDemo";
+import LettersDemo from "./LettersDemo";
+import iconsDemoCode from "!!raw-loader!./IconsDemo";
+import IconsDemo from "./IconsDemo";
 
-class AvatarDemo extends Component {
+class AvatarStackDemo extends Component {
   static async getInitialProps (props) {
     const images = Array(6)
       .fill(0)
@@ -29,80 +30,70 @@ class AvatarDemo extends Component {
   }
 
   render () {
-    const { classes, images, theme } = this.props;
-    const { palette } = theme;
-    const colors = [
-      palette.primary,
-      palette.messages.success,
-      palette.messages.warning,
-      palette.messages.error,
-    ];
-
+    const { classes, images } = this.props;
     return (
       <div>
-        <PageHeader>Avatar Demo</PageHeader>
+        <PageHeader>AvatarStack Demo</PageHeader>
 
-        <section className={cn(classes.section, classes.sizesSection)}>
-          <Link href="#sizes">
+        <section className={classes.section}>
+          <Link href="#images">
             <Typography
-              id="sizes"
+              id="images"
               type="h600"
               className={classes.sectionHeader}
             >
-              Size
+              Images
             </Typography>
           </Link>
 
           <Tabs>
             <Tab label="Preview">
-              <SizesDemo images={images} />
+              <ImagesDemo images={images} />
             </Tab>
             <Tab label="Code">
-              <Code>{sizesDemoCode}</Code>
+              <Code>{imagesDemoCode}</Code>
             </Tab>
           </Tabs>
         </section>
 
         <section className={classes.section}>
-          <Link href="#children">
+          <Link href="#letters">
             <Typography
-              id="children"
+              id="letters"
               type="h600"
               className={classes.sectionHeader}
             >
-              Children
+              Letters
             </Typography>
           </Link>
 
           <Tabs>
             <Tab label="Preview">
-              <ChildrenDemo images={images} />
+              <LettersDemo />
             </Tab>
-
             <Tab label="Code">
-              <Code>{childrenDemoCode}</Code>
+              <Code>{lettersDemoCode}</Code>
             </Tab>
           </Tabs>
         </section>
 
         <section className={classes.section}>
-          <Link href="#color">
+          <Link href="#icons">
             <Typography
-              id="color"
+              id="icons"
               type="h600"
               className={classes.sectionHeader}
             >
-              Color
+              Icons
             </Typography>
           </Link>
 
           <Tabs>
             <Tab label="Preview">
-              <ColorDemo colors={colors} />
+              <IconsDemo />
             </Tab>
-
             <Tab label="Code">
-              <Code>{colorDemoCode}</Code>
+              <Code>{iconsDemoCode}</Code>
             </Tab>
           </Tabs>
         </section>
@@ -112,4 +103,4 @@ class AvatarDemo extends Component {
 }
 
 const enhance = withStyles(styles);
-export default enhance(AvatarDemo);
+export default enhance(AvatarStackDemo);

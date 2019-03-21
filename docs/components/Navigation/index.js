@@ -28,9 +28,24 @@ class Navigation extends Component {
               Avatar
             </NavItem>
           </Link>
-          <Link href="/api/avatar/stack">
-            <NavItem active={router.pathname === "/api/avatar/stack"}>
-              Avatar Stack
+          <Link href="/demo/avatar-stack">
+            <NavItem active={router.pathname === "/demo/avatar-stack"}>
+              AvatarStack
+            </NavItem>
+          </Link>
+          <Link href="/demo/banner">
+            <NavItem active={router.pathname === "/demo/banner"}>
+              Banner
+            </NavItem>
+          </Link>
+          <Link href="/demo/breadcrumbs">
+            <NavItem active={router.pathname === "/demo/breadcrumbs"}>
+              Breadcrumbs
+            </NavItem>
+          </Link>
+          <Link href="/demo/button">
+            <NavItem active={router.pathname === "/demo/button"}>
+              Button
             </NavItem>
           </Link>
         </Nav>
@@ -66,6 +81,26 @@ class Navigation extends Component {
               }
             >
               Banner
+            </NavItem>
+          </Link>
+          <Link href="/api?component=Breadcrumbs">
+            <NavItem
+              active={
+                router.pathname === "/api" &&
+                router.query.component === "Breadcrumbs"
+              }
+            >
+              Breadcrumbs
+            </NavItem>
+          </Link>
+          <Link href="/api?component=Button">
+            <NavItem
+              active={
+                router.pathname === "/api" &&
+                router.query.component === "Button"
+              }
+            >
+              Button
             </NavItem>
           </Link>
         </Nav>

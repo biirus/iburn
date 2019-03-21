@@ -7,7 +7,7 @@ import {
   ThemeProvider
 } from "react-jss";
 
-import theme from "../../src/theme";
+import theme from "iburn/theme";
 
 export default class JssDocument extends Document {
   static async getInitialProps (ctx) {

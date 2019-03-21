@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  webpack: config => {
+  webpack (config, options) {
     config.resolve.alias["iburn"] = path.join(__dirname, "../src");
     config.resolve.alias["docs"] = __dirname;
 
@@ -19,11 +19,20 @@ module.exports = {
       return rule;
     });
 
-    config.module.rules.push({
-      test: /\.md$/,
-      use: "raw-loader",
-    });
-
     return config;
+  },
+
+  exportPathMap: async function (defaultPathMap) {
+    console.log(defaultPathMap);
+
+    return {
+      // ...defaultPathMap,
+      "/api/avatar": { page: "/api", query: { component: "Avatar" } },
+      "/api/avatar/stack": {
+        page: "/api",
+        query: { component: "Avatar/Stack" },
+      },
+      "/demo/avatar-stack": { page: "/demo/avatar-stack" },
+    };
   },
 };

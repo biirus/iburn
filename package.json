@@ -21,7 +21,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist coverage",
-    "build": "NODE_ENV=production BABEL_ENV=es babel ./src --out-dir ./dist --ignore=test",
+    "build": "npm run clean && NODE_ENV=production BABEL_ENV=umd babel src -d dist --ignore=test",
     "test": "NODE_ENV=test BABEL_ENV=test jest"
   },
   "devDependencies": {
