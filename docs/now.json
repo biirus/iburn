@@ -1,4 +1,10 @@
 {
   "version": 2,
-  "name": "iburn"
+  "name": "iburn",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/next"
+    }
+  ]
 }

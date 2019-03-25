@@ -1,13 +1,13 @@
 {
   "name": "iburn",
   "description": "",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "directories": {
     "doc": "docs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/biirus/iburn.git"
+    "url": "https://github.com/biirus/iburn.git"
   },
   "author": "Ivan Burnaev <ivan.biirus@gmail.com>",
   "bugs": {
@@ -15,6 +15,7 @@
   },
   "homepage": "https://github.com/biirus/iburn#readme",
   "main": "dist/index.js",
+  "module": "dist/es/index.js",
   "files": [
     "dist"
   ],
@@ -22,12 +23,13 @@
   "scripts": {
     "clean": "rm -rf dist coverage",
     "prebuild": "npm run clean",
-    "build": "npm run build:cjs && npm run build:es && npm run build:esm",
+    "build": "npm run build:cjs && npm run build:es",
     "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel ./src --out-dir ./dist --ignore \"**/*.spec.js\"",
     "build:es": "NODE_ENV=production BABEL_ENV=es babel ./src --out-dir ./dist/es --ignore \"**/*.spec.js\"",
-    "build:esm": "NODE_ENV=production BABEL_ENV=esm babel ./src --out-dir ./dist/esm --ignore \"**/*.spec.js\"",
     "test": "NODE_ENV=test BABEL_ENV=test jest",
-    "release-test": "npx semantic-release -d"
+    "commit": "npx git-cz",
+    "release-test": "npx semantic-release -d",
+    "semantic-release": "npx semantic-release"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -61,10 +63,12 @@
     "color": "^3.1.0",
     "date-fns": "^2.0.0-alpha.27",
     "deep-extend": "^0.5.1",
+    "react-event-listener": "^0.5.10"
+  },
+  "peerDependencies": {
     "prop-types": "^15.6.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-event-listener": "^0.5.10",
     "react-jss": "^8.6.1"
   },
   "jest": {
