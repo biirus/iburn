@@ -19,8 +19,8 @@ function Demo (props) {
   return (
     <div className={classes.root}>
       <Button>Default Button</Button>
-      <Button view="thin">Thin Button</Button>
-      <Button view="link">Link Button</Button>
+      <Button variant="thin">Thin Button</Button>
+      <Button variant="link">Link Button</Button>
     </div>
   );
 }

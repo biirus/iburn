@@ -19,7 +19,6 @@ class Button extends React.Component {
   static defaultProps = {
     selected: false,
     color: "default",
-    // type: "button",
   };
 
   static propTypes = {
@@ -57,9 +56,9 @@ class Button extends React.Component {
       "info",
     ]),
     /**
-     * The button appearance
+     * The button appearance variant
      */
-    view: PropTypes.oneOf(["link", "thin"]),
+    variant: PropTypes.oneOf(["link", "thin"]),
     /**
      * The custom component to render the root node
      */
@@ -84,7 +83,7 @@ class Button extends React.Component {
       classes,
       selected,
       padding,
-      view,
+      variant,
       color,
       theme,
 
@@ -100,8 +99,8 @@ class Button extends React.Component {
       [classes.compact]: padding === "compact",
       [classes.inline]: padding === "inline",
       [classes.block]: padding === "block",
-      [classes[view]]: ["link", "thin"].includes(view),
-      [classes[color]]: color && !["link", "thin"].includes(view),
+      [classes[variant]]: ["link", "thin"].includes(variant),
+      [classes[color]]: color && !["link", "thin"].includes(variant),
     });
 
     const Component = component || getComponent(this.props);

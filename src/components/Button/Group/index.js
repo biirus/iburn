@@ -1,6 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
+import Button from "components/Button";
 
 // enhancers
 import withStyles from "react-jss";
@@ -12,7 +13,6 @@ class ButtonGroup extends React.Component {
   static defaultProps = {
     selectable: false,
     justified: false,
-    onChange: f => f,
   };
 
   static propTypes = {
@@ -35,7 +35,7 @@ class ButtonGroup extends React.Component {
      */
     justified: PropTypes.bool,
     /**
-     * The color of child `Button` component. It supports the theme meaningfull values
+     * The color of child `Button` element. It supports the theme meaningfull values
      */
     color: PropTypes.oneOf([
       "default",
@@ -46,11 +46,11 @@ class ButtonGroup extends React.Component {
       "info",
     ]),
     /**
-     * Array of `<Button />` components
+     * Array of `<Button />` elements
      */
     children: PropTypes.arrayOf(PropTypes.element).isRequired,
     /**
-     * The callback which will be called when `selected` prop is passed.
+     * The callback which will be called when `selectable` prop is passed.
      */
     onChange: PropTypes.func,
   };
@@ -65,6 +65,7 @@ class ButtonGroup extends React.Component {
 
   handleClick = value => e => {
     const { value: currentValue } = this.state;
+    const { onChange } = this.props;
 
     if (value !== currentValue) {
       this.setState({ value });
@@ -72,17 +73,18 @@ class ButtonGroup extends React.Component {
       e.persist();
       e.target.name = this.props.name;
       e.target.value = value;
-      this.props.onChange(e);
+
+      onChange && onChange(e);
     }
   };
 
-  getInnerProps = child => {
+  getItemProps = child => {
     const { color, classes, selectable } = this.props;
     const { value: currentValue } = this.state;
     const { value } = child.props;
 
     let props = {
-      className: classes.inner,
+      className: classes.item,
     };
 
     if (color) {
@@ -104,9 +106,7 @@ class ButtonGroup extends React.Component {
       selected,
       classes,
       children,
-      view,
       theme,
-      sheet,
       ...rest
     } = this.props;
 
@@ -120,10 +120,10 @@ class ButtonGroup extends React.Component {
           return (
             <span
               key={index}
-              className={classes.item}
+              className={classes.itemWrapper}
               onClick={this.handleClick(child.props.value)}
             >
-              {React.cloneElement(child, this.getInnerProps(child))}
+              {React.cloneElement(child, this.getItemProps(child))}
             </span>
           );
         })}
@@ -133,5 +133,4 @@ class ButtonGroup extends React.Component {
 }
 
 const enhance = withStyles(styles);
-
 export default enhance(ButtonGroup);

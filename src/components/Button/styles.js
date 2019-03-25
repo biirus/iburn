@@ -5,8 +5,8 @@ import createSuccessStyle from "./lib/colors/success";
 import createErrorStyle from "./lib/colors/error";
 import createInfoStyle from "./lib/colors/info";
 
-import createThinStyle from "./lib/views/thin";
-import createLinkStyle from "./lib/views/link";
+import createThinStyle from "./lib/variants/thin";
+import createLinkStyle from "./lib/variants/link";
 
 export default ({ borderRadius, spacing, colors, palette, transitions }) => {
   const getHeight = (compact = false) => {
@@ -73,10 +73,10 @@ export default ({ borderRadius, spacing, colors, palette, transitions }) => {
     /* Styles applied to the root element if `color="info"`  */
     info: createInfoStyle(palette, colors),
 
-    /* Styles applied to the root element if `view="thin"` */
+    /* Styles applied to the root element if `variant="thin"` */
     thin: createThinStyle(palette, colors),
 
-    /* Styles applied to the root element if `view="link"` */
+    /* Styles applied to the root element if `variant="link"` */
     link: createLinkStyle(palette, colors),
 
     /* Styles applied to the root element if `padding="compact"` */

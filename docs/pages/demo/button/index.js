@@ -11,8 +11,8 @@ import Typography from "iburn/components/Typography";
 import Tabs from "iburn/components/Tabs";
 import Tab from "iburn/components/Tabs/Tab";
 
-import viewDemoCode from "!!raw-loader!./ViewDemo";
-import ViewDemo from "./ViewDemo";
+import variantDemoCode from "!!raw-loader!./VariantDemo";
+import VariantDemo from "./VariantDemo";
 import colorDemoCode from "!!raw-loader!./ColorDemo";
 import ColorDemo from "./ColorDemo";
 import paddingDemoCode from "!!raw-loader!./PaddingDemo";
@@ -31,18 +31,22 @@ class ButtonDemo extends Component {
         <PageHeader>Button Demo</PageHeader>
 
         <section className={classes.section}>
-          <Link href="#view">
-            <Typography type="h600" className={classes.sectionHeader} id="view">
-              View
+          <Link href="#variant">
+            <Typography
+              type="h600"
+              className={classes.sectionHeader}
+              id="variant"
+            >
+              Variant
             </Typography>
           </Link>
 
           <Tabs>
             <Tab label="Preview">
-              <ViewDemo />
+              <VariantDemo />
             </Tab>
             <Tab label="Code">
-              <Code>{viewDemoCode}</Code>
+              <Code>{variantDemoCode}</Code>
             </Tab>
           </Tabs>
         </section>

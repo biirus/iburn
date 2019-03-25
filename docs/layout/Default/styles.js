@@ -13,6 +13,9 @@ export default ({ spacing, palette }) => {
     navigation: {
       gridColumn: "navigation",
 
+      height: "100vh",
+      overflow: "auto",
+
       display: "grid",
       gridTemplateRows: `[navigationHeader] ${navigationHeaderHeight}px [navigationContent] 1fr`,
       gridGap: `${spacing.medium}px`,
@@ -20,12 +23,17 @@ export default ({ spacing, palette }) => {
       backgroundColor: palette.backgrounds.panel,
     },
 
-    content: {
+    main: {
       gridColumn: "content",
-      maxWidth: 960 + contentPadding * 2,
+      height: "100vh",
+      overflow: "auto",
       width: "100%",
-      padding: [[0, contentPadding]],
       justifySelf: "center",
+    },
+
+    content: {
+      maxWidth: 960 + contentPadding * 2,
+      padding: [[0, contentPadding, contentPadding]],
     },
 
     navigationHeader: {

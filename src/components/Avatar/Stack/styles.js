@@ -9,7 +9,6 @@ export default ({ spacing, colors }) => {
     /* Styles applied to the wrapper of `Avatar` element */
     avatarWrapper: {
       position: "relative",
-      marginRight: -spacing.unit,
     },
 
     /* Styles applied to each `Avatar` element */

@@ -5,6 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "predev": "node ./scripts/build-pages-map.js ./lib/pages-map.json",
     "dev": "next",
     "build": "next build",
     "start": "next start -p 8000",

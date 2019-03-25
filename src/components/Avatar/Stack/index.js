@@ -35,7 +35,10 @@ class AvatarStack extends React.Component {
             <div
               key={index}
               className={classes.avatarWrapper}
-              style={{ zIndex: children.length - index }}
+              style={{
+                zIndex: children.length - index,
+                transform: `translateX(${index * -25}%)`,
+              }}
             >
               {React.cloneElement(child, { className: classes.avatar })}
             </div>

@@ -28,8 +28,8 @@ class DefaultLayout extends Component {
           <Navigation className={classes.navigationContent} />
         </div>
 
-        <div className={classes.content}>
-          <div>{children}</div>
+        <div className={classes.main}>
+          <div className={classes.content}>{children}</div>
         </div>
       </div>
     );
