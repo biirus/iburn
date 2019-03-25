@@ -21,13 +21,19 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist coverage",
-    "build": "npm run clean && NODE_ENV=production BABEL_ENV=umd babel src -d dist --ignore=test",
+    "prebuild": "npm run clean",
+    "build": "npm run build:cjs && npm run build:es && npm run build:esm",
+    "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel ./src --out-dir ./dist --ignore \"**/*.spec.js\"",
+    "build:es": "NODE_ENV=production BABEL_ENV=es babel ./src --out-dir ./dist/es --ignore \"**/*.spec.js\"",
+    "build:esm": "NODE_ENV=production BABEL_ENV=esm babel ./src --out-dir ./dist/esm --ignore \"**/*.spec.js\"",
     "test": "NODE_ENV=test BABEL_ENV=test jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
+    "@babel/plugin-transform-react-constant-elements": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
@@ -43,7 +49,7 @@
     "eslint-plugin-import": "^2.15.0",
     "eslint-plugin-jsx-a11y": "^6.2.0",
     "eslint-plugin-react": "^7.12.4",
-    "jest": "^23.6.0",
+    "jest": "^24.5.0",
     "keymirror": "^0.1.1"
   },
   "dependencies": {
