@@ -5,16 +5,17 @@ import createSuccessStyle from "./lib/colors/success";
 import createErrorStyle from "./lib/colors/error";
 import createInfoStyle from "./lib/colors/info";
 
-import createThinStyle from "./lib/views/thin";
-import createLinkStyle from "./lib/views/link";
+import createThinStyle from "./lib/variants/thin";
+import createLinkStyle from "./lib/variants/link";
 
-export default ({ borderRadius, spacing, colors, palette, transitions, }) => {
+export default ({ borderRadius, spacing, colors, palette, transitions }) => {
   const getHeight = (compact = false) => {
     const multiplier = compact ? 3 : 4;
     return `${spacing.unit * multiplier}px`;
   };
 
   return {
+    /* Styles applied to the root element. You can use all sorts of element state modifications: `root:hover`, `root:disabled`... */
     root: {
       display: "inline-flex",
       flexWrap: "nowrap",
@@ -24,7 +25,7 @@ export default ({ borderRadius, spacing, colors, palette, transitions, }) => {
 
       maxWidth: "100%",
       height: getHeight(),
-      padding: [0, spacing.unit,],
+      padding: [0, spacing.unit],
       margin: 0,
 
       borderRadius,
@@ -37,7 +38,7 @@ export default ({ borderRadius, spacing, colors, palette, transitions, }) => {
       whiteSpace: "nowrap",
       color: colors.n400,
 
-      transition: transitions.create(["all",], "shortest"),
+      transition: transitions.create(["all"], "shortest"),
 
       "&:hover": {
         cursor: "pointer",
@@ -54,11 +55,37 @@ export default ({ borderRadius, spacing, colors, palette, transitions, }) => {
       },
     },
 
+    /* Styles applied to the default button */
+    default: createDefaultStyle(palette, colors),
+
+    /* Styles applied to the root element if `color="primary"` */
+    primary: createPrimaryStyle(palette, colors),
+
+    /* Styles applied to the root element if `color="warning"` */
+    warning: createWarningStyle(palette, colors),
+
+    /* Styles applied to the root element if `color="success"` */
+    success: createSuccessStyle(palette, colors),
+
+    /* Styles applied to the root element if `color="error"` */
+    error: createErrorStyle(palette, colors),
+
+    /* Styles applied to the root element if `color="info"`  */
+    info: createInfoStyle(palette, colors),
+
+    /* Styles applied to the root element if `variant="thin"` */
+    thin: createThinStyle(palette, colors),
+
+    /* Styles applied to the root element if `variant="link"` */
+    link: createLinkStyle(palette, colors),
+
+    /* Styles applied to the root element if `padding="compact"` */
     compact: {
       height: getHeight(true),
       lineHeight: getHeight(true),
     },
 
+    /* Styles applied to the root element if `padding="inline"` */
     inline: {
       lineHeight: "inherit",
       padding: 0,
@@ -69,26 +96,29 @@ export default ({ borderRadius, spacing, colors, palette, transitions, }) => {
       },
     },
 
+    /* Styles applied to the root element if `padding="block"` */
     block: {
       width: "100%",
     },
 
+    /* Styles applied to the root element if `selected={true}` */
     selected: {
       transition: "none",
     },
 
+    /* Styles applied to the button content */
     content: {
-      margin: [0, spacing.unit / 2,],
+      margin: [0, spacing.unit / 2],
     },
 
-    ...createDefaultStyle(palette, colors),
-    ...createPrimaryStyle(palette, colors),
-    ...createWarningStyle(palette, colors),
-    ...createSuccessStyle(palette, colors),
-    ...createErrorStyle(palette, colors),
-    ...createInfoStyle(palette, colors),
+    /* Styles applied to the `icon` element before button content */
+    icon: {
+      lineHeight: 1,
+    },
 
-    ...createThinStyle(palette, colors),
-    ...createLinkStyle(palette, colors),
+    /* Styles applied to the `iconAfter` element after button content */
+    iconAfter: {
+      lineHeight: 1,
+    },
   };
 };

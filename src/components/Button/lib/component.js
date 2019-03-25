@@ -10,7 +10,7 @@ const StyledSpan = props => <span {...props} />;
 StyledSpan.displayName = "StyledSpan";
 
 export default props => {
-  const { disabled, href, } = props;
+  const { disabled, href } = props;
 
   if (href) {
     return disabled ? StyledSpan : StyledAnchor;

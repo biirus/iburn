@@ -6,7 +6,7 @@ import keymirror from "keymirror";
 import theme from "../src/theme";
 
 // React 16 Enzyme adapter
-Enzyme.configure({ adapter: new Adapter(), });
+Enzyme.configure({ adapter: new Adapter() });
 
 // Make Enzyme functions available in all test files without importing
 global.shallow = shallow;

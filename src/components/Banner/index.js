@@ -9,25 +9,24 @@ import Icon from "components/Icon";
 import { enhance } from "./enhance";
 
 /**
- * Component that displays a prominent banner message and icon.
+ * Component displays a prominent banner message and icon.
  * It is designed to display a message at the top of the page.
  * Banner animates its opening and closing.
  */
 class Banner extends React.Component {
-  static defaultProps = {
-    autoCloseTimeout: null,
-    onClose: f => f,
-  };
-
   static propTypes = {
     /**
-     * Class name string to be merged to root node
+     * Content to be shown next to the icon
+     */
+    children: PropTypes.node,
+    /**
+     * Class name string to be merged to the root node
      */
     className: PropTypes.string,
     /**
      * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
      */
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     /**
      * A custom icon element to be shown left of the main content
      */
@@ -35,34 +34,61 @@ class Banner extends React.Component {
     /**
      * The Banner background color with default icon
      */
-    color: PropTypes.oneOf(["warning", "success", "error", "info", "default",]),
+    color: PropTypes.oneOf(["warning", "success", "error", "info", "default"]),
     /**
      * Delay before calling `onClose` prop
      */
     autoCloseTimeout: PropTypes.number,
     /**
-     * The callback that fires when `autoCloseTimeout` expires
+     * Callback fired when the component requests to be closed. Typically onClose is used to set state in the parent component, which is used to control the Banner's `isOpen` prop.
      */
     onClose: PropTypes.func,
     /**
-     * Content to be shown next to the icon
+     * The callback that fires when `Banner` is opening
      */
-    children: PropTypes.node,
+    onEnter: PropTypes.func,
+    /**
+     * The callback that fires when `Banner` is closing
+     */
+    onExit: PropTypes.func,
   };
 
   componentDidUpdate (oldProps) {
-    const { isOpen, autoCloseTimeout, onClose, } = this.props;
+    const { isOpen, onEnter, onExit } = this.props;
 
-    if (!oldProps.isOpen && isOpen && autoCloseTimeout) {
-      if (this.timeout) {
-        clearTimeout(this.timeout);
-      }
+    const isOpening = !oldProps.isOpen && isOpen;
+    const isClosing = oldProps.isOpen && !isOpen;
 
-      this.timeout = setTimeout(onClose, autoCloseTimeout);
+    if (isOpening) {
+      onEnter && onEnter();
+      this.startTimeout();
+    }
+
+    if (isClosing) {
+      this.endTimeout();
+      onExit && onExit();
     }
   }
 
   componentWillUnmount () {
+    this.endTimeout();
+  }
+
+  startTimeout () {
+    const { autoCloseTimeout, onClose } = this.props;
+
+    if (autoCloseTimeout) {
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+      }
+
+      this.timeout = setTimeout(() => {
+        onClose && onClose("timeout");
+      }, autoCloseTimeout);
+    }
+  }
+
+  endTimeout () {
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
@@ -78,8 +104,9 @@ class Banner extends React.Component {
       className,
       autoCloseTimeout,
       onClose,
+      onEnter,
+      onExit,
       theme,
-      sheet,
       ...rest
     } = this.props;
 

@@ -3,32 +3,29 @@ import cn from "classnames";
 import PropTypes from "prop-types";
 
 // enhancers
-import withStyles from "react-jss";
-
-// styles
-import styles from "./styles";
+import { enhance } from "./enhance";
 
 /**
- * The component to render an array of `<Avatar />` in a row
+ * The component to render an array of `Avatar` in a row
  */
 class AvatarStack extends React.Component {
   static propTypes = {
     /**
-     * Class name string to be merged to root node
+     * Array of `Avatar` components to be shown as stack
+     */
+    children: PropTypes.arrayOf(PropTypes.element).isRequired,
+    /**
+     * Class name string to be merged to the root node
      */
     className: PropTypes.string,
     /**
      * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
      */
-    classes: PropTypes.object.isRequired,
-    /**
-     * Array of `<Avatar />` components to be shown as stack
-     */
-    children: PropTypes.arrayOf(PropTypes.element).isRequired,
+    classes: PropTypes.object,
   };
 
   render () {
-    const { className, classes, children, sheet, theme, ...rest } = this.props;
+    const { className, classes, children, theme, ...rest } = this.props;
     const classNames = cn(classes.root, className);
 
     return (
@@ -37,10 +34,13 @@ class AvatarStack extends React.Component {
           return (
             <div
               key={index}
-              className={classes.item}
-              style={{ zIndex: children.length - index, }}
+              className={classes.avatarWrapper}
+              style={{
+                zIndex: children.length - index,
+                transform: `translateX(${index * -25}%)`,
+              }}
             >
-              {React.cloneElement(child, { className: classes.inner, })}
+              {React.cloneElement(child, { className: classes.avatar })}
             </div>
           );
         })}
@@ -48,7 +48,5 @@ class AvatarStack extends React.Component {
     );
   }
 }
-
-const enhance = withStyles(styles);
 
 export default enhance(AvatarStack);

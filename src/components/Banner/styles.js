@@ -9,6 +9,7 @@ export default ({
   const iconSize = spacing.unit * 3;
 
   return {
+    /* Style applied to the root element */
     root: {
       ...typography.h100,
 
@@ -30,19 +31,21 @@ export default ({
       opacity: 0,
       transform: `translateY(-100%)`,
 
-      transition: transitions.create(["opacity", "transform",], "leavingScreen"),
+      transition: transitions.create(["opacity", "transform"], "leavingScreen"),
     },
 
+    /* Style applied to the root element whenever state is open */
     open: {
       opacity: 1,
       transform: `translateY(0)`,
 
       transition: transitions.create(
-        ["opacity", "transform",],
+        ["opacity", "transform"],
         "enteringScreen"
       ),
     },
 
+    /* Style applied to the root element if `color="warning"` */
     warning: {
       backgroundColor: palette.messages.warning,
       color: palette.text.invert,
@@ -52,6 +55,7 @@ export default ({
       },
     },
 
+    /* Style applied to the root element if `color="error"` */
     error: {
       backgroundColor: palette.messages.error,
       color: palette.text.invert,
@@ -61,6 +65,7 @@ export default ({
       },
     },
 
+    /* Style applied to the root element if `color="info"` */
     info: {
       backgroundColor: palette.messages.info,
       color: palette.text.invert,
@@ -70,6 +75,7 @@ export default ({
       },
     },
 
+    /* Style applied to the root element if `color="success"` */
     success: {
       backgroundColor: palette.messages.success,
       color: palette.text.invert,
@@ -79,11 +85,13 @@ export default ({
       },
     },
 
+    /* Style applied to the icon element */
     icon: {
       flex: `0 0 ${iconSize}px`,
       lineHeight: 0,
     },
 
+    /* Style applied to the label element */
     label: {
       flex: `0 1 auto`,
       marginLeft: spacing.small / 2,

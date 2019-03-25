@@ -1,11 +1,12 @@
 export default palette => {
-  const fontFamily = `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif`;
+  const fontFamily =
+    "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif";
 
   const common = {
     fontFamily,
-    // textRendering: "optimizeLegibility",
+    textRendering: "optimizeLegibility",
     // "-webkit-font-smoothing": "antialiased",
-    // "-moz-osx-font-smoothing": "grayscale"
+    // "-moz-osx-font-smoothing": "grayscale",
   };
 
   // Empty states and feature introductions
@@ -113,7 +114,7 @@ export default palette => {
 
   const paragraph = {
     ...body,
-    margin: [12, 0,],
+    margin: [12, 0],
   };
 
   return {

@@ -3,66 +3,60 @@ import cn from "classnames";
 import PropTypes from "prop-types";
 
 // enhancers
-import { enhance } from "./enhnace";
+import { enhance } from "./enhance";
 
 /**
- * The basic Avatar component that renders it's content or image
- * by passing `src` or `srcSet` prop
+ * The basic Avatar component that renders it's content or image by passing `src` or `srcSet` prop
  */
 class Avatar extends React.Component {
-  static defaultProps = {};
+  static defaultProps = {
+    size: "medium",
+  };
 
   static propTypes = {
     /**
-     * Class name string to be merged to root node
+     * Used to render icon or text elements inside the Avatar. `src` and `alt` props will not be used and no `img` will be rendered by default.
+     */
+    children: PropTypes.node,
+    /**
+     * Class name string to be merged to the root node.
      */
     className: PropTypes.string,
     /**
-     * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
+     * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation.
      */
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     /**
-     * The `srcSet` attribute for the `img` element.
+     * The [`srcSet`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-srcset) attribute for the `img` element.
      */
     srcSet: PropTypes.string,
-    /**
-     * The `sizes` attribute for the `img` element.
-     */
-    sizes: PropTypes.string,
     /**
      * The `src` attribute for the `img` element.
      */
     src: PropTypes.string,
     /**
-     * Used in combination with `src` or `srcSet` to
-     * provide an alt attribute for the rendered `img` element.
+     * Used in combination with `src` or `srcSet` to provide an alt attribute for the rendered `img` element.
      */
     alt: PropTypes.string,
     /**
-     * Used to render icon or text elements inside the Avatar.
-     * `src` and `alt` props will not be used and no `img` will
-     * be rendered by default.
-     *
-     * This can be an element, or just a string.
+     * Defines the size of the avatar.
      */
-    children: PropTypes.node,
-  };
-
-  clearProps = () => {
-    const {
-      classes,
-      className,
-      children,
-      src,
-      srcSet,
-      sizes,
-      alt,
-      sheet,
-      theme,
-      ...rest
-    } = this.props;
-
-    return rest;
+    size: PropTypes.oneOf([
+      "xSmall",
+      "small",
+      "medium",
+      "large",
+      "xLarge",
+      "xxLarge",
+    ]),
+    /**
+     * Background color
+     */
+    color: PropTypes.string,
+    /**
+     * Props object wich will be passed to the `img` element.
+     */
+    imgProps: PropTypes.object,
   };
 
   render () {
@@ -72,20 +66,23 @@ class Avatar extends React.Component {
       children,
       src,
       srcSet,
-      sizes,
       alt,
+      theme,
+      imgProps,
+      ...rest
     } = this.props;
+
     const classNames = cn(classes.root, className);
 
     return (
-      <div {...this.clearProps()} className={classNames}>
+      <div {...rest} className={classNames}>
         {src || srcSet ? (
           <img
             className={classes.img}
             alt={alt}
             src={src}
             srcSet={srcSet}
-            sizes={sizes}
+            {...imgProps}
           />
         ) : (
           children

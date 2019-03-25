@@ -1,41 +1,45 @@
-export default ({ borderRadius, }) => ({
+export default ({ borderRadius }) => ({
+  /* Styles applied to the root element */
   root: {
     display: "inline-flex",
   },
 
+  /* Styles applied to the root element if `justified={true}` */
   justified: {
     width: "100%",
 
-    "& $item": {
+    "& $itemWrapper": {
       flex: "1 0 auto",
       width: 0,
 
-      "& $inner": {
+      "& $item": {
         width: "100%",
         textAlign: "center",
       },
     },
   },
 
-  item: {
+  /* Styles applied to the child wrapper element */
+  itemWrapper: {
     flex: "1 0 auto",
 
-    "& + $item": {
+    "& + $itemWrapper": {
       marginLeft: 1,
     },
 
-    "&:not(:first-child):not(:last-child) $inner": {
+    "&:not(:first-child):not(:last-child) $item": {
       borderRadius: 0,
     },
 
-    "&:first-child $inner": {
-      borderRadius: [borderRadius, 0, 0, borderRadius,],
+    "&:first-child $item": {
+      borderRadius: [borderRadius, 0, 0, borderRadius],
     },
 
-    "&:last-child $inner": {
-      borderRadius: [0, borderRadius, borderRadius, 0,],
+    "&:last-child $item": {
+      borderRadius: [0, borderRadius, borderRadius, 0],
     },
   },
 
-  inner: {},
+  /* Styles applied to the child item */
+  item: {},
 });

@@ -8,7 +8,7 @@ import Typography from "components/Typography";
 import { enhance } from "./enhance";
 
 class Nav extends React.Component {
-  render() {
+  render () {
     const {
       className,
       classes,
@@ -21,7 +21,7 @@ class Nav extends React.Component {
     } = this.props;
     const classNames = cn(classes.root, className);
     const headerClassName = cn({
-      [classes.sticky]: isSticky
+      [classes.sticky]: isSticky,
     });
 
     return (

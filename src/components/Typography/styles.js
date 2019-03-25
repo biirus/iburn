@@ -1,7 +1,7 @@
-export default ({ typography, palette, colors, }) => {
+export default ({ typography, palette, colors }) => {
   return {
     root: {
-      textAlign: ({ align, }) => align,
+      textAlign: ({ align }) => align,
     },
 
     h800: typography.h800,
