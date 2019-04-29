@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { compose } from "lodash/fp";
+import { withRouter } from "next/router";
 import withStyles from "react-jss";
 import styles from "./styles";
 
@@ -18,10 +20,14 @@ class API extends Component {
     const { component } = props.query;
 
     const codeSrc = require(`!!raw-loader!iburn/components/${component}`);
-    const stylesSrc = require(`!!raw-loader!iburn/components/${component}/styles`);
-
     const docs = parse(codeSrc);
-    const stylesDocs = getStylesDocs(stylesSrc);
+
+    let stylesDocs = null;
+
+    try {
+      const stylesSrc = require(`!!raw-loader!iburn/components/${component}/styles`);
+      stylesDocs = getStylesDocs(stylesSrc);
+    } catch (e) {}
 
     return { docs, stylesDocs };
   }
@@ -43,23 +49,30 @@ class API extends Component {
           }}
         />
 
-        <section className={classes.section}>
-          <Typography type="h500" className={classes.sectionHeader}>
-            Props API
-          </Typography>
-          <PropsTable propsList={docs.props} />
-        </section>
+        {docs.props && (
+          <section className={classes.section}>
+            <Typography type="h500" className={classes.sectionHeader}>
+              Props API
+            </Typography>
+            <PropsTable propsList={docs.props} />
+          </section>
+        )}
 
-        <section className={classes.section}>
-          <Typography type="h500" className={classes.sectionHeader}>
-            CSS API
-          </Typography>
-          <StylesTable stylesList={stylesDocs} />
-        </section>
+        {stylesDocs && stylesDocs.length > 0 && (
+          <section className={classes.section}>
+            <Typography type="h500" className={classes.sectionHeader}>
+              CSS API
+            </Typography>
+            <StylesTable stylesList={stylesDocs} />
+          </section>
+        )}
       </div>
     );
   }
 }
 
-const enhance = withStyles(styles);
+const enhance = compose(
+  withRouter,
+  withStyles(styles)
+);
 export default enhance(API);

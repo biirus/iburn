@@ -11,6 +11,7 @@ const enhance = withStyles(() => {
       display: "grid",
       gridTemplateColumns: "1fr",
       gridGap: "16px",
+      justifyItems: "start",
     },
   };
 });

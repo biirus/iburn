@@ -5,6 +5,9 @@
   "directories": {
     "doc": "docs"
   },
+  "files": [
+    "dist/*"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/biirus/iburn.git"
@@ -14,18 +17,16 @@
     "url": "https://github.com/biirus/iburn/issues"
   },
   "homepage": "https://github.com/biirus/iburn#readme",
-  "main": "dist/index.js",
-  "module": "dist/es/index.js",
-  "files": [
-    "dist"
-  ],
+  "main": "index.js",
+  "module": "es/index.js",
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist coverage",
     "prebuild": "npm run clean",
     "build": "npm run build:cjs && npm run build:es",
-    "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel ./src --out-dir ./dist --ignore \"**/*.spec.js\"",
-    "build:es": "NODE_ENV=production BABEL_ENV=es babel ./src --out-dir ./dist/es --ignore \"**/*.spec.js\"",
+    "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel ./src --out-dir ./dist --ignore \"**/*.spec.js\" -s inline",
+    "build:es": "NODE_ENV=production BABEL_ENV=es babel ./src --out-dir ./dist/es --ignore \"**/*.spec.js\" -s inline",
+    "copy-package": "cp package.json dist/",
     "test": "exit 0",
     "test:to-fix": "NODE_ENV=test BABEL_ENV=test jest",
     "commit": "npx git-cz"
@@ -53,7 +54,10 @@
     "eslint-plugin-jsx-a11y": "^6.2.0",
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.5.0",
-    "keymirror": "^0.1.1"
+    "keymirror": "^0.1.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-jss": "^8.6.1"
   },
   "dependencies": {
     "calendar": "^0.1.0",
@@ -61,10 +65,10 @@
     "color": "^3.1.0",
     "date-fns": "^2.0.0-alpha.27",
     "deep-extend": "^0.5.1",
+    "prop-types": "^15.6.1",
     "react-event-listener": "^0.5.10"
   },
   "peerDependencies": {
-    "prop-types": "^15.6.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-jss": "^8.6.1"

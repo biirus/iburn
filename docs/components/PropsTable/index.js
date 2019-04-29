@@ -17,9 +17,10 @@ const getTypeValue = type => {
   const values = {
     arrayOf: type => type.value.name,
     enum: type => type.value.map(v => v.value.replace(/"/g, "")).join(", "),
+    union: type => type.value.map(v => v.name.replace(/"/g, "")).join(", "),
   };
 
-  return values[type.name] ? values[type.name](type) : null;
+  return type && values[type.name] ? values[type.name](type) : null;
 };
 
 const PropRow = ({
@@ -43,10 +44,12 @@ const PropRow = ({
       </Cell>
 
       <Cell className={classes.cell} classes={{ inner: classes.cellInner }}>
-        <Badge>
-          {type.name}
-          {typeValue && ": " + typeValue}
-        </Badge>
+        {type && (
+          <Badge>
+            {type.name}
+            {typeValue && ": " + typeValue}
+          </Badge>
+        )}
       </Cell>
 
       {shouldRenderDefaultCell && (

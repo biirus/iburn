@@ -18,6 +18,7 @@ class NavItem extends React.Component {
       classes,
       children,
       icon,
+      badge,
       secondary,
       active,
       disabled,
@@ -38,13 +39,15 @@ class NavItem extends React.Component {
 
     return (
       <Component {...rest} className={classNames}>
-        <>
+        <div className={classes.inner}>
           {icon && <span className={classes.icon}>{icon}</span>}
           <div className={classes.label}>
             <div>{children}</div>
             {secondary && <Typography type="h200">{secondary}</Typography>}
           </div>
-        </>
+        </div>
+
+        {badge}
       </Component>
     );
   }

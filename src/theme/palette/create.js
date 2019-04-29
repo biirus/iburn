@@ -8,6 +8,10 @@ export default colors => {
 
   return {
     primary: blue,
+    success: green,
+    warning: yellow,
+    error: red,
+    info: purple,
 
     backgrounds: {
       default: colors.n0,

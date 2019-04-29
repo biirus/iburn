@@ -5,15 +5,16 @@ export default theme => {
     root: {
       display: "flex",
       alignItems: "center",
+      justifyContent: "space-between",
       height: theme.spacing.unit * 5,
-      padding: [[theme.spacing.small / 2, theme.spacing.small,],],
+      padding: [[theme.spacing.small / 2, theme.spacing.small]],
 
       cursor: "pointer",
       color: "inherit",
       textDecoration: "none",
       backgroundColor: "transparent",
       borderRadius: theme.borderRadius,
-      transition: theme.transitions.create(["background-color",], "shortest"),
+      transition: theme.transitions.create(["background-color"], "shortest"),
 
       "&:hover": {
         backgroundColor: theme.colors.n20a,
@@ -37,6 +38,12 @@ export default theme => {
     disabled: {
       color: theme.colors.n70,
       pointerEvents: "none",
+    },
+
+    inner: {
+      display: "flex",
+      alignItems: "center",
+      flex: "1 1 0",
     },
 
     label: {

@@ -9,5 +9,12 @@
       "docs/*": ["./docs/*"]
     }
   },
-  "exclude": ["node_modules", "dist", ".next", ".vscode"]
+  "exclude": [
+    "node_modules",
+    "docs/node_modules",
+    "dist",
+    "docs/out",
+    "docs/.next",
+    ".vscode"
+  ]
 }

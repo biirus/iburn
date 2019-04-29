@@ -21,6 +21,12 @@ import iconDemoCode from "!!raw-loader!./IconDemo";
 import IconDemo from "./IconDemo";
 import componentDemoCode from "!!raw-loader!./ComponentDemo";
 import ComponentDemo from "./ComponentDemo";
+import buttonGroupDemoCode from "!!raw-loader!./ButtonGroupDemo";
+import ButtonGroupDemo from "./ButtonGroupDemo";
+import selectableBGDemoCode from "!!raw-loader!./SelectableBGDemo";
+import SelectableBGDemo from "./SelectableBGDemo";
+import justifiedBGDemoCode from "!!raw-loader!./JustifiedBGDemo";
+import JustifiedBGDemo from "./JustifiedBGDemo";
 
 class ButtonDemo extends Component {
   render () {
@@ -111,13 +117,13 @@ class ButtonDemo extends Component {
         </section>
 
         <section className={classes.section}>
-          <Link href="#component">
+          <Link href="#custom-component">
             <Typography
               type="h600"
               className={classes.sectionHeader}
-              id="component"
+              id="custom-component"
             >
-              Component
+              Custom component
             </Typography>
           </Link>
 
@@ -127,6 +133,69 @@ class ButtonDemo extends Component {
             </Tab>
             <Tab label="Code">
               <Code>{componentDemoCode}</Code>
+            </Tab>
+          </Tabs>
+        </section>
+
+        <section className={classes.section}>
+          <Link href="#button-group">
+            <Typography
+              type="h600"
+              className={classes.sectionHeader}
+              id="button-group"
+            >
+              ButtonGroup
+            </Typography>
+          </Link>
+
+          <Tabs>
+            <Tab label="Preview">
+              <ButtonGroupDemo />
+            </Tab>
+            <Tab label="Code">
+              <Code>{buttonGroupDemoCode}</Code>
+            </Tab>
+          </Tabs>
+        </section>
+
+        <section className={classes.section}>
+          <Link href="#selectable-button-group">
+            <Typography
+              type="h600"
+              className={classes.sectionHeader}
+              id="selectable-button-group"
+            >
+              Selectable ButtonGroup
+            </Typography>
+          </Link>
+
+          <Tabs>
+            <Tab label="Preview">
+              <SelectableBGDemo />
+            </Tab>
+            <Tab label="Code">
+              <Code>{selectableBGDemoCode}</Code>
+            </Tab>
+          </Tabs>
+        </section>
+
+        <section className={classes.section}>
+          <Link href="#justified-button-group">
+            <Typography
+              type="h600"
+              className={classes.sectionHeader}
+              id="justified-button-group"
+            >
+              Justified ButtonGroup
+            </Typography>
+          </Link>
+
+          <Tabs>
+            <Tab label="Preview">
+              <JustifiedBGDemo />
+            </Tab>
+            <Tab label="Code">
+              <Code>{justifiedBGDemoCode}</Code>
             </Tab>
           </Tabs>
         </section>

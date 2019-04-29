@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Link from "next/link";
 
-import f from "faker";
 import cn from "classnames";
 import withStyles from "react-jss";
 import styles from "docs/pages/demo/common-styles";
+import fetch from "node-fetch";
 
 import Tabs from "iburn/components/Tabs";
 import Tab from "iburn/components/Tabs/Tab";
@@ -27,9 +27,18 @@ import StackLettersDemo from "./LettersDemo";
 
 class AvatarDemo extends Component {
   static async getInitialProps (props) {
-    const images = Array(6)
-      .fill(0)
-      .map(() => f.image.people(300, 300, true));
+    const imagesNumber = 6;
+
+    const response = await fetch("https://api.github.com/users");
+    const data = await response.json();
+    const dataCount = data.length - 1;
+
+    const index = Math.min(
+      dataCount - imagesNumber,
+      Math.round(Math.random() * dataCount)
+    );
+
+    const images = data.slice(index, index + 6).map(user => user.avatar_url);
 
     return { images };
   }

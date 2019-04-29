@@ -34,6 +34,7 @@ export default ({ spacing, palette }) => {
     content: {
       maxWidth: 960 + contentPadding * 2,
       padding: [[0, contentPadding, contentPadding]],
+      margin: "0 auto",
     },
 
     navigationHeader: {

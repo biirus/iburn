@@ -7,7 +7,7 @@ const enhance = withStyles(({ spacing }) => {
   return {
     root: {
       display: "grid",
-      gridTemplateColumns: `repeat(6, max-content)`,
+      gridTemplateColumns: `repeat(auto-fill, minmax(120px, 1fr))`,
       gridGap: `${spacing.large}px`,
     },
   };
