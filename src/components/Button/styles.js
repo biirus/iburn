@@ -113,12 +113,12 @@ export default ({ borderRadius, spacing, colors, palette, transitions }) => {
 
     /* Styles applied to the `icon` element before button content */
     icon: {
-      lineHeight: 1,
+      lineHeight: 0,
     },
 
     /* Styles applied to the `iconAfter` element after button content */
     iconAfter: {
-      lineHeight: 1,
+      lineHeight: 0,
     },
   };
 };

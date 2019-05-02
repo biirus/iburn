@@ -10,9 +10,6 @@ import {
 
 // components
 import { Calendar as CalendarBase } from "calendar";
-import Table from "components/Table";
-import TableBody from "components/Table/Body";
-import TableRow from "components/Table/Row";
 import WeekDays from "./WeekDays";
 import Day from "./Day";
 
@@ -27,31 +24,31 @@ class MonthView extends React.Component {
   };
 
   isSelected = day => {
-    const { selected, range, } = this.props;
-    const { buffer, hovered, } = this.state;
+    const { selected, range } = this.props;
+    const { buffer, hovered } = this.state;
 
     if (!range) {
       return isSameDay(day, selected);
     }
 
     if (buffer) {
-      return [buffer, hovered,].some(item => isSameDay(item, day));
+      return [buffer, hovered].some(item => isSameDay(item, day));
     }
 
     return selected.some(item => isSameDay(item, day));
   };
 
   isDayHighlighted = day => {
-    const { range, selected, } = this.props;
-    const { isSelectionStarted, buffer, hovered, } = this.state;
+    const { range, selected } = this.props;
+    const { isSelectionStarted, buffer, hovered } = this.state;
 
     if (range) {
       let minDate = min(selected);
       let maxDate = max(selected);
 
       if (isSelectionStarted) {
-        minDate = min([buffer, hovered,]);
-        maxDate = max([buffer, hovered,]);
+        minDate = min([buffer, hovered]);
+        maxDate = max([buffer, hovered]);
       }
 
       const moreThanMin = differenceInCalendarDays(day, minDate) > 0;
@@ -64,7 +61,7 @@ class MonthView extends React.Component {
   };
 
   isDayDisabled = day => {
-    const { month, maxDate, minDate, } = this.props;
+    const { month, maxDate, minDate } = this.props;
 
     return (
       day.getMonth() !== month ||
@@ -74,7 +71,7 @@ class MonthView extends React.Component {
   };
 
   handleClick = (day, e) => {
-    const { range, onSelect, onClick, } = this.props;
+    const { range, onSelect, onClick } = this.props;
 
     if (range) {
       if (!this.state.isSelectionStarted) {
@@ -88,8 +85,8 @@ class MonthView extends React.Component {
           }
         );
       } else {
-        const { buffer, } = this.state;
-        onSelect([buffer, day,].sort(compareAsc), e);
+        const { buffer } = this.state;
+        onSelect([buffer, day].sort(compareAsc), e);
 
         this.setState(
           {
@@ -98,6 +95,7 @@ class MonthView extends React.Component {
             hovered: null,
           },
           () => {
+            // TODO: handle this comment
             // onClick(day, this.state.isSelectionStarted);
           }
         );
@@ -107,10 +105,9 @@ class MonthView extends React.Component {
       onSelect(day, e);
     }
   };
-
-  handleHover = (day, e) => {
-    const { range, } = this.props;
-    const { isSelectionStarted, } = this.state;
+  handleMouseOver = (day, e) => {
+    const { range } = this.props;
+    const { isSelectionStarted } = this.state;
 
     if (range && isSelectionStarted) {
       this.setState({
@@ -120,38 +117,45 @@ class MonthView extends React.Component {
   };
 
   render () {
-    const { className, classes, year, month, locale, } = this.props;
+    const {
+      className,
+      classes,
+      year,
+      month,
+      locale,
+      weekDaysProps,
+      dayProps,
+    } = this.props;
 
-    const { options, } = locale;
+    const { options } = locale;
 
     const firstDayOfWeek = options.weekStartsOn;
     const cal = new CalendarBase(firstDayOfWeek);
-    const monthArray = cal.monthDates(year, month);
+    const dates = cal.monthDates(year, month).reduce((acc, week) => {
+      return acc.concat(week);
+    }, []);
 
     const classNames = cn(classes.root, className);
 
     return (
-      <Table className={classNames}>
-        <WeekDays locale={locale} />
+      <div className={classNames}>
+        <WeekDays locale={locale} {...weekDaysProps} />
 
-        <TableBody>
-          {monthArray.map((week, index) => (
-            <TableRow key={index}>
-              {week.map((day, index) => (
-                <Day
-                  key={index}
-                  value={day}
-                  selected={this.isSelected(day)}
-                  disabled={this.isDayDisabled(day)}
-                  highlighted={this.isDayHighlighted(day)}
-                  onClick={this.handleClick}
-                  onHover={this.handleHover}
-                />
-              ))}
-            </TableRow>
+        <div className={classes.month}>
+          {dates.map((day, index) => (
+            <Day
+              key={index}
+              value={day}
+              selected={this.isSelected(day)}
+              disabled={this.isDayDisabled(day)}
+              highlighted={this.isDayHighlighted(day)}
+              onMouseOver={this.handleMouseOver}
+              onClick={this.handleClick}
+              {...dayProps}
+            />
           ))}
-        </TableBody>
-      </Table>
+        </div>
+      </div>
     );
   }
 }

@@ -1,5 +1,5 @@
 export default theme => {
   return {
-    root: {}
+    root: {},
   };
 };

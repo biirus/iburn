@@ -1,9 +1,8 @@
-export default ({ spacing, }) => {
+export default ({ spacing }) => {
   return {
     root: {
-      display: "flex",
-      flexDirection: "column",
-      width: 280,
+      width: "100%",
+      minWidth: spacing.unit * 30,
     },
 
     hidden: {

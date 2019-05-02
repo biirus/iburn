@@ -12,7 +12,7 @@
     "start": "next start",
     "export": "npm run build && next export -o dist",
     "predeploy": "npm run export",
-    "deploy": "now ./dist"
+    "deploy": "cp ./now.json ./dist && now ./dist"
   },
   "author": "Ivan Burnaev <ivan.biirus@gmail.com>",
   "license": "ISC",

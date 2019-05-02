@@ -94,12 +94,11 @@ class Button extends React.Component {
       ...rest
     } = this.props;
 
-    const classNames = cn(classes.root, className, {
+    const classNames = cn(classes.root, className, classes[variant], {
       [classes.selected]: selected,
       [classes.compact]: padding === "compact",
       [classes.inline]: padding === "inline",
       [classes.block]: padding === "block",
-      [classes[variant]]: ["link", "thin"].includes(variant),
       [classes[color]]: color && !["link", "thin"].includes(variant),
     });
 
@@ -107,9 +106,9 @@ class Button extends React.Component {
 
     return (
       <Component {...rest} className={classNames}>
-        <span className={classes.icon}>{icon}</span>
+        {icon && <span className={classes.icon}>{icon}</span>}
         {children && <span className={classes.content}>{children}</span>}
-        <span className={classes.iconAfter}>{iconAfter}</span>
+        {iconAfter && <span className={classes.iconAfter}>{iconAfter}</span>}
       </Component>
     );
   }

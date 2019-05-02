@@ -13,7 +13,7 @@
     "node_modules",
     "docs/node_modules",
     "dist",
-    "docs/out",
+    "docs/dist",
     "docs/.next",
     ".vscode"
   ]

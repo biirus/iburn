@@ -1,8 +1,11 @@
-export default () => {
+export default ({ spacing }) => {
   return {
-    root: {
-      width: "100%",
-      tableLayout: "fixed",
+    root: {},
+
+    month: {
+      display: "grid",
+      gridTemplateColumns: "repeat(7, 1fr)",
+      gridRowGap: `${spacing.small}px`,
     },
   };
 };

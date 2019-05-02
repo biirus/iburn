@@ -1,15 +1,13 @@
-export default ({ spacing, }) => {
+export default ({ spacing }) => {
   return {
     root: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+      display: "grid",
+      gridTemplateColumns: "repeat(7, 1fr)",
+      gridGap: `${spacing.unit}px`,
     },
 
     content: {
-      flex: 1,
-      margin: [[0, spacing.small,],],
-      justifyContent: "center",
+      gridColumn: "2/7",
     },
   };
 };

@@ -13,6 +13,8 @@ export default colors => {
     error: red,
     info: purple,
 
+    divider: colors.n20a,
+
     backgrounds: {
       default: colors.n0,
       panel: colors.n20,

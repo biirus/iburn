@@ -9,33 +9,43 @@ import Button from "components/Button";
 import { enhance } from "./enhance";
 
 class Day extends React.Component {
+  handleClick = e => {
+    const { value, onClick } = this.props;
+    onClick(value, e);
+  };
+
+  handleMouseOver = e => {
+    const { value, onMouseOver } = this.props;
+    onMouseOver(value, e);
+  };
+
   render () {
-    const {
-      classes,
-      value,
+    const { classes, value, disabled, selected, highlighted } = this.props;
+
+    let buttonProps = {
       disabled,
-      selected,
-      highlighted,
-      onClick,
-      onHover,
-    } = this.props;
+      color: selected ? "primary" : "default",
+      className: cn(classes.day, {
+        [classes.selected]: selected,
+        [classes.highlighted]: highlighted,
+      }),
+    };
+
+    if (!selected) {
+      buttonProps.variant = "thin";
+    }
 
     return (
-      <TableCell className={classes.root}>
+      <div className={classes.dayWrapper}>
         <Button
-          view="thin"
-          className={cn(classes.tile, {
-            [classes.highlighted]: highlighted,
-            [classes.selected]: selected,
-          })}
-          classes={{ content: classes.content, }}
-          disabled={disabled}
-          onClick={e => onClick(value, e)}
-          onMouseOver={e => onHover(value, e)}
+          {...buttonProps}
+          padding="block"
+          onClick={this.handleClick}
+          onMouseOver={this.handleMouseOver}
         >
           {value.getDate()}
         </Button>
-      </TableCell>
+      </div>
     );
   }
 }

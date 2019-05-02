@@ -1,7 +1,6 @@
-import React from "react";
+import React, { Children, cloneElement } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
-import Button from "components/Button";
 
 // enhancers
 import withStyles from "react-jss";
@@ -55,22 +54,15 @@ class ButtonGroup extends React.Component {
     onChange: PropTypes.func,
   };
 
-  constructor (props) {
-    super(props);
-
-    this.state = {
-      value: props.value,
-    };
-  }
-
   handleClick = value => e => {
-    const { value: currentValue } = this.state;
-    const { onChange } = this.props;
+    const { value: currentValue, onChange } = this.props;
 
     if (value !== currentValue) {
       this.setState({ value });
 
       e.persist();
+
+      e.target = this.root;
       e.target.name = this.props.name;
       e.target.value = value;
 
@@ -79,12 +71,12 @@ class ButtonGroup extends React.Component {
   };
 
   getItemProps = child => {
-    const { color, classes, selectable } = this.props;
-    const { value: currentValue } = this.state;
+    const { value: currentValue, color, classes, selectable } = this.props;
     const { value } = child.props;
 
     let props = {
       className: classes.item,
+      onClick: this.handleClick(child.props.value),
     };
 
     if (color) {
@@ -115,15 +107,11 @@ class ButtonGroup extends React.Component {
     });
 
     return (
-      <span {...rest} className={classNames}>
-        {React.Children.map(children, (child, index) => {
+      <span {...rest} className={classNames} ref={el => (this.root = el)}>
+        {Children.map(children, (child, index) => {
           return (
-            <span
-              key={index}
-              className={classes.itemWrapper}
-              onClick={this.handleClick(child.props.value)}
-            >
-              {React.cloneElement(child, this.getItemProps(child))}
+            <span key={index} className={classes.itemWrapper}>
+              {cloneElement(child, this.getItemProps(child))}
             </span>
           );
         })}

@@ -24,7 +24,6 @@ class IconButton extends React.Component {
     return (
       <Button
         {...rest}
-        view="thin"
         className={classNames}
         icon={icon ? <Icon label={icon} className={classes.icon} /> : children}
       />

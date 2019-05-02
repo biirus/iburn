@@ -14,15 +14,17 @@ class Controls extends React.Component {
     return (
       <header className={classes.root}>
         <Button
-          view="thin"
+          variant="thin"
           icon={<Icon label="chevron-left" />}
           onClick={onPrev}
         />
+
         <Button variant="thin" className={classes.content} onClick={onClick}>
           {content}
         </Button>
+
         <Button
-          view="thin"
+          variant="thin"
           icon={<Icon label="chevron-right" />}
           onClick={onNext}
         />

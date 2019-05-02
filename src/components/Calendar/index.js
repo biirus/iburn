@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 // lib
 import cn from "classnames";
 import { getMonth, getYear } from "date-fns";
-import * as locales from "date-fns/esm/locale";
+import * as locales from "date-fns/locale";
 import { capitalize } from "./lib";
 
 // components
@@ -68,7 +68,7 @@ class Calendar extends React.Component {
     let selected = props.value || today;
 
     if (props.range && !Array.isArray(selected)) {
-      selected = [selected, selected,];
+      selected = [selected, selected];
     }
 
     this.state = {
@@ -80,7 +80,7 @@ class Calendar extends React.Component {
   }
 
   prevMonth = () => {
-    this.setState(({ month, year, }) => {
+    this.setState(({ month, year }) => {
       const prevMonth = month - 1;
       const prevYear = prevMonth < 0 ? year - 1 : year;
 
@@ -92,7 +92,7 @@ class Calendar extends React.Component {
   };
 
   nextMonth = () => {
-    this.setState(({ month, year, }) => {
+    this.setState(({ month, year }) => {
       const nextMonth = month + 1;
       const nextYear = nextMonth >= 12 ? year + 1 : year;
 
@@ -104,33 +104,33 @@ class Calendar extends React.Component {
   };
 
   prevYear = () => {
-    this.setState(({ year, }) => ({
+    this.setState(({ year }) => ({
       year: year - 1,
     }));
   };
 
   nextYear = () => {
-    this.setState(({ year, }) => ({
+    this.setState(({ year }) => ({
       year: year + 1,
     }));
   };
 
   handlePrev = () => {
-    const { view, } = this.state;
+    const { view } = this.state;
     return view === "year" ? this.prevYear() : this.prevMonth();
   };
 
   handleNext = () => {
-    const { view, } = this.state;
+    const { view } = this.state;
     return view === "year" ? this.nextYear() : this.nextMonth();
   };
 
   handleMonthSelect = month => {
-    this.setState({ month, view: "month", });
+    this.setState({ month, view: "month" });
   };
 
   handleDayClick = (day, isSelectionStarted) => {
-    const { range, onDayClick, } = this.props;
+    const { range, onDayClick } = this.props;
 
     if (range) {
       onDayClick(day, isSelectionStarted);
@@ -140,16 +140,16 @@ class Calendar extends React.Component {
   };
 
   handleValueChange = (value, e) => {
-    const { name, onChange, } = this.props;
+    const { name, onChange } = this.props;
 
     e.persist();
-    e.target = { ...e.target, value, name, };
+    e.target = { ...e.target, value, name };
 
-    this.setState({ selected: value, }, () => onChange(e));
+    this.setState({ selected: value }, () => onChange(e));
   };
 
   changeView = () => {
-    this.setState(({ view, }) => ({
+    this.setState(({ view }) => ({
       view: view === "month" ? "year" : "month",
     }));
   };
@@ -163,12 +163,12 @@ class Calendar extends React.Component {
       minDate,
       range,
     } = this.props;
-    const { month, year, view, } = this.state;
+    const { month, year, view } = this.state;
 
     const locale =
       typeof localeString === "string" ? locales[localeString] : localeString;
 
-    const { localize, } = locale;
+    const { localize } = locale;
     const classNames = cn(classes.root, className);
 
     return (

@@ -19,6 +19,8 @@ import paddingDemoCode from "!!raw-loader!./PaddingDemo";
 import PaddingDemo from "./PaddingDemo";
 import iconDemoCode from "!!raw-loader!./IconDemo";
 import IconDemo from "./IconDemo";
+import iconButtonDemoCode from "!!raw-loader!./IconButtonDemo";
+import IconButtonDemo from "./IconButtonDemo";
 import componentDemoCode from "!!raw-loader!./ComponentDemo";
 import ComponentDemo from "./ComponentDemo";
 import buttonGroupDemoCode from "!!raw-loader!./ButtonGroupDemo";
@@ -112,6 +114,27 @@ class ButtonDemo extends Component {
             </Tab>
             <Tab label="Code">
               <Code>{iconDemoCode}</Code>
+            </Tab>
+          </Tabs>
+        </section>
+
+        <section className={classes.section}>
+          <Link href="#icon-button">
+            <Typography
+              type="h600"
+              className={classes.sectionHeader}
+              id="icon-button"
+            >
+              IconButton
+            </Typography>
+          </Link>
+
+          <Tabs>
+            <Tab label="Preview">
+              <IconButtonDemo />
+            </Tab>
+            <Tab label="Code">
+              <Code>{iconButtonDemoCode}</Code>
             </Tab>
           </Tabs>
         </section>
