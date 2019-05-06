@@ -11,8 +11,10 @@ import Typography from "iburn/components/Typography";
 import Tabs from "iburn/components/Tabs";
 import Tab from "iburn/components/Tabs/Tab";
 
-import defaultDemoCode from "!!raw-loader!./DefaultDemo";
-import DefaultDemo from "./DefaultDemo";
+import basicDemoCode from "!!raw-loader!./BasicDemo";
+import BasicDemo from "./BasicDemo";
+import rangeDemoCode from "!!raw-loader!./RangeDemo";
+import RangeDemo from "./RangeDemo";
 
 class CalendarDemo extends Component {
   render () {
@@ -23,22 +25,43 @@ class CalendarDemo extends Component {
         <PageHeader>Calendar Demo</PageHeader>
 
         <section className={classes.section}>
-          <Link href="#variant">
+          <Link href="#basic">
             <Typography
               type="h600"
               className={classes.sectionHeader}
-              id="variant"
+              id="basic"
             >
-              Variant
+              Basic
             </Typography>
           </Link>
 
           <Tabs>
             <Tab label="Preview">
-              <DefaultDemo />
+              <BasicDemo />
             </Tab>
             <Tab label="Code">
-              <Code>{defaultDemoCode}</Code>
+              <Code>{basicDemoCode}</Code>
+            </Tab>
+          </Tabs>
+        </section>
+
+        <section className={classes.section}>
+          <Link href="#range">
+            <Typography
+              type="h600"
+              className={classes.sectionHeader}
+              id="range"
+            >
+              Range
+            </Typography>
+          </Link>
+
+          <Tabs>
+            <Tab label="Preview">
+              <RangeDemo />
+            </Tab>
+            <Tab label="Code">
+              <Code>{rangeDemoCode}</Code>
             </Tab>
           </Tabs>
         </section>

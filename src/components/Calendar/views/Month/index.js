@@ -24,32 +24,35 @@ class MonthView extends React.Component {
   };
 
   isSelected = day => {
-    const { selected, range } = this.props;
+    const { value, range } = this.props;
     const { buffer, hovered } = this.state;
 
+    if (!value && !buffer) {
+      return false;
+    }
+
     if (!range) {
-      return isSameDay(day, selected);
+      return isSameDay(day, value);
     }
 
     if (buffer) {
       return [buffer, hovered].some(item => isSameDay(item, day));
     }
 
-    return selected.some(item => isSameDay(item, day));
+    return value.some(item => isSameDay(item, day));
   };
 
   isDayHighlighted = day => {
-    const { range, selected } = this.props;
+    const { range, value } = this.props;
     const { isSelectionStarted, buffer, hovered } = this.state;
 
-    if (range) {
-      let minDate = min(selected);
-      let maxDate = max(selected);
+    if (!value && !buffer) {
+      return false;
+    }
 
-      if (isSelectionStarted) {
-        minDate = min([buffer, hovered]);
-        maxDate = max([buffer, hovered]);
-      }
+    if (range) {
+      const minDate = isSelectionStarted ? min([buffer, hovered]) : min(value);
+      const maxDate = isSelectionStarted ? max([buffer, hovered]) : max(value);
 
       const moreThanMin = differenceInCalendarDays(day, minDate) > 0;
       const lessThanMax = differenceInCalendarDays(maxDate, day) > 0;
@@ -96,7 +99,7 @@ class MonthView extends React.Component {
           },
           () => {
             // TODO: handle this comment
-            // onClick(day, this.state.isSelectionStarted);
+            onClick(day, this.state.isSelectionStarted);
           }
         );
       }
@@ -105,6 +108,7 @@ class MonthView extends React.Component {
       onSelect(day, e);
     }
   };
+
   handleMouseOver = (day, e) => {
     const { range } = this.props;
     const { isSelectionStarted } = this.state;
@@ -144,7 +148,7 @@ class MonthView extends React.Component {
         <div className={classes.month}>
           {dates.map((day, index) => (
             <Day
-              key={index}
+              key={day}
               value={day}
               selected={this.isSelected(day)}
               disabled={this.isDayDisabled(day)}

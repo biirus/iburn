@@ -21,8 +21,6 @@ import { enhance } from "./enhance";
 class Calendar extends React.Component {
   static defaultProps = {
     locale: "enUS",
-    onChange: f => f,
-    onDayClick: f => f,
   };
 
   static propTypes = {
@@ -59,23 +57,50 @@ class Calendar extends React.Component {
         }),
       }),
     ]),
+
+    value: function (props, propName, componentName) {
+      if (
+        props[propName] === undefined &&
+        typeof props.onChange === "function"
+      ) {
+        return new Error(
+          "The `value` prop is required when `onChange` function is set. Please provide `value`."
+        );
+      }
+    },
+
+    onChange: function (props, propName, componentName) {
+      if (
+        props.value !== undefined &&
+        (props[propName] === undefined || typeof props[propName] !== "function")
+      ) {
+        return new Error(
+          "The `onChange` prop is required when `value` prop is set. Please provide `onChange` function."
+        );
+      }
+    },
   };
 
   constructor (props) {
     super(props);
 
     const today = new Date();
-    let selected = props.value || today;
+    let value = props.value || today;
 
-    if (props.range && !Array.isArray(selected)) {
-      selected = [selected, selected];
+    // is not array was passed
+    if (props.range && !Array.isArray(value)) {
+      value = [value, value];
+    }
+
+    // empty array was passed
+    if (props.range && value.length === 0) {
+      value = [today, today];
     }
 
     this.state = {
-      year: getYear(props.range ? selected[0] : selected),
-      month: getMonth(props.range ? selected[0] : selected),
+      year: getYear(props.range ? value[0] : value),
+      month: getMonth(props.range ? value[0] : value),
       view: "month",
-      selected,
     };
   }
 
@@ -132,10 +157,8 @@ class Calendar extends React.Component {
   handleDayClick = (day, isSelectionStarted) => {
     const { range, onDayClick } = this.props;
 
-    if (range) {
-      onDayClick(day, isSelectionStarted);
-    } else {
-      onDayClick(day);
+    if (onDayClick) {
+      range ? onDayClick(day, isSelectionStarted) : onDayClick(day);
     }
   };
 
@@ -143,9 +166,11 @@ class Calendar extends React.Component {
     const { name, onChange } = this.props;
 
     e.persist();
-    e.target = { ...e.target, value, name };
+    e.target = this.root;
+    e.target.name = name;
+    e.target.value = value;
 
-    this.setState({ selected: value }, () => onChange(e));
+    onChange && onChange(e);
   };
 
   changeView = () => {
@@ -158,6 +183,7 @@ class Calendar extends React.Component {
     const {
       classes,
       className,
+      value,
       locale: localeString,
       maxDate,
       minDate,
@@ -186,6 +212,7 @@ class Calendar extends React.Component {
 
         <MonthView
           {...this.state}
+          value={value}
           className={view !== "month" && classes.hidden}
           range={range}
           locale={locale}
