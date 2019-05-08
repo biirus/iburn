@@ -26,6 +26,7 @@ class API extends Component {
 
     try {
       const stylesSrc = require(`!!raw-loader!iburn/components/${component}/styles`);
+
       stylesDocs = getStylesDocs(stylesSrc);
     } catch (e) {}
 
@@ -54,7 +55,7 @@ class API extends Component {
             <Typography type="h500" className={classes.sectionHeader}>
               Props API
             </Typography>
-            <PropsTable propsList={docs.props} />
+            <PropsTable propsMap={docs.props} />
           </section>
         )}
 

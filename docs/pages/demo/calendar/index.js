@@ -15,6 +15,10 @@ import basicDemoCode from "!!raw-loader!./BasicDemo";
 import BasicDemo from "./BasicDemo";
 import rangeDemoCode from "!!raw-loader!./RangeDemo";
 import RangeDemo from "./RangeDemo";
+import minMaxDemoCode from "!!raw-loader!./MinMaxDemo";
+import MinMaxDemo from "./MinMaxDemo";
+import localeDemoCode from "!!raw-loader!./LocaleDemo";
+import LocaleDemo from "./LocaleDemo";
 
 class CalendarDemo extends Component {
   render () {
@@ -62,6 +66,48 @@ class CalendarDemo extends Component {
             </Tab>
             <Tab label="Code">
               <Code>{rangeDemoCode}</Code>
+            </Tab>
+          </Tabs>
+        </section>
+
+        <section className={classes.section}>
+          <Link href="#min-max">
+            <Typography
+              type="h600"
+              className={classes.sectionHeader}
+              id="min-max"
+            >
+              Min and max values
+            </Typography>
+          </Link>
+
+          <Tabs>
+            <Tab label="Preview">
+              <MinMaxDemo />
+            </Tab>
+            <Tab label="Code">
+              <Code>{minMaxDemoCode}</Code>
+            </Tab>
+          </Tabs>
+        </section>
+
+        <section className={classes.section}>
+          <Link href="#locale">
+            <Typography
+              type="h600"
+              className={classes.sectionHeader}
+              id="locale"
+            >
+              Locale
+            </Typography>
+          </Link>
+
+          <Tabs>
+            <Tab label="Preview">
+              <LocaleDemo />
+            </Tab>
+            <Tab label="Code">
+              <Code>{localeDemoCode}</Code>
             </Tab>
           </Tabs>
         </section>

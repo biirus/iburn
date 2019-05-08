@@ -9,14 +9,14 @@ import { capitalize } from "./lib";
 
 // components
 import Controls from "./Controls";
-import MonthView from "./views/Month";
-import YearView from "./views/Year";
+import MonthView from "./MonthView";
+import YearView from "./YearView";
 
 // enhancers
 import { enhance } from "./enhance";
 
 /**
- * Clean and simple to use Calendar Component
+ * Clean and simple to use Calendar Component that supports i18n based on [date-fns locales](https://date-fns.org/docs/I18n)
  */
 class Calendar extends React.Component {
   static defaultProps = {
@@ -24,6 +24,35 @@ class Calendar extends React.Component {
   };
 
   static propTypes = {
+    /**
+     * Class name string to be merged to the root node
+     */
+    className: PropTypes.string,
+    /**
+     * [JSS](http://cssinjs.org/react-jss/) classes object notation
+     */
+    classes: PropTypes.object,
+    /**
+     * [JavaScript Date Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) or `null`. **Important**: this prop is required when `onChange` prop is passed.
+     */
+    /**
+     * Currently selected day or range of days
+     */
+    value: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+      PropTypes.instanceOf(Date),
+    ]),
+    /**
+     * Minimal available date to select
+     */
+    min: PropTypes.instanceOf(Date),
+    /**
+     * Maximal available date to select
+     */
+    max: PropTypes.instanceOf(Date),
+    /**
+     * Locale string such as `ru`, `ja`, `en` or config object. Check out the complete list of available languages here [date-fns i18n](https://date-fns.org/docs/I18n). You can find an additional information for creation your own locale config.
+     */
     locale: PropTypes.oneOfType([
       PropTypes.string,
 
@@ -58,17 +87,9 @@ class Calendar extends React.Component {
       }),
     ]),
 
-    value: function (props, propName, componentName) {
-      if (
-        props[propName] === undefined &&
-        typeof props.onChange === "function"
-      ) {
-        return new Error(
-          "The `value` prop is required when `onChange` function is set. Please provide `value`."
-        );
-      }
-    },
-
+    /**
+     * Change handler function. **Important**: this prop is requred when `value` prop is passed.
+     */
     onChange: function (props, propName, componentName) {
       if (
         props.value !== undefined &&
@@ -184,10 +205,10 @@ class Calendar extends React.Component {
       classes,
       className,
       value,
-      locale: localeString,
-      maxDate,
-      minDate,
+      max,
+      min,
       range,
+      locale: localeString,
     } = this.props;
     const { month, year, view } = this.state;
 
@@ -216,8 +237,8 @@ class Calendar extends React.Component {
           className={view !== "month" && classes.hidden}
           range={range}
           locale={locale}
-          maxDate={maxDate}
-          minDate={minDate}
+          max={max}
+          min={min}
           onClick={this.handleDayClick}
           onSelect={this.handleValueChange}
         />

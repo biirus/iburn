@@ -12,16 +12,7 @@ import Row from "iburn/components/Table/Row";
 import Cell from "iburn/components/Table/Cell";
 
 import Markdown from "docs/components/Markdown";
-
-const getTypeValue = type => {
-  const values = {
-    arrayOf: type => type.value.name,
-    enum: type => type.value.map(v => v.value.replace(/"/g, "")).join(", "),
-    union: type => type.value.map(v => v.name.replace(/"/g, "")).join(", "),
-  };
-
-  return type && values[type.name] ? values[type.name](type) : null;
-};
+import { typeToString } from "./lib";
 
 const PropRow = ({
   classes,
@@ -32,8 +23,6 @@ const PropRow = ({
   defaultValue,
   shouldRenderDefaultCell,
 }) => {
-  const typeValue = getTypeValue(type);
-
   return (
     <Row className={classes.root}>
       <Cell className={classes.cell}>
@@ -44,12 +33,7 @@ const PropRow = ({
       </Cell>
 
       <Cell className={classes.cell} classes={{ inner: classes.cellInner }}>
-        {type && (
-          <Badge>
-            {type.name}
-            {typeValue && ": " + typeValue}
-          </Badge>
-        )}
+        {type && <Badge className={classes.type}>{typeToString(type)}</Badge>}
       </Cell>
 
       {shouldRenderDefaultCell && (
@@ -65,8 +49,8 @@ const PropRow = ({
   );
 };
 
-const PropsTable = ({ classes, propsList }) => {
-  const hasAtLeastOneDefaultValue = !!Object.values(propsList).find(
+const PropsTable = ({ classes, propsMap }) => {
+  const hasAtLeastOneDefaultValue = !!Object.values(propsMap).find(
     prop => !!prop.defaultValue
   );
 
@@ -81,13 +65,13 @@ const PropsTable = ({ classes, propsList }) => {
         </Row>
       </TableHead>
       <TableBody>
-        {Object.keys(propsList).map(key => (
+        {Object.keys(propsMap).map(key => (
           <PropRow
             key={key}
             name={key}
             classes={classes}
             shouldRenderDefaultCell={hasAtLeastOneDefaultValue}
-            {...propsList[key]}
+            {...propsMap[key]}
           />
         ))}
       </TableBody>

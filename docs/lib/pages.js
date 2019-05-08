@@ -16,6 +16,10 @@ export function getDemoPages () {
     "Avatar-Stack",
     "Button-Group",
     "Calendar-Controls",
+    "Calendar-Day",
+    "Calendar-WeekDays",
+    "Calendar-MonthView",
+    "Calendar-YearView",
     "Checkbox-Group",
     "Dialog-Content",
     "Dialog-Footer",
@@ -46,7 +50,13 @@ export function getDemoPages () {
 }
 
 export function getApiPages () {
-  const apiBlackList = [];
+  const apiBlackList = [
+    "Calendar-Controls",
+    "Calendar-Day",
+    "Calendar-WeekDays",
+    "Calendar-MonthView",
+    "Calendar-YearView",
+  ];
 
   return getPages(apiBlackList, "api");
 }

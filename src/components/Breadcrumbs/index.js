@@ -15,7 +15,7 @@ class Breadcrumbs extends React.Component {
      */
     className: PropTypes.string,
     /**
-     * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
+     * [JSS](http://cssinjs.org/react-jss/) classes object notation
      */
     classes: PropTypes.object,
     /**

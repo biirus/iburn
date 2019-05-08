@@ -19,5 +19,9 @@ export default ({ spacing, colors }) => {
         marginLeft: spacing.small,
       },
     },
+
+    type: {
+      whiteSpace: "pre",
+    },
   };
 };

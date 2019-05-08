@@ -6,14 +6,14 @@ import { enhance } from "./enhance";
 
 class Divider extends React.Component {
   static defaultProps = {
-    compact: false
+    compact: false,
   };
 
-  render() {
+  render () {
     const { classes, className, compact } = this.props;
 
     const classNames = cn(classes.root, className, {
-      [classes.compact]: compact
+      [classes.compact]: compact,
     });
 
     const rowClassNames = cn(classes.row);

@@ -1,6 +1,6 @@
 export default function getStylesDocs (avatarStyles) {
   let stylesDocs = [];
-  const styleRegexp = /\/\* (.*) \*\/[\r\n]\s*(\w*)/gm;
+  const styleRegexp = /\/\*\*? (.*) \*\/[\r\n]\s*(\w*)/gm;
 
   let m;
   while ((m = styleRegexp.exec(avatarStyles)) !== null) {

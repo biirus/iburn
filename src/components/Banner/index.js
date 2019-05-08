@@ -24,7 +24,7 @@ class Banner extends React.Component {
      */
     className: PropTypes.string,
     /**
-     * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
+     * [JSS](http://cssinjs.org/react-jss/) classes object notation
      */
     classes: PropTypes.object,
     /**
@@ -44,11 +44,11 @@ class Banner extends React.Component {
      */
     onClose: PropTypes.func,
     /**
-     * The callback that fires when `Banner` is opening
+     * Callback fired when `Banner` is opening
      */
     onEnter: PropTypes.func,
     /**
-     * The callback that fires when `Banner` is closing
+     * Callback fired when `Banner` is closing
      */
     onExit: PropTypes.func,
   };

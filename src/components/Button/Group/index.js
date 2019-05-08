@@ -20,7 +20,7 @@ class ButtonGroup extends React.Component {
      */
     className: PropTypes.string,
     /**
-     * [JSS](http://cssinjs.org/react-jss/?v=v8.5.1) classes object notation
+     * [JSS](http://cssinjs.org/react-jss/) classes object notation
      */
     classes: PropTypes.object,
     /**
@@ -49,7 +49,7 @@ class ButtonGroup extends React.Component {
      */
     children: PropTypes.arrayOf(PropTypes.element).isRequired,
     /**
-     * The callback which will be called when `selectable` prop is passed.
+     * Callback function fired when `selectable` prop is passed.
      */
     onChange: PropTypes.func,
   };

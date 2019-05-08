@@ -2,6 +2,7 @@ export default ({ spacing, palette }) => {
   const borderSize = 2;
 
   return {
+    /** Styles applied to the root element */
     root: {
       display: "grid",
       gridTemplateColumns: `repeat(7, 1fr)`,
@@ -11,6 +12,7 @@ export default ({ spacing, palette }) => {
       textAlign: "center",
     },
 
+    /** Styles applied to a day element */
     weekDay: {
       margin: [[spacing.small, 0]],
     },

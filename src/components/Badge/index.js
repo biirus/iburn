@@ -13,7 +13,6 @@ import { enhance } from "./enhance";
 class Badge extends Component {
   static defaultProps = {
     color: "default",
-    component: Typography,
   };
 
   static propTypes = {
@@ -40,23 +39,15 @@ class Badge extends Component {
   };
 
   render () {
-    const {
-      className,
-      classes,
-      children,
-      color,
-      component: Component,
-      theme,
-      ...rest
-    } = this.props;
+    const { className, classes, children, color, theme, ...rest } = this.props;
 
     return (
-      <Component
+      <Typography
         {...rest}
         className={cn(classes.root, classes[color], className)}
       >
         {children}
-      </Component>
+      </Typography>
     );
   }
 }
