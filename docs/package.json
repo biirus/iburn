@@ -5,8 +5,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "buildPageMap": "node ./scripts/build-pages-map.js ./lib/pages-map.json",
-    "predev": "npm run buildPageMap",
+    "cleanPagesMaps": "rm -f ./lib/*-pages-map.json",
+    "buildDemoPagesMap": "node ./scripts/build-demo-pages-map.js ./lib/demo-pages-map.json",
+    "buildApiPagesMap": "node ./scripts/build-api-pages-map.js ./lib/api-pages-map.json",
+    "predev": "npm run cleanPagesMaps && npm run buildApiPagesMap && npm run buildDemoPagesMap",
     "dev": "next",
     "build": "next build",
     "start": "next start",

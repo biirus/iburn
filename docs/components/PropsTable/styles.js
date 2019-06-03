@@ -22,6 +22,8 @@ export default ({ spacing, colors }) => {
 
     type: {
       whiteSpace: "pre",
+      tabSize: "1em",
+      lineHeight: "1.2em",
     },
   };
 };

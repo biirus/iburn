@@ -24,7 +24,7 @@ class Navigation extends Component {
         <Nav header="Demo">
           {getDemoPages().map(p => (
             <Link key={p.path} href={p.path}>
-              <NavItem active={router.route === p.path}>{p.name}</NavItem>
+              <NavItem active={router.route === p.path}>{p.info.title}</NavItem>
             </Link>
           ))}
         </Nav>
@@ -34,7 +34,9 @@ class Navigation extends Component {
         <Nav header="API Reference">
           {getApiPages().map(p => (
             <Link key={p.path} href={p.path}>
-              <NavItem active={router.asPath === p.path}>{p.name}</NavItem>
+              <NavItem active={router.asPath === p.path}>
+                {p.info.title}
+              </NavItem>
             </Link>
           ))}
         </Nav>

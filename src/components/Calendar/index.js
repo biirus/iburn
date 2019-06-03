@@ -234,7 +234,7 @@ class Calendar extends React.Component {
         <MonthView
           {...this.state}
           value={value}
-          className={view !== "month" && classes.hidden}
+          className={cn({ [classes.hidden]: view !== "month" })}
           range={range}
           locale={locale}
           max={max}
@@ -244,7 +244,7 @@ class Calendar extends React.Component {
         />
 
         <YearView
-          className={view !== "year" && classes.hidden}
+          className={cn({ [classes.hidden]: view !== "year" })}
           locale={locale}
           onSelect={this.handleMonthSelect}
         />
