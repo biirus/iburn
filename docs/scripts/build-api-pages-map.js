@@ -20,7 +20,7 @@ function build () {
   const [mapFilePath] = args;
 
   fs.writeFileSync(mapFilePath, JSON.stringify(getApiPagesMap()));
-  console.log("API pages map has been built");
+  console.log("🚀 API pages map has been built");
 }
 
 build();

@@ -1,24 +1,25 @@
 export default ({ palette, spacing, colors, borderRadius, transitions }) => {
   return {
     root: {
-      display: "inline-flex"
+      display: "inline-flex",
+      verticalAlign: "middle",
     },
 
-    real: {
+    input: {
       display: "none",
 
       "&:disabled": {
         "&+$wrapper": {
           pointerEvents: "none",
           cursor: "not-allowed",
-          opacity: 0.5
-        }
+          opacity: 0.5,
+        },
       },
 
       "&:checked + $wrapper>$check": {
         fill: "white",
-        color: colors.b200
-      }
+        color: colors.b200,
+      },
     },
 
     wrapper: {
@@ -26,8 +27,8 @@ export default ({ palette, spacing, colors, borderRadius, transitions }) => {
       alignItems: "center",
 
       "&:hover": {
-        cursor: "pointer"
-      }
+        cursor: "pointer",
+      },
     },
 
     check: {
@@ -35,11 +36,11 @@ export default ({ palette, spacing, colors, borderRadius, transitions }) => {
       alignSelf: "center",
       marginLeft: -6, // because of svg viewbox
       fill: "transparent",
-      color: colors.n40
+      color: colors.n40,
     },
 
     label: {
-      lineHeight: `${spacing.unit * 3}px` // default icon size
-    }
+      lineHeight: `${spacing.unit * 3}px`, // default icon size
+    },
   };
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import cn from "classnames";
 
 // enhancers
@@ -11,18 +12,41 @@ import Icon from "components/Icon";
 import styles from "./styles";
 
 class Checkbox extends React.Component {
-  render() {
-    const { className, classes, children, theme, sheet, ...rest } = this.props;
+  static propTypes = {
+    /**
+     * Class name string to be merged to the root node
+     */
+    className: PropTypes.string,
+    /**
+     * [JSS](http://cssinjs.org/react-jss/) classes object notation
+     */
+    classes: PropTypes.object,
+  };
+  render () {
+    const {
+      className,
+      classes,
+      value,
+      children,
+      theme,
+      sheet,
+      ...rest
+    } = this.props;
     const classNames = cn(classes.root, className);
 
     return (
       <label className={classNames}>
-        <input {...rest} className={classes.real} type="checkbox" />
+        <input
+          {...rest}
+          value={value}
+          className={classes.input}
+          type="checkbox"
+        />
 
         <span className={classes.wrapper}>
           <Icon label="checkbox" className={classes.check} />
 
-          <span className={classes.label}>{children}</span>
+          {children && <span className={classes.label}>{children}</span>}
         </span>
       </label>
     );

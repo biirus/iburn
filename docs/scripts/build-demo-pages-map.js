@@ -39,7 +39,7 @@ function build () {
 
   fs.writeFileSync(mapFilePath, JSON.stringify(getDemoPagesMap()));
 
-  console.log("Demo pages map has been built");
+  console.log("🚀 Demo pages map has been built");
 }
 
 build();
