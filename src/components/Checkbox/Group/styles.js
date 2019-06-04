@@ -1,4 +1,4 @@
-export default ({ spacing, }) => {
+export default ({ spacing }) => {
   return {
     root: {},
 

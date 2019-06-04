@@ -16,5 +16,9 @@ export default ({ typography, palette, colors }) => {
     body: typography.body,
     label: typography.label,
     paragraph: typography.paragraph,
+
+    gutterBottom: {
+      marginBottom: "1em",
+    }
   };
 };

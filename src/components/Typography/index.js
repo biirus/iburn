@@ -30,6 +30,7 @@ class Typography extends React.Component {
   render () {
     const {
       componentsMap,
+      gutterBottom,
       component,
       className,
       children,
@@ -40,8 +41,13 @@ class Typography extends React.Component {
       ...rest
     } = this.props;
 
-    const Component = component || componentsMap[type] || "div";
-    const classNames = cn(classes.root, classes[type], className);
+    const Component = component || componentsMap[type] || "span";
+    const classNames = cn(
+      classes.root,
+      classes[type],
+      { [classes.gutterBottom]: gutterBottom },
+      className
+    );
 
     return (
       <Component {...rest} className={classNames}>

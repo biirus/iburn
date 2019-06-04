@@ -13,6 +13,8 @@ import Tab from "iburn/components/Tabs/Tab";
 
 import basicDemoCode from "!!raw-loader!./BasicDemo";
 import BasicDemo from "./BasicDemo";
+import groupDemoCode from "!!raw-loader!./GroupDemo";
+import GroupDemo from "./GroupDemo";
 
 class CheckboxDemo extends Component {
   render () {
@@ -39,6 +41,27 @@ class CheckboxDemo extends Component {
             </Tab>
             <Tab label="Code">
               <Code>{basicDemoCode}</Code>
+            </Tab>
+          </Tabs>
+        </section>
+
+        <section className={classes.section}>
+          <Link href="#group">
+            <Typography
+              type="h600"
+              className={classes.sectionHeader}
+              id="group"
+            >
+              Group
+            </Typography>
+          </Link>
+
+          <Tabs>
+            <Tab label="Preview">
+              <GroupDemo />
+            </Tab>
+            <Tab label="Code">
+              <Code>{groupDemoCode}</Code>
             </Tab>
           </Tabs>
         </section>
