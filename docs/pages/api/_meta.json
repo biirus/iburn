@@ -74,6 +74,49 @@
           "component": "Calendar"
         }
       }
+    },
+
+    {
+      "id": "Checkbox",
+      "path": "/api/checkbox",
+      "info": {
+        "title": "Checkbox",
+        "query": {
+          "component": "Checkbox"
+        }
+      }
+    },
+
+    {
+      "id": "Checkbox Group",
+      "path": "/api/checkbox/group",
+      "info": {
+        "title": "Checkbox Group",
+        "query": {
+          "component": "Checkbox/Group"
+        }
+      }
+    },
+
+    {
+      "id": "Radio",
+      "path": "/api/radio",
+      "info": {
+        "title": "Radio",
+        "query": {
+          "component": "Radio"
+        }
+      }
+    },
+    {
+      "id": "Radio Group",
+      "path": "/api/radio/group",
+      "info": {
+        "title": "Radio Group",
+        "query": {
+          "component": "Radio/Group"
+        }
+      }
     }
   ]
 }

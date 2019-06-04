@@ -1,10 +1,12 @@
 export default ({ palette, spacing, colors, borderRadius, transitions }) => {
   return {
+    /** styles applied to the root element */
     root: {
       display: "inline-flex",
       verticalAlign: "middle",
     },
 
+    /** styles applied to the hidden `input` element */
     input: {
       display: "none",
 
@@ -22,6 +24,7 @@ export default ({ palette, spacing, colors, borderRadius, transitions }) => {
       },
     },
 
+    /** styles applied to the element wrapper */
     wrapper: {
       display: "inline-flex",
       alignItems: "center",
@@ -31,6 +34,7 @@ export default ({ palette, spacing, colors, borderRadius, transitions }) => {
       },
     },
 
+    /** styles for the `check` icon */
     check: {
       display: "inline-flex",
       alignSelf: "center",
@@ -39,6 +43,7 @@ export default ({ palette, spacing, colors, borderRadius, transitions }) => {
       color: colors.n40,
     },
 
+    /** styles for the `label` element */
     label: {
       lineHeight: `${spacing.unit * 3}px`, // default icon size
     },

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 
@@ -11,7 +11,7 @@ import Icon from "components/Icon";
 // styles
 import styles from "./styles";
 
-class Checkbox extends React.Component {
+class Checkbox extends Component {
   static propTypes = {
     /**
      * Class name string to be merged to the root node
@@ -23,25 +23,12 @@ class Checkbox extends React.Component {
     classes: PropTypes.object,
   };
   render () {
-    const {
-      className,
-      classes,
-      value,
-      children,
-      theme,
-      sheet,
-      ...rest
-    } = this.props;
+    const { className, classes, children, theme, sheet, ...rest } = this.props;
     const classNames = cn(classes.root, className);
 
     return (
       <label className={classNames}>
-        <input
-          {...rest}
-          value={value}
-          className={classes.input}
-          type="checkbox"
-        />
+        <input {...rest} className={classes.input} type="checkbox" />
 
         <span className={classes.wrapper}>
           <Icon label="checkbox" className={classes.check} />
