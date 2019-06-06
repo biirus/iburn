@@ -33,17 +33,17 @@ class TextField extends React.Component {
   };
 
   onFocus = e => {
-    this.setState({ isFocused: true, });
+    this.setState({ isFocused: true });
     this.props.onFocus(e);
   };
 
   onBlur = e => {
-    this.setState({ isFocused: false, });
+    this.setState({ isFocused: false });
     this.props.onBlur(e);
   };
 
   checkView = () => {
-    return ["warning", "danger", "success", "info",].includes(this.props.view);
+    return ["warning", "danger", "success", "info"].includes(this.props.view);
   };
 
   getViewIcon = () => {
@@ -58,7 +58,7 @@ class TextField extends React.Component {
   };
 
   render () {
-    const { isFocused, } = this.state;
+    const { isFocused } = this.state;
     const {
       className,
       classes,

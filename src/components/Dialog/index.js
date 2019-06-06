@@ -18,26 +18,29 @@ class Dialog extends React.Component {
     onClose: f => f,
   };
 
-  constructor (props) {
-    super(props);
-    this.el = document.createElement("div");
-  }
+  state = {
+    mounted: false,
+  };
 
   getChildContext () {
     return { handleClose: this.handleClose };
   }
 
   componentDidMount () {
+    this.el = document.createElement("div");
     document.body.appendChild(this.el);
-    const { isOpen } = this.props;
 
-    if (isOpen) {
+    this.setState({ mounted: true });
+
+    if (this.props.isOpen) {
       this.handleOpen();
     }
   }
 
   componentWillUnmount () {
-    document.body.removeChild(this.el);
+    this.setState({ mounted: false }, () => {
+      document.body.removeChild(this.el);
+    });
   }
 
   componentDidUpdate (oldProps) {
@@ -112,7 +115,8 @@ class Dialog extends React.Component {
   }
 
   render () {
-    return createPortal(this.renderContent(), this.el);
+    const { mounted } = this.state;
+    return mounted ? createPortal(this.renderContent(), this.el) : null;
   }
 }
 
