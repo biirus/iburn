@@ -44,6 +44,7 @@ export default ({
 
       "&:hover": {
         background: defaultBorder,
+        cursor: "text",
 
         "&$focus": {
           background: activeBackground,
