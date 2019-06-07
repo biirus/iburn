@@ -7,7 +7,7 @@ import Typography from "components/Typography";
 // enhancers
 import { enhance } from "./enhance";
 
-class DialogTitle extends React.Component {
+class DialogHeader extends React.Component {
   render () {
     const {
       className,
@@ -31,4 +31,4 @@ class DialogTitle extends React.Component {
   }
 }
 
-export default enhance(DialogTitle);
+export default enhance(DialogHeader);

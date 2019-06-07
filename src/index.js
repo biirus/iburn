@@ -12,7 +12,7 @@ export { default as CheckboxGroup } from "components/Checkbox/Group";
 export { default as Dialog } from "components/Dialog";
 export { default as DialogContent } from "components/Dialog/Content";
 export { default as DialogFooter } from "components/Dialog/Footer";
-export { default as DialogTitle } from "components/Dialog/Title";
+export { default as DialogHeader } from "components/Dialog/Header";
 export { default as Divider } from "components/Divider";
 export { default as Drawer } from "components/Drawer";
 export { default as Dropdown } from "components/Dropdown";
