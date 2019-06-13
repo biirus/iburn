@@ -10,30 +10,57 @@ import EventListener from "react-event-listener";
 import { enhance } from "./enhance";
 
 class Dialog extends React.Component {
+  static propTypes = {
+    /**
+     * Class name string to be merged to the root node
+     */
+    className: PropTypes.string,
+    /**
+     * [JSS](http://cssinjs.org/react-jss/) classes object notation
+     */
+    classes: PropTypes.object,
+    /**
+     * Defines size of `Dialog` component
+     */
+    size: PropTypes.oneOf(["small", "medium", "large"]),
+    /**
+     * If set is `true` then `Dialog` is shown, otherwise it is hidden
+     */
+    isOpen: PropTypes.bool,
+    /**
+     * If set is `true` the `Dialog` doesn't close by `ESC` button and click at overlay
+     */
+    isModal: PropTypes.bool,
+    /**
+     * Callback fires when `Dialog` opens
+     */
+    onOpen: PropTypes.func,
+    /**
+     * Callback fires when `Dialog` closes
+     */
+    onClose: PropTypes.func,
+  };
+
   static defaultProps = {
     size: "medium",
     isOpen: false,
     isModal: false,
-    onOpen: f => f,
-    onClose: f => f,
   };
 
   state = {
     mounted: false,
   };
 
-  getChildContext () {
-    return { handleClose: this.handleClose };
-  }
-
   componentDidMount () {
+    const { isOpen, onOpen } = this.props;
+
     this.el = document.createElement("div");
     document.body.appendChild(this.el);
 
     this.setState({ mounted: true });
 
-    if (this.props.isOpen) {
-      this.handleOpen();
+    if (isOpen) {
+      onOpen && onOpen();
     }
   }
 
@@ -43,38 +70,20 @@ class Dialog extends React.Component {
     });
   }
 
-  componentDidUpdate (oldProps) {
-    const { isOpen } = this.props;
-
-    if (!oldProps.isOpen && isOpen) {
-      this.handleOpen();
-    }
-  }
-
   handleKeyDown = e => {
-    const { isModal, isOpen } = this.props;
+    const { isModal, isOpen, onClose } = this.props;
 
     if (!isModal && isOpen && e.code === "Escape") {
-      this.handleClose(e);
+      onClose && onClose(e);
     }
   };
 
   handleOverlayClick = e => {
-    const { isModal, isOpen } = this.props;
+    const { isModal, isOpen, onClose } = this.props;
 
     if (!isModal && isOpen) {
-      this.handleClose(e);
+      onClose && onClose(e);
     }
-  };
-
-  handleOpen = e => {
-    document.body.classList.add("fixed");
-    this.props.onOpen(e);
-  };
-
-  handleClose = e => {
-    document.body.classList.remove("fixed");
-    this.props.onClose(e);
   };
 
   renderContent () {
@@ -119,9 +128,5 @@ class Dialog extends React.Component {
     return mounted ? createPortal(this.renderContent(), this.el) : null;
   }
 }
-
-Dialog.childContextTypes = {
-  handleClose: PropTypes.func,
-};
 
 export default enhance(Dialog);

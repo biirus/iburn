@@ -26,13 +26,13 @@ const Demo = enhance(({ classes }) => {
 
   const toggleDialog = useCallback(() => {
     toggle(!open);
-  }, [open]);
+  });
 
   return (
     <div className={classes.root}>
       <Button onClick={toggleDialog}>Sign in</Button>
 
-      <Dialog isOpen={open} onClose={toggleDialog}>
+      <Dialog size="small" isOpen={open} onClose={toggleDialog}>
         <div className={classes.loginForm}>
           <Typography type="h700">Welcome to iBurn</Typography>
 

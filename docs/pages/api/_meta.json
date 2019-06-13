@@ -117,6 +117,46 @@
           "component": "Radio/Group"
         }
       }
+    },
+    {
+      "id": "Dialog",
+      "path": "/api/dialog",
+      "info": {
+        "title": "Dialog",
+        "query": {
+          "component": "Dialog"
+        }
+      }
+    },
+    {
+      "id": "DialogHeader",
+      "path": "/api/dialog/header",
+      "info": {
+        "title": "Dialog Header",
+        "query": {
+          "component": "Dialog/Header"
+        }
+      }
+    },
+    {
+      "id": "DialogFooter",
+      "path": "/api/dialog/footer",
+      "info": {
+        "title": "Dialog Footer",
+        "query": {
+          "component": "Dialog/Footer"
+        }
+      }
+    },
+    {
+      "id": "DialogContent",
+      "path": "/api/dialog/content",
+      "info": {
+        "title": "Dialog Content",
+        "query": {
+          "component": "Dialog/Content"
+        }
+      }
     }
   ]
 }

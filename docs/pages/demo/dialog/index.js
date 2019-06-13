@@ -13,6 +13,10 @@ import Tab from "iburn/components/Tabs/Tab";
 
 import basicDemoCode from "!!raw-loader!./BasicDemo";
 import BasicDemo from "./BasicDemo";
+import layoutDemoCode from "!!raw-loader!./LayoutDemo";
+import LayoutDemo from "./LayoutDemo";
+import sizeDemoCode from "!!raw-loader!./SizeDemo";
+import SizeDemo from "./SizeDemo";
 
 class Demo extends Component {
   render () {
@@ -39,6 +43,44 @@ class Demo extends Component {
             </Tab>
             <Tab label="Code">
               <Code>{basicDemoCode}</Code>
+            </Tab>
+          </Tabs>
+        </section>
+
+        <section className={classes.section}>
+          <Link href="#layout">
+            <Typography
+              type="h600"
+              className={classes.sectionHeader}
+              id="layout"
+            >
+              Layout
+            </Typography>
+          </Link>
+
+          <Tabs>
+            <Tab label="Preview">
+              <LayoutDemo />
+            </Tab>
+            <Tab label="Code">
+              <Code>{layoutDemoCode}</Code>
+            </Tab>
+          </Tabs>
+        </section>
+
+        <section className={classes.section}>
+          <Link href="#size">
+            <Typography type="h600" className={classes.sectionHeader} id="size">
+              Size
+            </Typography>
+          </Link>
+
+          <Tabs>
+            <Tab label="Preview">
+              <SizeDemo />
+            </Tab>
+            <Tab label="Code">
+              <Code>{sizeDemoCode}</Code>
             </Tab>
           </Tabs>
         </section>

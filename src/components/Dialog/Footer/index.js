@@ -2,20 +2,23 @@ import React from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 
-// components
-import Button from "components/Button";
-
 // enhancers
 import { enhance } from "./enhance";
 
 class DialogFooter extends React.Component {
-  static defaultProps = {
-    actions: [],
-  };
-
-  handleClick = action => () => {
-    action.onClick(this.props);
-    this.context.handleClose();
+  static propTypes = {
+    /**
+     * Class name string to be merged to the root node
+     */
+    className: PropTypes.string,
+    /**
+     * [JSS](http://cssinjs.org/react-jss/) classes object notation
+     */
+    classes: PropTypes.object,
+    /**
+     * Node to be shown at right-hand side of the component
+     */
+    actions: PropTypes.node,
   };
 
   render () {
@@ -32,26 +35,11 @@ class DialogFooter extends React.Component {
 
     return (
       <div {...rest} className={classNames}>
-        <div>{children}</div>
-        <div>
-          {actions.map((action, index) => (
-            <Button
-              key={index}
-              view={action.view}
-              className={classes.action}
-              onClick={this.handleClick(action)}
-            >
-              {action.label}
-            </Button>
-          ))}
-        </div>
+        <div className={classes.children}>{children}</div>
+        <div className={classes.actions}>{actions}</div>
       </div>
     );
   }
 }
-
-DialogFooter.contextTypes = {
-  handleClose: PropTypes.func,
-};
 
 export default enhance(DialogFooter);

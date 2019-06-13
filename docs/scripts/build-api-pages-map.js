@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { sortBy } = require("lodash");
 
 function getApiPagesMap () {
   const meta = require(path.join(
@@ -12,7 +13,7 @@ function getApiPagesMap () {
     "_meta.json"
   ));
 
-  return meta.components;
+  return sortBy(meta.components, "info.title");
 }
 
 function build () {

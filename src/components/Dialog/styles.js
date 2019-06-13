@@ -8,6 +8,7 @@ export default ({
   borderRadius,
 }) => {
   return {
+    /** Styles applied to the `root` element */
     root: {
       position: "fixed",
       top: 0,
@@ -21,7 +22,7 @@ export default ({
       justifyContent: "center",
 
       transition: transitions.create(
-        ["left",],
+        ["left"],
         "instant",
         "leaveWaiting",
         "linear"
@@ -30,10 +31,11 @@ export default ({
       "&$open": {
         left: 0,
 
-        transition: transitions.create(["left",], "instant"),
+        transition: transitions.create(["left"], "instant"),
       },
     },
 
+    /** Styles applied to the `overlay` element */
     overlay: {
       position: "absolute",
       top: 0,
@@ -44,14 +46,15 @@ export default ({
 
       opacity: 0,
       background: colors.n100a,
-      transition: transitions.create(["opacity",], "leavingScreen"),
+      transition: transitions.create(["opacity"], "leavingScreen"),
 
       "&$open": {
         opacity: 1,
-        transition: transitions.create(["opacity",], "enteringScreen"),
+        transition: transitions.create(["opacity"], "enteringScreen"),
       },
     },
 
+    /** Styles for the wrapper of inner content */
     inner: {
       position: "relative",
       zIndex: zIndex.dialog,
@@ -66,30 +69,34 @@ export default ({
       borderRadius,
 
       transform: `translateY(${-spacing.large}px)`,
-      transition: transitions.create(["opacity", "transform",], "leavingScreen"),
+      transition: transitions.create(["opacity", "transform"], "leavingScreen"),
 
       "&$open": {
         opacity: 1,
         transform: `translateY(0px)`,
         transition: transitions.create(
-          ["opacity", "transform",],
+          ["opacity", "transform"],
           "enteringScreen"
         ),
       },
     },
 
+    /** Styles applied to the `inner` element when `size=small` */
     small: {
       width: spacing.unit * 50,
     },
 
+    /** Styles applied to the `inner` element when `size=medium` */
     medium: {
       width: spacing.unit * 75,
     },
 
+    /** Styles applied to the `inner` element when `size=large` */
     large: {
       width: spacing.unit * 100,
     },
 
+    /** Styles applied to the `root`, `overlay` and `inner` elements when `Dialog` is open */
     open: {},
   };
 };
