@@ -1,7 +1,7 @@
 export default (palette, colors) => ({
   backgroundColor: "transparent",
 
-  "&:hover": {
+  "&:hover, &:focus": {
     backgroundColor: colors.n30a,
   },
 

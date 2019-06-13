@@ -2,7 +2,7 @@ export default (palette, colors) => ({
   backgroundColor: palette.messages.success,
   color: palette.text.invert,
 
-  "&:hover": {
+  "&:hover, &:focus": {
     backgroundColor: colors.g300,
     color: palette.text.invert,
   },

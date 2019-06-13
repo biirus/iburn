@@ -2,7 +2,7 @@ export default (palette, colors) => ({
   backgroundColor: colors.n20a,
   color: colors.n400,
 
-  "&:hover": {
+  "&:hover, &:focus": {
     backgroundColor: colors.n30a,
     color: colors.n400,
   },

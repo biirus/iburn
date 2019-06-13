@@ -2,7 +2,7 @@ export default (palette, colors) => ({
   backgroundColor: "transparent",
   color: palette.actions.primary,
 
-  "&:hover": {
+  "&:hover, &:focus": {
     color: colors.b300,
     textDecoration: "underline",
   },
