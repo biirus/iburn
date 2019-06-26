@@ -40,7 +40,12 @@ const Demo = enhance(({ classes }) => {
     <div className={classes.root}>
       <Button onClick={openDialog}>Show licence</Button>
 
-      <Dialog isOpen={open} onClose={closeDialog}>
+      <Dialog
+        isOpen={open}
+        onClose={closeDialog}
+        onEnter={() => console.log("dialog enters")}
+        onExit={() => console.log("dialog exits")}
+      >
         <DialogHeader actions={<Button color="info">Help</Button>}>
           Licence to cook
         </DialogHeader>

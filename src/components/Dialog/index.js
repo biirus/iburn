@@ -32,11 +32,15 @@ class Dialog extends React.Component {
      */
     isModal: PropTypes.bool,
     /**
-     * Callback fires when `Dialog` opens
+     * Callback fires when `Dialog` enter
      */
-    onOpen: PropTypes.func,
+    onEnter: PropTypes.func,
     /**
-     * Callback fires when `Dialog` closes
+     * Callback fires when `Dialog` exit
+     */
+    onExit: PropTypes.func,
+    /**
+     * Callback fired when the `Dialog` requests to be closed
      */
     onClose: PropTypes.func,
   };
@@ -52,7 +56,7 @@ class Dialog extends React.Component {
   };
 
   componentDidMount () {
-    const { isOpen, onOpen } = this.props;
+    const { isOpen, onEnter } = this.props;
 
     this.el = document.createElement("div");
     document.body.appendChild(this.el);
@@ -60,7 +64,17 @@ class Dialog extends React.Component {
     this.setState({ mounted: true });
 
     if (isOpen) {
-      onOpen && onOpen();
+      onEnter && onEnter();
+    }
+  }
+
+  componentDidUpdate (oldProps) {
+    const { isOpen, onEnter, onExit } = this.props;
+
+    if (!oldProps.isOpen && isOpen) {
+      onEnter && onEnter();
+    } else if (oldProps.isOpen && !isOpen) {
+      onExit && onExit();
     }
   }
 
@@ -94,7 +108,8 @@ class Dialog extends React.Component {
       size,
       isOpen,
       isModal,
-      onOpen,
+      onEnter,
+      onExit,
       onClose,
       theme,
       sheet,
