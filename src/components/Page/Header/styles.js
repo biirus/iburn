@@ -1,4 +1,4 @@
-export default ({ typography, spacing, }) => {
+export default ({ typography, spacing }) => {
   return {
     root: {
       display: "flex",
@@ -19,7 +19,7 @@ export default ({ typography, spacing, }) => {
 
     label: {
       ...typography.h700,
-      margin: [0, spacing.large, 0, 0,],
+      margin: [0, spacing.large, 0, 0],
       whiteSpace: "nowrap",
       overflow: "hidden",
       textOverflow: "ellipsis",
