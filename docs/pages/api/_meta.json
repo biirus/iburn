@@ -157,6 +157,16 @@
           "component": "Dialog/Content"
         }
       }
+    },
+    {
+      "id": "Drawer",
+      "path": "/api/drawer",
+      "info": {
+        "title": "Drawer",
+        "query": {
+          "component": "Drawer"
+        }
+      }
     }
   ]
 }

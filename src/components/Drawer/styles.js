@@ -1,5 +1,6 @@
 export default ({ zIndex, transitions, shadows, colors, palette }) => {
   return {
+    /** Styles applied to the `root` element */
     root: {
       position: "fixed",
       top: 0,
@@ -16,6 +17,7 @@ export default ({ zIndex, transitions, shadows, colors, palette }) => {
       },
     },
 
+    /** Styles for the `Drawer` content */
     content: {
       position: "fixed",
       top: 0,
@@ -43,6 +45,7 @@ export default ({ zIndex, transitions, shadows, colors, palette }) => {
       },
     },
 
+    /** Styles applied to the `overlay` element */
     overlay: {
       position: "absolute",
       top: 0,
@@ -61,8 +64,13 @@ export default ({ zIndex, transitions, shadows, colors, palette }) => {
       },
     },
 
+    /** Styles applied when `isOpen={true}` */
     open: {},
+
+    /** Styles applied when `position="left"` */
     fromLeft: {},
+
+    /** Styles applied when `position="right"` */
     fromRight: {},
   };
 };
