@@ -1,4 +1,4 @@
-export default ({ zIndex, transitions, shadows, colors, palette, }) => {
+export default ({ zIndex, transitions, shadows, colors, palette }) => {
   return {
     root: {
       position: "fixed",
@@ -8,11 +8,11 @@ export default ({ zIndex, transitions, shadows, colors, palette, }) => {
       height: "100vh",
       zIndex: zIndex.overlay,
 
-      transition: transitions.create(["left",], "instant", "leaveWaiting"),
+      transition: transitions.create(["left"], "instant", "leaveWaiting"),
 
       "&$open": {
         left: 0,
-        transition: transitions.create(["left",], "instant"),
+        transition: transitions.create(["left"], "instant"),
       },
     },
 
@@ -25,21 +25,21 @@ export default ({ zIndex, transitions, shadows, colors, palette, }) => {
 
       backgroundColor: palette.backgrounds.panel,
       boxShadow: shadows.large,
-      transition: transitions.create(["transform",], "leavingScreen"),
+      transition: transitions.create(["transform"], "leavingScreen"),
 
       "&$fromLeft": {
         left: 0,
-        transform: `translateX(-100%)`,
+        transform: "translateX(-150%)",
       },
 
       "&$fromRight": {
         right: 0,
-        transform: `translateX(100%)`,
+        transform: "translateX(150%)",
       },
 
       "&$open": {
         transform: "translateX(0)",
-        transition: transitions.create(["transform",], "enteringScreen"),
+        transition: transitions.create(["transform"], "enteringScreen"),
       },
     },
 
@@ -53,11 +53,11 @@ export default ({ zIndex, transitions, shadows, colors, palette, }) => {
 
       opacity: 0,
       background: colors.n100a,
-      transition: transitions.create(["opacity",], "leavingScreen"),
+      transition: transitions.create(["opacity"], "leavingScreen"),
 
       "&$open": {
         opacity: 1,
-        transition: transitions.create(["opacity",], "enteringScreen"),
+        transition: transitions.create(["opacity"], "enteringScreen"),
       },
     },
 

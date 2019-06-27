@@ -11,23 +11,24 @@ class Drawer extends React.Component {
   static defaultProps = {
     position: "left",
     isOpen: false,
-    onOpen: f => f,
-    onClose: f => f
+    onClose: f => f,
   };
 
-  componentDidMount() {
-    if (this.props.isOpen) {
-      this.handleOpen();
+  componentDidMount () {
+    const { isOpen, onEnter } = this.props;
+
+    if (isOpen) {
+      onEnter && onEnter();
     }
   }
 
-  componentDidUpdate(oldProps) {
-    const { isOpen } = this.props;
+  componentDidUpdate (oldProps) {
+    const { isOpen, onEnter, onExit } = this.props;
 
     if (!oldProps.isOpen && isOpen) {
-      this.handleOpen();
+      onEnter && onEnter();
     } else if (oldProps.isOpen && !isOpen) {
-      this.handleClose();
+      onExit && onExit();
     }
   }
 
@@ -35,28 +36,19 @@ class Drawer extends React.Component {
     const { isOpen, onClose } = this.props;
 
     if (isOpen && e.code === "Escape") {
-      this.handleClose();
       onClose(e);
     }
   };
 
-  handleOpen = e => {
-    document.body.classList.add("fixed");
-    this.props.onOpen(e);
-  };
-
-  handleClose = e => {
-    document.body.classList.remove("fixed");
-  };
-
-  render() {
+  render () {
     const {
       className,
       classes,
       children,
       position,
       isOpen,
-      onOpen,
+      onEnter,
+      onExit,
       onClose,
       theme,
       sheet,
@@ -66,7 +58,7 @@ class Drawer extends React.Component {
     const classNames = cn(classes.content, className, {
       [classes.open]: isOpen,
       [classes.fromLeft]: position === "left",
-      [classes.fromRight]: position === "right"
+      [classes.fromRight]: position === "right",
     });
 
     return (
