@@ -21,7 +21,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "faker": "^4.1.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "next": "^7.0.3",
     "node-fetch": "^2.3.0",
     "react-docgen": "^3.0.0",
